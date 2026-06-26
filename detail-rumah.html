@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nusa Grande - Informasi Detail Unit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <header
+      class="bg-white border-b border-slate-100 shadow-sm sticky top-0 z-50"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center gap-2">
+          <img
+            src="image/IMG_3493.PNG"
+            alt="Logo Nusa Grande"
+            class="h-10 w-auto"
+          />
+        </a>
+        <nav
+          class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-600"
+        >
+          <a href="index.html" class="hover:text-emerald-600 transition"
+            >Beranda</a
+          >
+          <a href="profil.html" class="hover:text-emerald-600 transition"
+            >Tentang Kami</a
+          >
+          <a href="kpr.html" class="hover:text-emerald-600 transition"
+            >Simulasi & Cek KPR</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-12">
+      <section class="grid lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7 space-y-4">
+          <div
+            class="h-80 md:h-[420px] bg-slate-100 rounded-3xl overflow-hidden shadow-sm border border-slate-200 relative group"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
+              id="detail-img"
+              class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div
+              class="absolute bottom-4 left-4 bg-slate-900/80 backdrop-blur-md text-white font-bold px-3 py-1.5 rounded-xl text-[10px] tracking-wide uppercase"
+              id="main-img-badge"
+            >
+              Foto Utama
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h4
+              class="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-1"
+            >
+              Eksplorasi Sudut & Progres Unit
+            </h4>
+            <div
+              id="display-gallery-grid"
+              class="flex gap-3 overflow-x-auto pb-3 pt-1 scrollbar-thin scrollbar-thumb-slate-200 snap-x"
+            ></div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="space-y-2">
+            <span
+              class="inline-block bg-emerald-50 text-emerald-700 border border-emerald-100 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider"
+              >Unit Premium Tersedia</span
+            >
+            <h1
+              id="detail-nama"
+              class="text-3xl font-black text-slate-900 tracking-tight leading-tight"
+            >
+              Memuat info properti...
+            </h1>
+          </div>
+
+          <div
+            class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-5"
+          >
+            <h4
+              class="font-extrabold text-slate-900 uppercase tracking-wider text-[10px] text-slate-400 border-b pb-2"
+            >
+              Spesifikasi Detail Bangunan
+            </h4>
+
+            <div
+              class="grid grid-cols-2 gap-4 text-xs font-medium text-slate-600"
+            >
+              <div
+                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+              >
+                <div
+                  class="w-8 h-8 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center text-sm shrink-0"
+                >
+                  <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                    Luas Bangunan
+                  </p>
+                  <p id="spec-lb" class="font-extrabold text-slate-900 text-sm">
+                    - m²
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+              >
+                <div
+                  class="w-8 h-8 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center text-sm shrink-0"
+                >
+                  <i class="fa-solid fa-ruler-combined"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                    Luas Tanah
+                  </p>
+                  <p id="spec-lt" class="font-extrabold text-slate-900 text-sm">
+                    - m²
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+              >
+                <div
+                  class="w-8 h-8 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center text-sm shrink-0"
+                >
+                  <i class="fa-solid fa-bed"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                    Kamar Tidur
+                  </p>
+                  <p id="spec-kt" class="font-extrabold text-slate-900 text-sm">
+                    - Kamar
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+              >
+                <div
+                  class="w-8 h-8 bg-cyan-50 text-cyan-600 rounded-lg flex items-center justify-center text-sm shrink-0"
+                >
+                  <i class="fa-solid fa-bath"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                    Kamar Mandi
+                  </p>
+                  <p id="spec-km" class="font-extrabold text-slate-900 text-sm">
+                    - Kamar
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+              >
+                <div
+                  class="w-8 h-8 bg-violet-50 text-violet-600 rounded-lg flex items-center justify-center text-sm shrink-0"
+                >
+                  <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                    Daya Listrik
+                  </p>
+                  <p
+                    id="spec-daya-listrik"
+                    class="font-extrabold text-slate-900 text-sm"
+                  >
+                    - VA
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+              >
+                <div
+                  class="w-8 h-8 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center text-sm shrink-0"
+                >
+                  <i class="fa-solid fa-building"></i>
+                </div>
+                <div>
+                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                    Jumlah Lantai
+                  </p>
+                  <p
+                    id="spec-jumlah-lantai"
+                    class="font-extrabold text-slate-900 text-sm"
+                  >
+                    - Lantai
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-span-full w-full bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4 mt-2"
+        >
+          <div class="flex items-center justify-between gap-3">
+            <h4
+              class="font-extrabold text-slate-900 uppercase tracking-wider text-[10px] text-slate-400"
+            >
+              Detail Tambahan Unit
+            </h4>
+            <span
+              class="rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-emerald-700"
+            >
+              Keunggulan Unit
+            </span>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Tipe Unit
+              </p>
+              <p
+                id="extra-tipe"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                Premium
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Sertifikat
+              </p>
+              <p
+                id="extra-sertifikat"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                SHM
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Pondasi
+              </p>
+              <p
+                id="extra-pondasi"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Struktur
+              </p>
+              <p
+                id="extra-struktur"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Dinding
+              </p>
+              <p
+                id="extra-dinding"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Pintu
+              </p>
+              <p
+                id="extra-pintu"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Kusen
+              </p>
+              <p
+                id="extra-kusen"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Plafon
+              </p>
+              <p
+                id="extra-plafon"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Rangka Atap
+              </p>
+              <p
+                id="extra-rangka_atap"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Penutup Atap
+              </p>
+              <p
+                id="extra-penutup_atap"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Lantai
+              </p>
+              <p
+                id="extra-lantai_detail"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Air Bersih
+              </p>
+              <p
+                id="extra-air_bersih"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Listrik
+              </p>
+              <p
+                id="extra-listrik_detail"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+              <p
+                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              >
+                Sanitair
+              </p>
+              <p
+                id="extra-sanitair"
+                class="mt-1 text-sm font-extrabold text-slate-900"
+              >
+                -
+              </p>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <p
+              class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+            >
+              Catatan Unit
+            </p>
+            <p
+              id="extra-deskripsi"
+              class="mt-1 text-xs font-semibold leading-relaxed text-slate-600"
+            >
+              -
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="bg-slate-900 text-white p-8 rounded-3xl space-y-6 shadow-xl relative overflow-hidden"
+      >
+        <div
+          class="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30"
+        ></div>
+        <div class="relative z-10 max-w-xl mx-auto text-center space-y-2">
+          <h3 class="text-xl font-black tracking-tight">
+            Form Booking Kunjungan & Survey Lapangan
+          </h3>
+          <p class="text-xs text-slate-400">
+            Jadwalkan kunjungan Anda bersama tim arsitek dan marketing
+            representatif kami secara instan.
+          </p>
+        </div>
+        <form
+          id="form-booking"
+          class="relative z-10 text-slate-800 grid sm:grid-cols-2 gap-4 text-xs font-medium max-w-3xl mx-auto"
+        >
+          <input
+            type="text"
+            id="fb-nama"
+            required
+            placeholder="Nama Lengkap Anda"
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition"
+          />
+          <input
+            type="text"
+            id="fb-wa"
+            required
+            placeholder="No. WhatsApp Aktif"
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition"
+          />
+          <input
+            type="date"
+            id="fb-tanggal"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition sm:col-span-2"
+          />
+          <textarea
+            id="fb-catatan"
+            placeholder="Catatan tambahan kebutuhan Anda (Misal: preferensi jam berkunjung, opsi kustom tata ruang, dll.)..."
+            class="w-full px-4 py-3 rounded-xl h-20 bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition sm:col-span-2"
+          ></textarea>
+          <button
+            type="submit"
+            id="btn-submit-booking"
+            class="w-full bg-emerald-600 text-white font-bold py-3.5 rounded-xl hover:bg-emerald-700 transition sm:col-span-2 flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30"
+          >
+            <span id="txt-booking">Konfirmasi Jadwal Survey</span>
+            <div
+              id="spin-booking"
+              class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden"
+            ></div>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <script type="module">
+      // Menambahkan 'query' dan 'where' pada import firestore
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+      import {
+        getFirestore,
+        doc,
+        getDoc,
+        collection,
+        onSnapshot,
+        addDoc,
+        query,
+        where,
+      } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAja6FfF_EW_N9y8pXmDX-10e0e51DJ4Cg",
+        authDomain: "project-home-54337.firebaseapp.com",
+        projectId: "project-home-54337",
+      };
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const idUnit = urlParams.get("id");
+
+      let mainUnitImage = "";
+      let extraGalleries = [];
+
+      window.changeMainPreview = function (imageUrl, categoryName) {
+        document.getElementById("detail-img").src = imageUrl;
+        document.getElementById("main-img-badge").innerText = categoryName;
+      };
+
+      // 1. Memuat Informasi Utama Unit Rumah
+      async function loadUnitDetail() {
+        if (!idUnit) return;
+        const snap = await getDoc(doc(db, "units", idUnit));
+        if (snap.exists()) {
+          const val = snap.data();
+          document.getElementById("detail-nama").innerText = val.nama;
+
+          mainUnitImage =
+            val.images?.[0] ||
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80";
+          document.getElementById("detail-img").src = mainUnitImage;
+
+          document.getElementById("spec-lb").innerText = `${val.lb} m²`;
+          document.getElementById("spec-lt").innerText = `${val.lt} m²`;
+          document.getElementById("spec-kt").innerText = `${val.kt} Kamar`;
+          document.getElementById("spec-km").innerText = `${val.km} Kamar`;
+          document.getElementById("spec-daya-listrik").innerText =
+            `${val.listrik || "1300"} VA`;
+          document.getElementById("spec-jumlah-lantai").innerText =
+            `${val.lantai || 1} Lantai`;
+          document.getElementById("extra-tipe").innerText =
+            val.tipe || val.type || "Premium";
+          document.getElementById("extra-sertifikat").innerText =
+            val.sertifikat || "SHM";
+          document.getElementById("extra-pondasi").innerText =
+            val.pondasi || "Standar kualitas premium";
+          document.getElementById("extra-struktur").innerText =
+            val.struktur || "Rangka beton bertulang";
+          document.getElementById("extra-dinding").innerText =
+            val.dinding || "Batako / finishing cat premium";
+          document.getElementById("extra-pintu").innerText =
+            val.pintu || "Pintu panel solid";
+          document.getElementById("extra-kusen").innerText =
+            val.kusen || "Aluminium / kayu premium";
+          document.getElementById("extra-plafon").innerText =
+            val.plafon || "Gypsum finishing rapi";
+          document.getElementById("extra-rangka_atap").innerText =
+            val.rangka_atap || "Baja ringan";
+          document.getElementById("extra-penutup_atap").innerText =
+            val.penutup_atap || "Genteng / metal roof";
+          document.getElementById("extra-lantai_detail").innerText =
+            val.lantai_detail || "Keramik granit premium";
+          document.getElementById("extra-air_bersih").innerText =
+            val.air_bersih || "PDAM + toren";
+          document.getElementById("extra-listrik_detail").innerText =
+            val.listrik_detail || "Instalasi listrik aman";
+          document.getElementById("extra-sanitair").innerText =
+            val.sanitair || "Wastafel / closet modern";
+          document.getElementById("extra-deskripsi").innerText =
+            val.deskripsi ||
+            "Desain modern tropis dengan kualitas finishing premium.";
+
+          // Jalankan listener galeri spesifik setelah idUnit dipastikan ada
+          listenToSpecificGallery();
+        }
+      }
+
+      // 2. Mendengarkan perubahan data galeri secara reaktif khusus unit_id milik rumah ini
+      function listenToSpecificGallery() {
+        if (!idUnit) return;
+
+        // Membuat query filter: hanya ambil dokumen galleries yang 'unit_id'-nya sama dengan idUnit rumah ini
+        const q = query(
+          collection(db, "galleries"),
+          where("unit_id", "==", idUnit),
+        );
+
+        onSnapshot(q, (snap) => {
+          extraGalleries = [];
+          snap.forEach((d) => extraGalleries.push(d.data()));
+          renderGalleryAndMainImage();
+        });
+      }
+
+      // 3. Fungsi Render Slider Gabungan (Foto Utama + Galeri Filtered)
+      function renderGalleryAndMainImage() {
+        const grid = document.getElementById("display-gallery-grid");
+        grid.innerHTML = "";
+
+        // Masukkan Foto Utama unit ke urutan paling pertama
+        if (mainUnitImage) {
+          grid.innerHTML += `
+            <div onclick="changeMainPreview('${mainUnitImage}', 'Foto Utama')" class="h-20 w-28 shrink-0 bg-slate-100 rounded-xl overflow-hidden border-2 border-emerald-500 cursor-pointer transition relative snap-center shadow-sm">
+              <img src="${mainUnitImage}" class="w-full h-full object-cover">
+              <span class="absolute bottom-1 left-1 bg-emerald-600 text-white font-bold px-1.5 py-0.5 rounded text-[8px] uppercase tracking-tight scale-90 origin-bottom-left">
+                Foto Utama
+              </span>
+            </div>`;
+        }
+
+        // Masukkan semua foto tambahan hasil filter query
+        extraGalleries.forEach((item) => {
+          const categoryLabels = {
+            semua: "Foto",
+            eksterior: "Eksterior",
+            interior: "Interior",
+            contoh: "Rumah Contoh",
+            progress: "Progress",
+          };
+          const badgeText = categoryLabels[item.kategori] || "Unit";
+
+          grid.innerHTML += `
+            <div onclick="changeMainPreview('${item.image}', '${badgeText}')" class="h-20 w-28 shrink-0 bg-slate-100 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 cursor-pointer transition relative snap-center shadow-sm">
+              <img src="${item.image}" class="w-full h-full object-cover">
+              <span class="absolute bottom-1 left-1 bg-slate-900/70 text-white font-semibold px-1.5 py-0.5 rounded text-[8px] uppercase tracking-tight scale-90 origin-bottom-left">
+                ${badgeText}
+              </span>
+            </div>`;
+        });
+      }
+
+      // Submit handling form booking survey
+      document
+        .getElementById("form-booking")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const btn = document.getElementById("btn-submit-booking");
+          const spin = document.getElementById("spin-booking");
+          btn.disabled = true;
+          spin.classList.remove("hidden");
+          try {
+            await addDoc(collection(db, "survey_bookings"), {
+              nama: document.getElementById("fb-nama").value,
+              whatsapp: document.getElementById("fb-wa").value,
+              tanggal: document.getElementById("fb-tanggal").value,
+              catatan: document.getElementById("fb-catatan").value,
+              unit_id: idUnit || "Umum",
+            });
+            alert(
+              "Sukses! Tim Marketing Nusa Grande akan segera menghubungi Anda.",
+            );
+            document.getElementById("form-booking").reset();
+          } catch (err) {
+            alert(err.message);
+          } finally {
+            btn.disabled = false;
+            spin.classList.add("hidden");
+          }
+        });
+
+      loadUnitDetail();
+    </script>
+  </body>
+</html>

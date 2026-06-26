@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Properti - Nusa Grande</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
+    <header
+      class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-100 shadow-sm"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center">
+          <img src="image/IMG_3493.PNG" alt="Logo" class="h-12 w-auto" />
+        </a>
+        <nav
+          class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-600"
+        >
+          <a href="index.html" class="hover:text-[#0d3b69] transition"
+            >Beranda</a
+          >
+          <a href="profil.html" class="hover:text-[#0d3b69] transition"
+            >Tentang Kami</a
+          >
+          <a href="kpr.html" class="hover:text-[#0d3b69] transition"
+            >Simulasi & Cek KPR</a
+          >
+          <a href="properti.html" class="text-[#0d3b69]">Properti</a>
+          <a href="index.html#kontak" class="hover:text-[#0d3b69] transition"
+            >Kontak</a
+          >
+        </nav>
+        <a
+          href="kpr.html"
+          class="hidden lg:block bg-slate-900 text-white text-xs font-bold px-5 py-3 rounded-xl hover:bg-[#0d3b69] transition shadow-md"
+        >
+          Cek Kesiapan KPR
+        </a>
+      </div>
+    </header>
+
+    <section class="bg-slate-900 text-white py-20 lg:py-24">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl space-y-4">
+          <span
+            class="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest"
+          >
+            Koleksi Properti Nusa Grande
+          </span>
+          <h1 class="text-3xl lg:text-5xl font-black tracking-tight">
+            Temukan unit impian dengan desain modern tropis yang sesuai
+            kebutuhan keluarga Anda.
+          </h1>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Semua unit tersedia dengan detail ukuran, kapasitas kamar,
+            fasilitas, dan akses lokasi yang jelas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-6 py-16">
+      <div
+        class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between"
+      >
+        <div>
+          <p
+            class="text-[#0d3b69] text-xs font-extrabold uppercase tracking-widest"
+          >
+            Daftar Unit
+          </p>
+          <h2 class="text-2xl font-black text-slate-900">
+            Pilihan Rumah Tersedia Saat Ini
+          </h2>
+        </div>
+        <p id="property-count" class="text-sm text-slate-500">
+          Memuat daftar properti...
+        </p>
+      </div>
+
+      <div
+        id="property-grid"
+        class="grid gap-4 grid-cols-2 sm:grid-cols-2 xl:grid-cols-3"
+      ></div>
+      <div
+        id="pagination-controls"
+        class="mt-8 flex flex-wrap items-center justify-center gap-2"
+      ></div>
+    </main>
+
+    <footer
+      class="bg-slate-950 text-slate-400 py-12 text-xs border-t border-slate-900"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 text-center text-[11px] text-slate-600"
+      >
+        &copy; 2026 Nusa Grande. PT Wibawa Bangun Nusa. Hak Cipta Dilindungi.
+      </div>
+    </footer>
+
+    <a
+      href="https://wa.me/6281311770008"
+      target="_blank"
+      class="fixed bottom-6 right-6 z-50 bg-[#0d3b69] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-105 transition-all"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        onSnapshot,
+      } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAja6FfF_EW_N9y8pXmDX-10e0e51DJ4Cg",
+        authDomain: "project-home-54337.firebaseapp.com",
+        projectId: "project-home-54337",
+        storageBucket: "project-home-54337.firebasestorage.app",
+        messagingSenderId: "548607283431",
+        appId: "1:548607283431:web:1f58c56ce8b3c73a121242",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      const grid = document.getElementById("property-grid");
+      const countText = document.getElementById("property-count");
+      const paginationControls = document.getElementById("pagination-controls");
+      const itemsPerPage = 10;
+      let currentPage = 1;
+      let allItems = [];
+      let isLoading = true;
+
+      renderSkeletons();
+
+      function renderSkeletons(count = 6) {
+        if (!grid) return;
+        grid.innerHTML = Array.from(
+          { length: count },
+          () => `
+          <div class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div class="h-44 animate-pulse rounded-2xl bg-slate-200"></div>
+            <div class="mt-4 space-y-3">
+              <div class="h-4 w-3/4 animate-pulse rounded bg-slate-200"></div>
+              <div class="h-3 w-full animate-pulse rounded bg-slate-100"></div>
+              <div class="h-3 w-5/6 animate-pulse rounded bg-slate-100"></div>
+              <div class="h-10 animate-pulse rounded-xl bg-slate-200"></div>
+            </div>
+          </div>
+        `,
+        ).join("");
+        countText.textContent = "Memuat daftar properti...";
+        paginationControls.innerHTML = "";
+      }
+
+      const renderPage = () => {
+        if (!grid) return;
+
+        if (isLoading) {
+          renderSkeletons();
+          return;
+        }
+
+        grid.innerHTML = "";
+
+        if (!allItems.length) {
+          grid.innerHTML = `
+            <div class="col-span-2 rounded-3xl border border-dashed border-slate-300 bg-white p-10 text-center xl:col-span-3">
+              <h3 class="text-lg font-black text-slate-900">Belum ada unit yang ditampilkan</h3>
+              <p class="mt-2 text-sm text-slate-500">Silakan hubungi tim marketing untuk informasi unit terbaru.</p>
+            </div>`;
+          countText.textContent = "Belum ada unit tersedia";
+          paginationControls.innerHTML = "";
+          return;
+        }
+
+        const totalPages = Math.ceil(allItems.length / itemsPerPage);
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageItems = allItems.slice(start, end);
+
+        countText.textContent = `${allItems.length} unit tersedia · Halaman ${currentPage} dari ${totalPages}`;
+
+        pageItems.forEach((item) => {
+          const doc = item.doc;
+          const val = doc.data();
+          const image =
+            val.images?.[0] ||
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80";
+
+          const card = document.createElement("article");
+          card.className =
+            "bg-white rounded-3xl border overflow-hidden shadow-sm hover:shadow-md transition";
+          card.innerHTML = `
+            <div class="h-44 bg-slate-100 overflow-hidden">
+              <img src="${image}" alt="${val.nama || "Unit rumah"}" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-4 sm:p-5 space-y-3 sm:space-y-4 text-[11px] sm:text-xs">
+              <h4 class="font-extrabold text-slate-900 text-sm">${val.nama || "Unit Premium"}</h4>
+              <div class="grid grid-cols-1 gap-2 text-slate-500 font-semibold border-b border-slate-100 pb-3 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-2">
+                <div class="flex items-center gap-2 rounded-lg bg-slate-50 px-2.5 py-2">
+                  <i class="fa-solid fa-maximize text-slate-400 w-4 text-center"></i>
+                  <span>${val.lb || 0}m² / ${val.lt || 0}m²</span>
+                </div>
+                <div class="flex items-center gap-2 rounded-lg bg-slate-50 px-2.5 py-2">
+                  <i class="fa-solid fa-layer-group text-slate-400 w-4 text-center"></i>
+                  <span>${val.lantai || "1"} Lantai</span>
+                </div>
+                <div class="flex items-center gap-2 rounded-lg bg-slate-50 px-2.5 py-2">
+                  <i class="fa-solid fa-bed text-slate-400 w-4 text-center"></i>
+                  <span>${val.kt || 0} Kamar Tidur</span>
+                </div>
+                <div class="flex items-center gap-2 rounded-lg bg-slate-50 px-2.5 py-2">
+                  <i class="fa-solid fa-bath text-slate-400 w-4 text-center"></i>
+                  <span>${val.km || 0} Kamar Mandi</span>
+                </div>
+                <div class="flex items-center gap-2 rounded-lg bg-amber-50 px-2.5 py-2 sm:col-span-2">
+                  <i class="fa-solid fa-bolt text-amber-500 w-4 text-center"></i>
+                  <span>Listrik: ${val.listrik || "1300"} VA</span>
+                </div>
+              </div>
+              <a href="detail-rumah.html?id=${doc.id}" class="block text-center bg-slate-900 text-white font-bold py-2.5 rounded-xl hover:bg-[#0d3b69] transition">Lihat Detail & Galeri</a>
+            </div>`;
+          grid.appendChild(card);
+        });
+
+        paginationControls.innerHTML = "";
+
+        if (totalPages > 1) {
+          const prevButton = document.createElement("button");
+          prevButton.className =
+            "rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-600 disabled:opacity-50";
+          prevButton.textContent = "Sebelumnya";
+          prevButton.disabled = currentPage === 1;
+          prevButton.addEventListener("click", () => {
+            if (currentPage > 1) {
+              currentPage -= 1;
+              renderPage();
+            }
+          });
+          paginationControls.appendChild(prevButton);
+
+          for (let page = 1; page <= totalPages; page += 1) {
+            const pageButton = document.createElement("button");
+            pageButton.className = `rounded-xl px-3 py-2 text-sm font-semibold ${page === currentPage ? "bg-[#0d3b69] text-white" : "border border-slate-200 bg-white text-slate-600"}`;
+            pageButton.textContent = page;
+            pageButton.addEventListener("click", () => {
+              currentPage = page;
+              renderPage();
+            });
+            paginationControls.appendChild(pageButton);
+          }
+
+          const nextButton = document.createElement("button");
+          nextButton.className =
+            "rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-600 disabled:opacity-50";
+          nextButton.textContent = "Berikutnya";
+          nextButton.disabled = currentPage === totalPages;
+          nextButton.addEventListener("click", () => {
+            if (currentPage < totalPages) {
+              currentPage += 1;
+              renderPage();
+            }
+          });
+          paginationControls.appendChild(nextButton);
+        }
+      };
+
+      onSnapshot(collection(db, "units"), (snap) => {
+        allItems = snap.docs.map((doc) => ({ doc }));
+        currentPage = 1;
+        isLoading = false;
+        renderPage();
+      });
+    </script>
+  </body>
+</html>
