@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nusa Grande - Admin Premium Master</title>
+    <title>Nusa Grande - Informasi Detail Unit</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
@@ -17,2426 +17,451 @@
       body {
         font-family: "Plus Jakarta Sans", sans-serif;
       }
-      .drop-zone {
-        border: 2px dashed #e2e8f0;
-        transition: all 0.3s;
+      /* Menyembunyikan scrollbar di slider galeri mobile untuk estetika cleaner */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
       }
-      .drop-zone:hover {
-        border-color: #10b981;
-        background: #f0fdf4;
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
       }
-      ::-webkit-scrollbar {
-        width: 6px;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 10px;
+      /* CSS Toggle untuk Menu Hamburger Mobile tanpa JS tambahan */
+      #menu-toggle:checked ~ #mobile-menu {
+        max-height: 200px;
+        opacity: 1;
       }
     </style>
   </head>
-  <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex">
-    <div
-      id="custom-alert"
-      class="fixed top-3 right-3 z-[100] transform translate-x-8 opacity-0 transition-all duration-300 pointer-events-none"
-    >
-      <div
-        id="alert-bg"
-        class="flex items-center gap-2 bg-white/95 border border-slate-200 shadow-lg rounded-xl px-3.5 py-2.5 max-w-xs pointer-events-auto"
-      >
-        <div
-          id="alert-icon"
-          class="w-8 h-8 rounded-lg flex items-center justify-center text-sm bg-emerald-50 text-emerald-600"
-        >
-          <i class="fa-solid fa-check-circle"></i>
-        </div>
-        <div>
-          <h4
-            id="alert-title"
-            class="font-semibold text-[11px] text-slate-900 leading-none"
-          >
-            Sukses
-          </h4>
-          <p id="alert-desc" class="text-[10px] text-slate-500 mt-0.5"></p>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="confirm-modal"
-      class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-[90] flex items-center justify-center hidden p-4"
-    >
-      <div
-        class="bg-white rounded-3xl w-full max-w-sm p-6 text-center shadow-2xl border scale-95 transition-all"
-      >
-        <div
-          class="w-16 h-16 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center text-2xl mx-auto mb-4"
-        >
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-        <h3 class="text-base font-bold text-slate-900">Hapus Permanen?</h3>
-        <p class="text-xs text-slate-500 mt-1 mb-6">
-          Data tidak dapat dikembalikan setelah dihapus.
-        </p>
-        <div class="grid grid-cols-2 gap-3">
-          <button
-            onclick="closeConfirmModal()"
-            class="bg-slate-100 py-2.5 rounded-xl text-xs font-bold"
-          >
-            Batal
-          </button>
-          <button
-            id="btn-confirm-execute"
-            class="bg-rose-600 text-white py-2.5 rounded-xl text-xs font-bold"
-          >
-            Ya, Hapus
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="modal-facility"
-      class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-[95] hidden items-center justify-center p-4"
-    >
-      <div class="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl border">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-base font-bold text-slate-900">Tambah Fasilitas</h3>
-          <button
-            onclick="closeModal('modal-facility')"
-            class="text-slate-400 hover:text-slate-700"
-          >
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-        <div class="space-y-3">
-          <input
-            type="text"
-            id="fac-nama"
-            placeholder="Nama fasilitas (contoh: Playground)"
-            class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none"
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    
+    <header class="bg-white border-b border-slate-100 shadow-sm sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between relative">
+        <a href="index.html" class="flex items-center gap-2">
+          <img
+            src="image/IMG_3493.PNG"
+            alt="Logo Nusa Grande"
+            class="h-9 sm:h-10 w-auto"
           />
-          <textarea
-            id="fac-deskripsi"
-            placeholder="Deskripsi singkat fasilitas"
-            class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none h-20"
-          ></textarea>
-          <select
-            id="fac-kategori"
-            class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none"
-          >
-            <option value="internal">Internal</option>
-            <option value="eksternal">Eksternal</option>
-          </select>
-          <div class="flex gap-3 pt-2">
-            <button
-              onclick="closeModal('modal-facility')"
-              class="flex-1 bg-slate-100 text-slate-700 py-2.5 rounded-xl text-xs font-bold"
-            >
-              Batal
-            </button>
-            <button
-              onclick="saveFacility()"
-              class="flex-1 bg-slate-900 text-white py-2.5 rounded-xl text-xs font-bold"
-            >
-              Simpan
-            </button>
-          </div>
+        </a>
+        
+        <input type="checkbox" id="menu-toggle" class="hidden" />
+        <label for="menu-toggle" class="lg:hidden flex flex-col gap-1 cursor-pointer p-2 z-50">
+          <span class="w-6 h-0.5 bg-slate-600 rounded-full"></span>
+          <span class="w-6 h-0.5 bg-slate-600 rounded-full"></span>
+          <span class="w-6 h-0.5 bg-slate-600 rounded-full"></span>
+        </label>
+
+        <nav class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-600">
+          <a href="index.html" class="hover:text-emerald-600 transition">Beranda</a>
+          <a href="profil.html" class="hover:text-emerald-600 transition">Tentang Kami</a>
+          <a href="kpr.html" class="hover:text-emerald-600 transition">Simulasi & Cek KPR</a>
+        </nav>
+
+        <div id="mobile-menu" class="absolute top-20 left-0 w-full bg-white border-b border-slate-100 p-4 flex flex-col gap-4 text-sm font-bold text-slate-600 lg:hidden max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out shadow-md">
+          <a href="index.html" class="hover:text-emerald-600 transition px-2 py-1">Beranda</a>
+          <a href="profil.html" class="hover:text-emerald-600 transition px-2 py-1">Tentang Kami</a>
+          <a href="kpr.html" class="hover:text-emerald-600 transition px-2 py-1">Simulasi & Cek KPR</a>
         </div>
       </div>
-    </div>
+    </header>
 
-    <div
-      id="modal-banner"
-      class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-[95] hidden items-center justify-center p-4"
-    >
-      <div class="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl border">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-base font-bold text-slate-900">Tambah Promo</h3>
-          <button
-            onclick="closeModal('modal-banner')"
-            class="text-slate-400 hover:text-slate-700"
-          >
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-        <div class="space-y-3">
-          <input
-            type="text"
-            id="banner-title"
-            placeholder="Judul promo"
-            class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none"
-          />
-          <textarea
-            id="banner-desc"
-            placeholder="Deskripsi promo"
-            class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none h-24"
-          ></textarea>
-          <div class="flex gap-3 pt-2">
-            <button
-              onclick="closeModal('modal-banner')"
-              class="flex-1 bg-slate-100 text-slate-700 py-2.5 rounded-xl text-xs font-bold"
-            >
-              Batal
-            </button>
-            <button
-              onclick="saveBanner()"
-              class="flex-1 bg-slate-900 text-white py-2.5 rounded-xl text-xs font-bold"
-            >
-              Simpan
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="modal-testimonial"
-      class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-[95] hidden items-center justify-center p-4"
-    >
-      <div class="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl border">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-base font-bold text-slate-900">Tambah Testimoni</h3>
-          <button
-            onclick="closeModal('modal-testimonial')"
-            class="text-slate-400 hover:text-slate-700"
-          >
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-        <div class="space-y-3">
-          <input
-            type="text"
-            id="testi-nama"
-            placeholder="Nama konsumen"
-            class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none"
-          />
-          <input
-            type="text"
-            id="testi-tipe"
-            placeholder="Tipe rumah yang dibeli"
-            class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none"
-          />
-          <textarea
-            id="testi-pesan"
-            placeholder="Ulasan konsumen"
-            class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none h-20"
-          ></textarea>
-          <input
-            type="file"
-            id="testi-img"
-            accept="image/*"
-            class="text-xs block w-full"
-          />
-          <div class="flex gap-3 pt-2">
-            <button
-              onclick="closeModal('modal-testimonial')"
-              class="flex-1 bg-slate-100 text-slate-700 py-2.5 rounded-xl text-xs font-bold"
-            >
-              Batal
-            </button>
-            <button
-              onclick="saveTestimonial()"
-              class="flex-1 bg-slate-900 text-white py-2.5 rounded-xl text-xs font-bold"
-            >
-              Simpan
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <aside
-      class="w-64 bg-slate-900 text-slate-400 flex flex-col fixed h-full z-30 transition-transform md:translate-x-0 -translate-x-full"
-      id="sidebar"
-    >
-      <div
-        class="h-20 flex items-center px-6 bg-slate-950/40 gap-2 border-b border-slate-800"
-      >
-        <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
-        <span
-          id="sidebar-site-name"
-          class="text-base font-black text-white tracking-wide"
-          >NUSA GRANDE</span
-        >
-      </div>
-      <nav class="flex-grow p-4 space-y-1 font-medium text-xs overflow-y-auto">
-        <button
-          onclick="switchTab('overview')"
-          id="nav-overview"
-          class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-emerald-600 text-white font-bold transition"
-        >
-          <i class="fa-solid fa-gauge text-sm"></i> Overview
-        </button>
-
-        <div
-          class="text-[10px] uppercase font-bold text-slate-600 px-4 pt-4 pb-1 tracking-widest"
-        >
-          Katalog & Galeri
-        </div>
-        <button
-          onclick="switchTab('unit')"
-          id="nav-unit"
-          class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800/60 hover:text-slate-200 transition"
-        >
-          <i class="fa-solid fa-house text-sm"></i> Tipe Rumah
-        </button>
-        <button
-          onclick="switchTab('facilities')"
-          id="nav-facilities"
-          class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800/60 hover:text-slate-200 transition"
-        >
-          <i class="fa-solid fa-tree text-sm"></i> Fasilitas & Amenities
-        </button>
-        <button
-          onclick="switchTab('profile')"
-          id="nav-profile"
-          class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800/60 hover:text-slate-200 transition"
-        >
-          <i class="fa-solid fa-building text-sm"></i> Profil Perusahaan
-        </button>
-        <button
-          onclick="switchTab('settings')"
-          id="nav-settings"
-          class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800/60 hover:text-slate-200 transition"
-        >
-          <i class="fa-solid fa-sliders text-sm"></i> Setting
-        </button>
-
-        <div
-          class="text-[10px] uppercase font-bold text-slate-600 px-4 pt-4 pb-1 tracking-widest"
-        >
-          Marketing & Leads
-        </div>
-        <button
-          onclick="switchTab('banners')"
-          id="nav-banners"
-          class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800/60 hover:text-slate-200 transition"
-        >
-          <i class="fa-solid fa-images text-sm"></i> Banner & Promo
-        </button>
-        <button
-          onclick="switchTab('testimonials')"
-          id="nav-testimonials"
-          class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800/60 hover:text-slate-200 transition"
-        >
-          <i class="fa-solid fa-comment-dots text-sm"></i> Testimoni
-        </button>
-        <button
-          onclick="switchTab('leads')"
-          id="nav-leads"
-          class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800/60 hover:text-slate-200 transition"
-        >
-          <i class="fa-solid fa-calendar-check text-sm"></i> Booking Survey
-        </button>
-      </nav>
-      <div class="p-4 border-t border-slate-800">
-        <button
-          id="btn-logout"
-          class="w-full py-2.5 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 transition"
-        >
-          Logout
-        </button>
-      </div>
-    </aside>
-
-    <div id="admin-shell" class="flex-grow md:ml-64 min-h-screen flex flex-col">
-      <header
-        class="h-20 bg-white/80 backdrop-blur-md border-b border-slate-100 px-8 flex items-center justify-between sticky top-0 z-20"
-      >
-        <button
-          class="md:hidden text-slate-600 text-xl"
-          onclick="toggleSidebar()"
-        >
-          <i class="fa-solid fa-bars"></i>
-        </button>
-        <h2 class="text-base font-extrabold text-slate-900" id="page-title">
-          Dashboard Overview
-        </h2>
-        <div class="flex items-center gap-3">
-          <label
-            for="input-admin-photo"
-            class="flex items-center gap-3 cursor-pointer"
-          >
-            <div
-              class="w-10 h-10 rounded-full overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center"
-            >
-              <img
-                id="admin-profile-photo"
-                class="w-full h-full object-cover hidden"
-              />
-              <i
-                id="admin-profile-icon"
-                class="fa-solid fa-user text-slate-500"
-              ></i>
-            </div>
-            <input
-              type="file"
-              id="input-admin-photo"
-              accept="image/*"
-              class="hidden"
-              onchange="uploadAdminPhoto(event)"
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-12 space-y-8 sm:space-y-12">
+      
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+        
+        <div class="lg:col-span-7 space-y-4">
+          <div class="h-64 md:h-[420px] bg-slate-100 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-slate-200 relative group">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
+              id="detail-img"
+              class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
             />
-            <div class="text-right">
-              <p id="admin-user-email" class="text-xs font-bold text-slate-900">
-                admin@domain.com
-              </p>
-              <p class="text-[10px] text-slate-400">Foto profil</p>
-            </div>
-          </label>
-        </div>
-      </header>
-
-      <main class="p-8 flex-grow max-w-7xl w-full mx-auto space-y-8">
-        <div id="tab-overview" class="grid sm:grid-cols-4 gap-6">
-          <div
-            class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex items-center justify-between"
-          >
-            <div>
-              <p
-                class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"
-              >
-                Tipe Rumah
-              </p>
-              <p id="count-unit" class="text-3xl font-black mt-1">0</p>
-            </div>
-            <div
-              class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg"
-            >
-              <i class="fa-solid fa-house"></i>
-            </div>
-          </div>
-          <div
-            class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex items-center justify-between"
-          >
-            <div>
-              <p
-                class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"
-              >
-                Fasilitas
-              </p>
-              <p id="count-facilities" class="text-3xl font-black mt-1">0</p>
-            </div>
-            <div
-              class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg"
-            >
-              <i class="fa-solid fa-tree"></i>
-            </div>
-          </div>
-          <div
-            class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex items-center justify-between"
-          >
-            <div>
-              <p
-                class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"
-              >
-                Testimoni
-              </p>
-              <p id="count-testimonials" class="text-3xl font-black mt-1">0</p>
-            </div>
-            <div
-              class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg"
-            >
-              <i class="fa-solid fa-comment-dots"></i>
-            </div>
-          </div>
-          <div
-            class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex items-center justify-between"
-          >
-            <div>
-              <p
-                class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"
-              >
-                Leads Survey
-              </p>
-              <p id="count-leads" class="text-3xl font-black mt-1">0</p>
-            </div>
-            <div
-              class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg"
-            >
-              <i class="fa-solid fa-envelope"></i>
-            </div>
-          </div>
-        </div>
-
-        <div id="tab-unit" class="space-y-4 hidden">
-          <div class="flex justify-between items-center">
-            <p class="text-xs text-slate-500 font-medium">
-              Klik icon arsitektur slinder untuk mengelola gambar kategori dan
-              teks spesifikasi panjang.
-            </p>
-            <button
-              onclick="openAddUnitModal()"
-              class="bg-slate-900 text-white text-xs font-bold px-5 py-2.5 rounded-xl hover:bg-emerald-600 transition shadow-lg"
-            >
-              + Tipe Baru
-            </button>
-          </div>
-          <div
-            class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden"
-          >
-            <table class="w-full text-left text-xs whitespace-nowrap">
-              <thead class="bg-slate-50 border-b font-bold text-slate-500">
-                <tr>
-                  <th class="p-4 pl-8">Foto Utama</th>
-                  <th class="p-4">Nama Unit</th>
-                  <th class="p-4">Kamar (KT/KM)</th>
-                  <th class="p-4">Dimensi (LB/LT)</th>
-                  <th class="p-4 text-center pr-8">Aksi Kelola</th>
-                </tr>
-              </thead>
-              <tbody id="table-unit" class="divide-y divide-slate-100"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <div id="section-edit-unit" class="hidden space-y-8">
-          <div class="flex items-center gap-4">
-            <button
-              onclick="switchTab('unit')"
-              class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition"
-            >
-              <i class="fa-solid fa-arrow-left text-xs"></i>
-            </button>
-            <div>
-              <h2
-                id="edit-unit-title"
-                class="text-xl font-black text-slate-900 tracking-tight"
-              >
-                Nama Unit Properti
-              </h2>
-              <p class="text-xs text-slate-400">
-                ID Unit:
-                <span id="edit-unit-id" class="font-mono">#ID-123</span>
-              </p>
+            <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md text-white font-bold px-2.5 py-1 rounded-lg text-[9px] tracking-wide uppercase" id="main-img-badge">
+              Foto Utama
             </div>
           </div>
 
-          <div class="grid lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-5 space-y-6">
-              <div
-                class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4"
-              >
-                <h4
-                  class="text-[10px] font-black uppercase text-emerald-600 tracking-widest border-b pb-2"
-                >
-                  Modifikasi Data & Spesifikasi
-                </h4>
-                <div class="space-y-4">
-                  <div class="space-y-1.5">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase"
-                      >Foto Utama Unit</span
-                    >
-                    <div class="flex gap-3 items-center">
-                      <img
-                        id="edit-preview-main-img"
-                        class="w-20 h-16 object-cover rounded-xl border bg-slate-50"
-                      />
-                      <div class="flex-grow">
-                        <input
-                          type="file"
-                          id="edit-main-file"
-                          accept="image/*"
-                          class="hidden"
-                          onchange="changeMainImageInEdit(event)"
-                        />
-                        <button
-                          onclick="
-                            document.getElementById('edit-main-file').click()
-                          "
-                          class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] font-bold px-3 py-2 rounded-xl transition"
-                        >
-                          Ganti Foto Utama
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase"
-                      >Nama Tipe</span
-                    >
-                    <input
-                      type="text"
-                      id="edit-nama"
-                      class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none focus:border-emerald-500"
-                    />
-                  </div>
-                  <div class="grid grid-cols-2 gap-3">
-                    <div class="space-y-1">
-                      <span
-                        class="text-[10px] font-bold text-slate-400 uppercase"
-                        >LB (m²)</span
-                      ><input
-                        type="number"
-                        id="edit-lb"
-                        class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                      />
-                    </div>
-                    <div class="space-y-1">
-                      <span
-                        class="text-[10px] font-bold text-slate-400 uppercase"
-                        >LT (m²)</span
-                      ><input
-                        type="number"
-                        id="edit-lt"
-                        class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                      />
-                    </div>
-                  </div>
-                  <div class="grid grid-cols-2 gap-3">
-                    <div class="space-y-1">
-                      <span
-                        class="text-[10px] font-bold text-slate-400 uppercase"
-                        >Kamar Tidur (KT)</span
-                      ><input
-                        type="number"
-                        id="edit-kt"
-                        class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                      />
-                    </div>
-                    <div class="space-y-1">
-                      <span
-                        class="text-[10px] font-bold text-slate-400 uppercase"
-                        >Kamar Mandi (KM)</span
-                      ><input
-                        type="number"
-                        id="edit-km"
-                        class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                      />
-                    </div>
-                  </div>
-                  <div class="space-y-1">
-                    <span
-                      class="text-[10px] font-bold text-slate-400 uppercase block"
-                      >Catatan Unit / Deskripsi</span
-                    >
-                    <textarea
-                      id="edit-spec-deskripsi"
-                      rows="4"
-                      class="w-full px-4 py-3 bg-slate-50 border rounded-xl text-xs outline-none focus:border-emerald-500 transition leading-relaxed"
-                    ></textarea>
-                  </div>
-                  <div class="space-y-3">
-                    <div class="grid grid-cols-2 gap-3">
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Daya Listrik</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-listrik"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Jumlah Lantai</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-lantai"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Tipe Unit</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-tipe"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Sertifikat</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-sertifikat"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Pondasi</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-pondasi"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Struktur</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-struktur"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Dinding</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-dinding"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Pintu</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-pintu"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Kusen</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-kusen"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Plafon</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-plafon"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Rangka Atap</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-rangka_atap"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Penutup Atap</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-penutup_atap"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Lantai</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-lantai_detail"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Air Bersih</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-air_bersih"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Listrik Detail</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-listrik_detail"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Sanitair</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-sanitair"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    onclick="updateUnitCompleteData()"
-                    id="btn-update-basic"
-                    class="w-full bg-slate-900 text-white font-bold py-3 rounded-xl text-xs hover:bg-emerald-600 transition shadow-lg"
-                  >
-                    Simpan Seluruh Spek & Data
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div class="lg:col-span-7 space-y-6">
-              <div
-                class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6"
-              >
-                <h4
-                  class="text-[10px] font-black uppercase text-emerald-600 tracking-widest border-b pb-2"
-                >
-                  Kelola Galeri Visual Unit
-                </h4>
-                <div class="grid sm:grid-cols-2 gap-6">
-                  <div class="space-y-3">
-                    <label
-                      class="text-[10px] font-bold text-slate-400 uppercase"
-                      >Kategori: Interior</label
-                    >
-                    <div
-                      onclick="
-                        document.getElementById('input-interior').click()
-                      "
-                      class="drop-zone p-6 rounded-2xl flex flex-col items-center justify-center gap-2 cursor-pointer group"
-                    >
-                      <i
-                        class="fa-solid fa-couch text-slate-300 group-hover:text-emerald-500 text-xl transition"
-                      ></i>
-                      <input
-                        type="file"
-                        id="input-interior"
-                        hidden
-                        accept="image/*"
-                        multiple
-                        onchange="handleCategorizedUpload(event, 'interior')"
-                      />
-                    </div>
-                    <div
-                      id="preview-interior"
-                      class="grid grid-cols-4 gap-2"
-                    ></div>
-                  </div>
-                  <div class="space-y-3">
-                    <label
-                      class="text-[10px] font-bold text-slate-400 uppercase"
-                      >Kategori: Eksterior</label
-                    >
-                    <div
-                      onclick="
-                        document.getElementById('input-eksterior').click()
-                      "
-                      class="drop-zone p-6 rounded-2xl flex flex-col items-center justify-center gap-2 cursor-pointer group"
-                    >
-                      <i
-                        class="fa-solid fa-house-chimney text-slate-300 group-hover:text-emerald-500 text-xl transition"
-                      ></i>
-                      <input
-                        type="file"
-                        id="input-eksterior"
-                        hidden
-                        accept="image/*"
-                        multiple
-                        onchange="handleCategorizedUpload(event, 'eksterior')"
-                      />
-                    </div>
-                    <div
-                      id="preview-eksterior"
-                      class="grid grid-cols-4 gap-2"
-                    ></div>
-                  </div>
-                  <div class="space-y-3">
-                    <label
-                      class="text-[10px] font-bold text-slate-400 uppercase"
-                      >Kategori: Denah / Layout</label
-                    >
-                    <div
-                      onclick="document.getElementById('input-denah').click()"
-                      class="drop-zone p-6 rounded-2xl flex flex-col items-center justify-center gap-2 cursor-pointer group"
-                    >
-                      <i
-                        class="fa-solid fa-map text-slate-300 group-hover:text-emerald-500 text-xl transition"
-                      ></i>
-                      <input
-                        type="file"
-                        id="input-denah"
-                        hidden
-                        accept="image/*"
-                        onchange="handleCategorizedUpload(event, 'denah')"
-                      />
-                    </div>
-                    <div
-                      id="preview-denah"
-                      class="grid grid-cols-4 gap-2"
-                    ></div>
-                  </div>
-                  <div class="space-y-3">
-                    <label
-                      class="text-[10px] font-bold text-slate-400 uppercase"
-                      >Kategori: Progress Lapangan</label
-                    >
-                    <div
-                      onclick="
-                        document.getElementById('input-progress').click()
-                      "
-                      class="drop-zone p-6 rounded-2xl flex flex-col items-center justify-center gap-2 cursor-pointer group"
-                    >
-                      <i
-                        class="fa-solid fa-helmet-safety text-slate-300 group-hover:text-emerald-500 text-xl transition"
-                      ></i>
-                      <input
-                        type="file"
-                        id="input-progress"
-                        hidden
-                        accept="image/*"
-                        multiple
-                        onchange="handleCategorizedUpload(event, 'progress')"
-                      />
-                    </div>
-                    <div
-                      id="preview-progress"
-                      class="grid grid-cols-4 gap-2"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="tab-facilities" class="hidden space-y-6">
-          <div class="flex justify-end">
-            <button
-              onclick="openModal('modal-facility')"
-              class="bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl"
-            >
-              + Tambah Fasilitas
-            </button>
-          </div>
-          <div class="bg-white rounded-3xl border overflow-hidden shadow-sm">
-            <table class="w-full text-left text-xs">
-              <thead class="bg-slate-50 font-bold text-slate-500">
-                <tr>
-                  <th class="p-4 pl-8">Nama</th>
-                  <th class="p-4">Kategori</th>
-                  <th class="p-4">Deskripsi</th>
-                  <th class="p-4 text-center pr-8">Aksi</th>
-                </tr>
-              </thead>
-              <tbody
-                id="table-facilities"
-                class="divide-y divide-slate-100"
-              ></tbody>
-            </table>
-          </div>
-        </div>
-
-        <div id="tab-profile" class="hidden space-y-6">
-          <div
-            class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm w-full space-y-4"
-          >
-            <h4 class="text-xs font-bold text-slate-900">
-              Konten Profil Perusahaan
+          <div class="space-y-2">
+            <h4 class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 px-1">
+              Eksplorasi Sudut & Progres Unit
             </h4>
-            <div class="grid md:grid-cols-2 gap-4">
-              <div class="space-y-1 md:col-span-2">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Judul Utama</label
-                >
-                <div class="border rounded-xl overflow-hidden bg-slate-50">
-                  <div class="flex flex-wrap gap-1 border-b bg-white p-2">
-                    <button
-                      type="button"
-                      onclick="applyRichText('bold', 'profile-title-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-bold"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="applyRichText('italic', 'profile-title-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-italic"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('underline', 'profile-title-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-underline"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('justifyFull', 'profile-title-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-align-justify"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText(
-                          'insertUnorderedList',
-                          'profile-title-editor',
-                        )
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                  </div>
-                  <div
-                    id="profile-title-editor"
-                    contenteditable="true"
-                    class="min-h-[44px] p-3 text-xs leading-relaxed outline-none"
-                  ></div>
-                </div>
-              </div>
-              <div class="space-y-1 md:col-span-2">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Deskripsi Perusahaan</label
-                >
-                <div class="border rounded-xl overflow-hidden bg-slate-50">
-                  <div class="flex flex-wrap gap-1 border-b bg-white p-2">
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('bold', 'profile-description-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-bold"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('italic', 'profile-description-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-italic"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('underline', 'profile-description-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-underline"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText(
-                          'justifyFull',
-                          'profile-description-editor',
-                        )
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-align-justify"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText(
-                          'insertUnorderedList',
-                          'profile-description-editor',
-                        )
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                  </div>
-                  <div
-                    id="profile-description-editor"
-                    contenteditable="true"
-                    class="min-h-[90px] p-3 text-xs leading-relaxed outline-none"
-                  ></div>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Visi</label
-                >
-                <div class="border rounded-xl overflow-hidden bg-slate-50">
-                  <div class="flex flex-wrap gap-1 border-b bg-white p-2">
-                    <button
-                      type="button"
-                      onclick="applyRichText('bold', 'profile-visi-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-bold"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="applyRichText('italic', 'profile-visi-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-italic"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('underline', 'profile-visi-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-underline"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('justifyFull', 'profile-visi-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-align-justify"></i>
-                    </button>
-                  </div>
-                  <div
-                    id="profile-visi-editor"
-                    contenteditable="true"
-                    class="min-h-[70px] p-3 text-xs leading-relaxed outline-none"
-                  ></div>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Misi</label
-                >
-                <div class="border rounded-xl overflow-hidden bg-slate-50">
-                  <div class="flex flex-wrap gap-1 border-b bg-white p-2">
-                    <button
-                      type="button"
-                      onclick="applyRichText('bold', 'profile-misi-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-bold"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="applyRichText('italic', 'profile-misi-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-italic"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('underline', 'profile-misi-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-underline"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('justifyFull', 'profile-misi-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-align-justify"></i>
-                    </button>
-                  </div>
-                  <div
-                    id="profile-misi-editor"
-                    contenteditable="true"
-                    class="min-h-[70px] p-3 text-xs leading-relaxed outline-none"
-                  ></div>
-                </div>
-              </div>
-              <div class="space-y-1 md:col-span-2">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Legalitas & Rekam Jejak</label
-                >
-                <div class="border rounded-xl overflow-hidden bg-slate-50">
-                  <div class="flex flex-wrap gap-1 border-b bg-white p-2">
-                    <button
-                      type="button"
-                      onclick="applyRichText('bold', 'profile-legal-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-bold"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="applyRichText('italic', 'profile-legal-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-italic"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('underline', 'profile-legal-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-underline"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('justifyFull', 'profile-legal-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-align-justify"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText(
-                          'insertUnorderedList',
-                          'profile-legal-editor',
-                        )
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                  </div>
-                  <div
-                    id="profile-legal-editor"
-                    contenteditable="true"
-                    class="min-h-[90px] p-3 text-xs leading-relaxed outline-none"
-                  ></div>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Nilai W</label
-                >
-                <div class="border rounded-xl overflow-hidden bg-slate-50">
-                  <div class="flex flex-wrap gap-1 border-b bg-white p-2">
-                    <button
-                      type="button"
-                      onclick="applyRichText('bold', 'profile-nilai-w-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-bold"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('italic', 'profile-nilai-w-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-italic"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('justifyFull', 'profile-nilai-w-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-align-justify"></i>
-                    </button>
-                  </div>
-                  <div
-                    id="profile-nilai-w-editor"
-                    contenteditable="true"
-                    class="min-h-[54px] p-3 text-xs leading-relaxed outline-none"
-                  ></div>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Nilai I</label
-                >
-                <div class="border rounded-xl overflow-hidden bg-slate-50">
-                  <div class="flex flex-wrap gap-1 border-b bg-white p-2">
-                    <button
-                      type="button"
-                      onclick="applyRichText('bold', 'profile-nilai-i-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-bold"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('italic', 'profile-nilai-i-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-italic"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('justifyFull', 'profile-nilai-i-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-align-justify"></i>
-                    </button>
-                  </div>
-                  <div
-                    id="profile-nilai-i-editor"
-                    contenteditable="true"
-                    class="min-h-[54px] p-3 text-xs leading-relaxed outline-none"
-                  ></div>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Nilai B</label
-                >
-                <div class="border rounded-xl overflow-hidden bg-slate-50">
-                  <div class="flex flex-wrap gap-1 border-b bg-white p-2">
-                    <button
-                      type="button"
-                      onclick="applyRichText('bold', 'profile-nilai-b-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-bold"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('italic', 'profile-nilai-b-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-italic"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('justifyFull', 'profile-nilai-b-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-align-justify"></i>
-                    </button>
-                  </div>
-                  <div
-                    id="profile-nilai-b-editor"
-                    contenteditable="true"
-                    class="min-h-[54px] p-3 text-xs leading-relaxed outline-none"
-                  ></div>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Nilai A</label
-                >
-                <div class="border rounded-xl overflow-hidden bg-slate-50">
-                  <div class="flex flex-wrap gap-1 border-b bg-white p-2">
-                    <button
-                      type="button"
-                      onclick="applyRichText('bold', 'profile-nilai-a-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-bold"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('italic', 'profile-nilai-a-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-italic"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('justifyFull', 'profile-nilai-a-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-align-justify"></i>
-                    </button>
-                  </div>
-                  <div
-                    id="profile-nilai-a-editor"
-                    contenteditable="true"
-                    class="min-h-[54px] p-3 text-xs leading-relaxed outline-none"
-                  ></div>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Nilai W2</label
-                >
-                <div class="border rounded-xl overflow-hidden bg-slate-50">
-                  <div class="flex flex-wrap gap-1 border-b bg-white p-2">
-                    <button
-                      type="button"
-                      onclick="applyRichText('bold', 'profile-nilai-w2-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-bold"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('italic', 'profile-nilai-w2-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-italic"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('justifyFull', 'profile-nilai-w2-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-align-justify"></i>
-                    </button>
-                  </div>
-                  <div
-                    id="profile-nilai-w2-editor"
-                    contenteditable="true"
-                    class="min-h-[54px] p-3 text-xs leading-relaxed outline-none"
-                  ></div>
-                </div>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Nilai A2</label
-                >
-                <div class="border rounded-xl overflow-hidden bg-slate-50">
-                  <div class="flex flex-wrap gap-1 border-b bg-white p-2">
-                    <button
-                      type="button"
-                      onclick="applyRichText('bold', 'profile-nilai-a2-editor')"
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-bold"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('italic', 'profile-nilai-a2-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-italic"></i>
-                    </button>
-                    <button
-                      type="button"
-                      onclick="
-                        applyRichText('justifyFull', 'profile-nilai-a2-editor')
-                      "
-                      class="px-2 py-1 rounded text-xs hover:bg-slate-100"
-                    >
-                      <i class="fa-solid fa-align-justify"></i>
-                    </button>
-                  </div>
-                  <div
-                    id="profile-nilai-a2-editor"
-                    contenteditable="true"
-                    class="min-h-[54px] p-3 text-xs leading-relaxed outline-none"
-                  ></div>
-                </div>
-              </div>
-              <div class="space-y-1 md:col-span-2">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Lokasi / Google Maps</label
-                >
-                <input
-                  type="text"
-                  id="profile-location"
-                  placeholder="Contoh: Jakarta Selatan, Indonesia"
-                  class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none"
-                />
-                <input
-                  type="text"
-                  id="profile-map-url"
-                  placeholder="Masukkan link Google Maps / embed map"
-                  class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none mt-2"
-                />
-              </div>
-            </div>
-            <button
-              onclick="saveAboutProfile()"
-              class="bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl"
-            >
-              Simpan Konten Profil
-            </button>
+            <div
+              id="display-gallery-grid"
+              class="flex gap-3 overflow-x-auto pb-2 pt-1 no-scrollbar snap-x snap-mandatory scroll-smooth"
+            ></div>
           </div>
         </div>
 
-        <div id="tab-settings" class="hidden space-y-6">
-          <div
-            class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm w-full space-y-4"
-          >
-            <h4 class="text-xs font-bold text-slate-900">
-              Pengaturan Umum Admin
+        <div class="lg:col-span-5 space-y-6">
+          <div class="space-y-2">
+            <span class="inline-block bg-emerald-50 text-emerald-700 border border-emerald-100 text-[9px] sm:text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
+              Unit Premium Tersedia
+            </span>
+            <h1 id="detail-nama" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-tight">
+              Memuat info properti...
+            </h1>
+          </div>
+
+          <div class="bg-white p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200 shadow-sm space-y-5">
+            <h4 class="font-extrabold uppercase tracking-wider text-[10px] text-slate-400 border-b pb-2">
+              Spesifikasi Detail Bangunan
             </h4>
-            <div class="grid md:grid-cols-2 gap-4">
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Nama Admin</label
-                >
-                <input
-                  type="text"
-                  id="setting-admin-name"
-                  class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none"
-                />
+
+            <div class="grid grid-cols-2 gap-3 sm:gap-4 text-xs font-medium text-slate-600">
+              <div class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="w-8 h-8 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div>
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">Luas Bangunan</p>
+                  <p id="spec-lb" class="font-extrabold text-slate-900 text-xs sm:text-sm">- m²</p>
+                </div>
               </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Warna Aksen</label
-                >
-                <input
-                  type="color"
-                  id="setting-accent-color"
-                  class="w-full h-11 px-1 py-1 bg-slate-50 border rounded-xl"
-                />
+              
+              <div class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="w-8 h-8 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-ruler-combined"></i>
+                </div>
+                <div>
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">Luas Tanah</p>
+                  <p id="spec-lt" class="font-extrabold text-slate-900 text-xs sm:text-sm">- m²</p>
+                </div>
               </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Tagline</label
-                >
-                <input
-                  type="text"
-                  id="setting-tagline"
-                  class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none"
-                />
+
+              <div class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="w-8 h-8 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-bed"></i>
+                </div>
+                <div>
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">Kamar Tidur</p>
+                  <p id="spec-kt" class="font-extrabold text-slate-900 text-xs sm:text-sm">- Kamar</p>
+                </div>
               </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Password Lama</label
-                >
-                <input
-                  type="password"
-                  id="setting-old-password"
-                  class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none"
-                />
+
+              <div class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="w-8 h-8 bg-cyan-50 text-cyan-600 rounded-lg flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-bath"></i>
+                </div>
+                <div>
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">Kamar Mandi</p>
+                  <p id="spec-km" class="font-extrabold text-slate-900 text-xs sm:text-sm">- Kamar</p>
+                </div>
               </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-bold text-slate-400 uppercase"
-                  >Password Baru</label
-                >
-                <input
-                  type="password"
-                  id="setting-new-password"
-                  class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none"
-                />
+
+              <div class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="w-8 h-8 bg-violet-50 text-violet-600 rounded-lg flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">Daya Listrik</p>
+                  <p id="spec-daya-listrik" class="font-extrabold text-slate-900 text-xs sm:text-sm">- VA</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <div class="w-8 h-8 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center text-sm shrink-0">
+                  <i class="fa-solid fa-building"></i>
+                </div>
+                <div>
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">Jumlah Lantai</p>
+                  <p id="spec-jumlah-lantai" class="font-extrabold text-slate-900 text-xs sm:text-sm">- Lantai</p>
+                </div>
               </div>
             </div>
-            <button
-              onclick="saveSettings()"
-              class="bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl"
-            >
-              Simpan Pengaturan
-            </button>
           </div>
         </div>
 
-        <div id="tab-banners" class="hidden space-y-6">
-          <div class="flex justify-end">
-            <button
-              onclick="openModal('modal-banner')"
-              class="bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl"
-            >
-              + Tambah Promo
-            </button>
+        <div class="col-span-full w-full bg-white p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200 shadow-sm space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b pb-2">
+            <h4 class="font-extrabold uppercase tracking-wider text-[10px] text-slate-400">
+              Detail Tambahan Unit
+            </h4>
+            <span class="rounded-full bg-emerald-50 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-emerald-700">
+              Keunggulan Unit
+            </span>
           </div>
-          <div class="bg-white rounded-3xl border overflow-hidden shadow-sm">
-            <table class="w-full text-left text-xs">
-              <thead class="bg-slate-50 font-bold text-slate-500">
-                <tr>
-                  <th class="p-4 pl-8">Judul</th>
-                  <th class="p-4">Deskripsi</th>
-                  <th class="p-4 text-center pr-8">Aksi</th>
-                </tr>
-              </thead>
-              <tbody
-                id="table-banners"
-                class="divide-y divide-slate-100"
-              ></tbody>
-            </table>
+          
+          <div class="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Tipe Unit</p>
+              <p id="extra-tipe" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">Premium</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Sertifikat</p>
+              <p id="extra-sertifikat" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">SHM</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Pondasi</p>
+              <p id="extra-pondasi" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Struktur</p>
+              <p id="extra-struktur" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Dinding</p>
+              <p id="extra-dinding" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Pintu</p>
+              <p id="extra-pintu" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Kusen</p>
+              <p id="extra-kusen" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Plafon</p>
+              <p id="extra-plafon" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Rangka Atap</p>
+              <p id="extra-rangka_atap" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Penutup Atap</p>
+              <p id="extra-penutup_atap" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Lantai</p>
+              <p id="extra-lantai_detail" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Air Bersih</p>
+              <p id="extra-air_bersih" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Listrik</p>
+              <p id="extra-listrik_detail" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+              <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Sanitair</p>
+              <p id="extra-sanitair" class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900">-</p>
+            </div>
+          </div>
+          
+          <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
+            <p class="text-[9px] font-bold uppercase tracking-wide text-slate-400">Catatan Unit</p>
+            <p id="extra-deskripsi" class="mt-1 text-xs font-semibold leading-relaxed text-slate-600">-</p>
           </div>
         </div>
+      </section>
 
-        <div id="tab-testimonials" class="hidden space-y-6">
-          <div class="flex justify-end">
-            <button
-              onclick="openModal('modal-testimonial')"
-              class="bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl"
-            >
-              + Tambah Testimoni
-            </button>
-          </div>
-          <div class="bg-white rounded-3xl border overflow-hidden shadow-sm">
-            <table class="w-full text-left text-xs">
-              <thead class="bg-slate-50 font-bold text-slate-500">
-                <tr>
-                  <th class="p-4 pl-8">Foto</th>
-                  <th class="p-4">Nama & Unit</th>
-                  <th class="p-4">Pesan Ulasan</th>
-                  <th class="p-4 text-center pr-8">Aksi</th>
-                </tr>
-              </thead>
-              <tbody
-                id="table-testimonials"
-                class="divide-y divide-slate-100"
-              ></tbody>
-            </table>
-          </div>
+      <section class="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl space-y-6 shadow-xl relative overflow-hidden">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30"></div>
+        
+        <div class="relative z-10 max-w-xl mx-auto text-center space-y-2">
+          <h3 class="text-lg sm:text-xl font-black tracking-tight">
+            Form Booking Kunjungan & Survey Lapangan
+          </h3>
+          <p class="text-[11px] sm:text-xs text-slate-400">
+            Jadwalkan kunjungan Anda bersama tim arsitek dan marketing representatif kami secara instan.
+          </p>
         </div>
-
-        <div id="tab-leads" class="hidden">
-          <div
-            class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden"
-          >
-            <table class="w-full text-left text-xs whitespace-nowrap">
-              <thead class="bg-slate-50 border-b font-bold text-slate-500">
-                <tr>
-                  <th class="p-4 pl-8">Nama Konsumen</th>
-                  <th class="p-4">WA</th>
-                  <th class="p-4">Tgl Rencana</th>
-                  <th class="p-4 text-center pr-8">Aksi</th>
-                </tr>
-              </thead>
-              <tbody id="table-leads" class="divide-y divide-slate-100"></tbody>
-            </table>
-          </div>
-        </div>
-      </main>
-    </div>
-
-    <div
-      id="modal-add-unit"
-      class="fixed inset-0 bg-slate-900/50 backdrop-blur-md z-[100] flex items-center justify-center hidden p-4"
-    >
-      <div
-        class="bg-white rounded-3xl w-full max-w-md p-6 space-y-4 shadow-2xl border"
-      >
-        <div class="flex justify-between items-center">
-          <h3 class="font-black text-slate-900">Buat Tipe Unit Baru</h3>
-          <button
-            onclick="
-              document.getElementById('modal-add-unit').classList.add('hidden')
-            "
-            class="text-slate-400"
-          >
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-        <div class="space-y-3">
+        
+        <form id="form-booking" class="relative z-10 text-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs font-medium max-w-3xl mx-auto">
           <input
             type="text"
-            id="new-nama"
-            placeholder="Nama Tipe Properti"
-            class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs outline-none focus:border-emerald-500"
+            id="fb-nama"
+            required
+            placeholder="Nama Lengkap Anda"
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition text-sm sm:text-xs"
           />
-          <div class="grid grid-cols-2 gap-2 text-xs font-bold text-slate-400">
-            <div class="space-y-1">
-              <span>LB (m²)</span
-              ><input
-                type="number"
-                id="new-lb"
-                class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-slate-800"
-              />
-            </div>
-            <div class="space-y-1">
-              <span>LT (m²)</span
-              ><input
-                type="number"
-                id="new-lt"
-                class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-slate-800"
-              />
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-2 text-xs font-bold text-slate-400">
-            <div class="space-y-1">
-              <span>Kamar Tidur (KT)</span
-              ><input
-                type="number"
-                id="new-kt"
-                value="2"
-                class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-slate-800"
-              />
-            </div>
-            <div class="space-y-1">
-              <span>Kamar Mandi (KM)</span
-              ><input
-                type="number"
-                id="new-km"
-                value="1"
-                class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-slate-800"
-              />
-            </div>
-          </div>
-          <div class="space-y-1">
-            <span class="text-[10px] font-bold text-slate-400 uppercase block"
-              >Catatan Unit</span
-            >
-            <textarea
-              id="new-spec-deskripsi"
-              rows="3"
-              placeholder="Deskripsi singkat unit..."
-              class="w-full px-3 py-2 bg-slate-50 border rounded-lg text-xs outline-none"
-            ></textarea>
-          </div>
-          <div class="grid grid-cols-2 gap-2 text-xs font-bold text-slate-400">
-            <div class="space-y-1">
-              <span>Daya Listrik</span>
-              <input
-                type="text"
-                id="new-listrik"
-                value="1300"
-                class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-slate-800"
-              />
-            </div>
-            <div class="space-y-1">
-              <span>Jumlah Lantai</span>
-              <input
-                type="text"
-                id="new-lantai"
-                value="1"
-                class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-slate-800"
-              />
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-2 text-xs font-bold text-slate-400">
-            <div class="space-y-1">
-              <span>Tipe Unit</span>
-              <input
-                type="text"
-                id="new-tipe"
-                value="Premium"
-                class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-slate-800"
-              />
-            </div>
-            <div class="space-y-1">
-              <span>Sertifikat</span>
-              <input
-                type="text"
-                id="new-sertifikat"
-                value="SHM"
-                class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-slate-800"
-              />
-            </div>
-          </div>
-          <div class="space-y-1 text-[10px] font-bold text-slate-400">
-            <span>Foto Utama (Thumbnail Katalog)</span>
-            <input
-              type="file"
-              id="new-main-img"
-              accept="image/*"
-              class="w-full text-[10px]"
-              onchange="handleThumbnailPreview(event)"
-            />
-            <div
-              id="new-thumb-box"
-              class="h-24 w-full bg-slate-100 rounded-xl overflow-hidden mt-2 hidden border"
-            >
-              <img id="new-thumb-img" class="w-full h-full object-cover" />
-            </div>
-          </div>
+          <input
+            type="text"
+            id="fb-wa"
+            required
+            placeholder="No. WhatsApp Aktif"
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition text-sm sm:text-xs"
+          />
+          <input
+            type="date"
+            id="fb-tanggal"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition text-sm sm:text-xs sm:col-span-2"
+          />
+          <textarea
+            id="fb-catatan"
+            placeholder="Catatan tambahan kebutuhan Anda (Misal: preferensi jam berkunjung, opsi kustom tata ruang, dll.)..."
+            class="w-full px-4 py-3 rounded-xl h-20 bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition text-sm sm:text-xs sm:col-span-2"
+          ></textarea>
+          
           <button
-            onclick="saveNewUnit()"
-            id="btn-save-new"
-            class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl text-xs hover:bg-emerald-700 transition"
+            type="submit"
+            id="btn-submit-booking"
+            class="w-full bg-emerald-600 text-white font-bold py-3.5 rounded-xl hover:bg-emerald-700 transition sm:col-span-2 flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30 text-sm sm:text-xs"
           >
-            Buat Unit & Lanjut Kelola Spek
+            <span id="txt-booking">Konfirmasi Jadwal Survey</span>
+            <div id="spin-booking" class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden"></div>
           </button>
-        </div>
-      </div>
-    </div>
+        </form>
+      </section>
+    </main>
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
       import {
-        getAuth,
-        onAuthStateChanged,
-        signOut,
-        updateProfile,
-        reauthenticateWithCredential,
-        EmailAuthProvider,
-        updatePassword,
-      } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-      import {
         getFirestore,
+        doc,
+        getDoc,
         collection,
         onSnapshot,
         addDoc,
-        deleteDoc,
-        doc,
-        updateDoc,
-        setDoc,
         query,
         where,
-        getDoc,
       } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
       const firebaseConfig = {
         apiKey: "AIzaSyAja6FfF_EW_N9y8pXmDX-10e0e51DJ4Cg",
         authDomain: "project-home-54337.firebaseapp.com",
         projectId: "project-home-54337",
-        storageBucket: "project-home-54337.firebasestorage.app",
-        messagingSenderId: "548607283431",
-        appId: "1:548607283431:web:1f58c56ce8b3c73a121242",
       };
-
       const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
       const db = getFirestore(app);
 
-      let currentActiveUnitId = null;
-      let pendingDeleteData = null;
-      let thumbnailBase64 = "";
-      let editedMainImageBase64 = "";
+      const urlParams = new URLSearchParams(window.location.search);
+      const idUnit = urlParams.get("id");
 
-      window.showAlert = function (title, desc) {
-        const alertEl = document.getElementById("custom-alert");
-        document.getElementById("alert-title").innerText = title;
-        document.getElementById("alert-desc").innerText = desc;
-        alertEl.classList.remove("translate-x-8", "opacity-0");
-        alertEl.classList.add("translate-x-0", "opacity-100");
-        clearTimeout(window.alertTimer);
-        window.alertTimer = setTimeout(() => {
-          alertEl.classList.remove("translate-x-0", "opacity-100");
-          alertEl.classList.add("translate-x-8", "opacity-0");
-        }, 2200);
+      let mainUnitImage = "";
+      let extraGalleries = [];
+
+      window.changeMainPreview = function (imageUrl, categoryName) {
+        document.getElementById("detail-img").src = imageUrl;
+        document.getElementById("main-img-badge").innerText = categoryName;
       };
 
-      window.applyRichText = (command, editorId) => {
-        const editor = document.getElementById(editorId);
-        if (!editor) return;
-        editor.focus();
-        document.execCommand(command, false, null);
-      };
-
-      window.openModal = (id) => {
-        document.getElementById(id).classList.remove("hidden");
-        document.getElementById(id).classList.add("flex");
-      };
-      window.closeModal = (id) => {
-        document.getElementById(id).classList.add("hidden");
-        document.getElementById(id).classList.remove("flex");
-      };
-
-      window.uploadAdminPhoto = async (e) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
-        const dataUrl = await compressImage(file, 400, 0.8);
-        await setDoc(
-          doc(db, "settings", "admin_profile"),
-          {
-            photo: dataUrl,
-            updatedAt: new Date().toISOString(),
-          },
-          { merge: true },
-        );
-        window.showAlert("Sukses", "Foto profil admin diperbarui.");
-      };
-
-      async function loadAdminProfile() {
-        const snap = await getDoc(doc(db, "settings", "admin_profile"));
-        if (snap.exists() && snap.data().photo) {
-          const img = document.getElementById("admin-profile-photo");
-          const icon = document.getElementById("admin-profile-icon");
-          img.src = snap.data().photo;
-          img.classList.remove("hidden");
-          icon.classList.add("hidden");
-        }
-      }
-
-      onAuthStateChanged(auth, async (user) => {
-        if (!user) {
-          window.location.href = "login.html";
-          return;
-        }
-        const snap = await getDoc(doc(db, "settings", "site_settings"));
-        const adminName = snap.exists() ? snap.data().admin_name : "";
-        setAdminNavbarName(
-          adminName || user.displayName || user.email || "Admin",
-        );
-        await loadAdminProfile();
-      });
-      document
-        .getElementById("btn-logout")
-        .addEventListener("click", () => signOut(auth));
-
-      // ---------------------------------------------------------
-      // TIPE RUMAH / UNITS MANAGEMENT
-      // ---------------------------------------------------------
-      window.openAddUnitModal = () =>
-        document.getElementById("modal-add-unit").classList.remove("hidden");
-
-      window.handleThumbnailPreview = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        thumbnailBase64 = await compressImage(file, 600, 0.7);
-        document.getElementById("new-thumb-box").classList.remove("hidden");
-        document.getElementById("new-thumb-img").src = thumbnailBase64;
-      };
-
-      window.changeMainImageInEdit = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        editedMainImageBase64 = await compressImage(file, 800, 0.7);
-        document.getElementById("edit-preview-main-img").src =
-          editedMainImageBase64;
-      };
-
-      window.saveNewUnit = async () => {
-        try {
-          const docRef = await addDoc(collection(db, "units"), {
-            nama: document.getElementById("new-nama").value,
-            lb: document.getElementById("new-lb").value,
-            lt: document.getElementById("new-lt").value,
-            kt: document.getElementById("new-kt").value,
-            km: document.getElementById("new-km").value,
-            listrik: document.getElementById("new-listrik").value || "1300",
-            lantai: document.getElementById("new-lantai").value || "1",
-            tipe: document.getElementById("new-tipe").value || "Premium",
-            sertifikat:
-              document.getElementById("new-sertifikat").value || "SHM",
-            deskripsi:
-              document.getElementById("new-spec-deskripsi").value ||
-              "Spesifikasi standar premium.",
-            images: [thumbnailBase64],
-          });
-          window.showAlert("Sukses", "Data unit terbuat.");
-          document.getElementById("modal-add-unit").classList.add("hidden");
-          window.manageUnitDetails(docRef.id);
-        } catch (e) {
-          window.showAlert("Gagal", e.message);
-        }
-      };
-
-      onSnapshot(collection(db, "units"), (snap) => {
-        document.getElementById("count-unit").innerText = snap.size;
-        const tbody = document.getElementById("table-unit");
-        tbody.innerHTML = "";
-        snap.forEach((d) => {
-          const val = d.data();
-          tbody.innerHTML += `
-            <tr class="hover:bg-slate-50 transition">
-              <td class="p-4 pl-8"><img src="${val.images?.[0] || ""}" class="w-12 h-10 object-cover rounded-lg border"></td>
-              <td class="p-4 font-bold text-slate-900">${val.nama}</td>
-              <td class="p-4 text-slate-600 font-semibold">${val.kt || 0} KT / ${val.km || 0} KM</td>
-              <td class="p-4 text-slate-500 font-medium">${val.lb}m² / ${val.lt}m²</td>
-              <td class="p-4 text-center pr-8 flex justify-center gap-2">
-                <button onclick="manageUnitDetails('${d.id}')" class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 flex items-center justify-center transition"><i class="fa-solid fa-sliders"></i></button>
-                <button onclick="deleteRecord('units', '${d.id}')" class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 flex items-center justify-center transition"><i class="fa-solid fa-trash-can"></i></button>
-              </td>
-            </tr>`;
-        });
-      });
-
-      window.manageUnitDetails = async (id) => {
-        currentActiveUnitId = id;
-        const snap = await getDoc(doc(db, "units", id));
+      async function loadUnitDetail() {
+        if (!idUnit) return;
+        const snap = await getDoc(doc(db, "units", idUnit));
         if (snap.exists()) {
           const val = snap.data();
-          document.getElementById("edit-unit-title").innerText = val.nama;
-          document.getElementById("edit-unit-id").innerText = "#" + id;
-          document.getElementById("edit-nama").value = val.nama;
-          document.getElementById("edit-lb").value = val.lb;
-          document.getElementById("edit-lt").value = val.lt;
-          document.getElementById("edit-kt").value = val.kt || 2;
-          document.getElementById("edit-km").value = val.km || 1;
-          document.getElementById("edit-spec-deskripsi").value =
-            val.deskripsi || val.spec_deskripsi || "";
-          document.getElementById("edit-listrik").value = val.listrik || "1300";
-          document.getElementById("edit-lantai").value = val.lantai || "1";
-          document.getElementById("edit-tipe").value =
+          document.getElementById("detail-nama").innerText = val.nama;
+
+          mainUnitImage =
+            val.images?.[0] ||
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80";
+          document.getElementById("detail-img").src = mainUnitImage;
+
+          document.getElementById("spec-lb").innerText = `${val.lb} m²`;
+          document.getElementById("spec-lt").innerText = `${val.lt} m²`;
+          document.getElementById("spec-kt").innerText = `${val.kt} Kamar`;
+          document.getElementById("spec-km").innerText = `${val.km} Kamar`;
+          document.getElementById("spec-daya-listrik").innerText =
+            `${val.listrik || "1300"} VA`;
+          document.getElementById("spec-jumlah-lantai").innerText =
+            `${val.lantai || 1} Lantai`;
+          document.getElementById("extra-tipe").innerText =
             val.tipe || val.type || "Premium";
-          document.getElementById("edit-sertifikat").value =
+          document.getElementById("extra-sertifikat").innerText =
             val.sertifikat || "SHM";
-          document.getElementById("edit-pondasi").value = val.pondasi || "";
-          document.getElementById("edit-struktur").value = val.struktur || "";
-          document.getElementById("edit-dinding").value = val.dinding || "";
-          document.getElementById("edit-pintu").value = val.pintu || "";
-          document.getElementById("edit-kusen").value = val.kusen || "";
-          document.getElementById("edit-plafon").value = val.plafon || "";
-          document.getElementById("edit-rangka_atap").value =
-            val.rangka_atap || "";
-          document.getElementById("edit-penutup_atap").value =
-            val.penutup_atap || "";
-          document.getElementById("edit-lantai_detail").value =
-            val.lantai_detail || "";
-          document.getElementById("edit-air_bersih").value =
-            val.air_bersih || "";
-          document.getElementById("edit-listrik_detail").value =
-            val.listrik_detail || "";
-          document.getElementById("edit-sanitair").value = val.sanitair || "";
-          editedMainImageBase64 = val.images?.[0] || "";
-          document.getElementById("edit-preview-main-img").src =
-            editedMainImageBase64;
+          document.getElementById("extra-pondasi").innerText =
+            val.pondasi || "Standar kualitas premium";
+          document.getElementById("extra-struktur").innerText =
+            val.struktur || "Rangka beton bertulang";
+          document.getElementById("extra-dinding").innerText =
+            val.dinding || "Batako / finishing cat premium";
+          document.getElementById("extra-pintu").innerText =
+            val.pintu || "Pintu panel solid";
+          document.getElementById("extra-kusen").innerText =
+            val.kusen || "Aluminium / kayu premium";
+          document.getElementById("extra-plafon").innerText =
+            val.plafon || "Gypsum finishing rapi";
+          document.getElementById("extra-rangka_atap").innerText =
+            val.rangka_atap || "Baja ringan";
+          document.getElementById("extra-penutup_atap").innerText =
+            val.penutup_atap || "Genteng / metal roof";
+          document.getElementById("extra-lantai_detail").innerText =
+            val.lantai_detail || "Keramik granit premium";
+          document.getElementById("extra-air_bersih").innerText =
+            val.air_bersih || "PDAM + toren";
+          document.getElementById("extra-listrik_detail").innerText =
+            val.listrik_detail || "Instalasi listrik aman";
+          document.getElementById("extra-sanitair").innerText =
+            val.sanitair || "Wastafel / closet modern";
+          document.getElementById("extra-deskripsi").innerText =
+            val.deskripsi ||
+            "Desain modern tropis dengan kualitas finishing premium.";
 
-          document.getElementById("tab-unit").classList.add("hidden");
-          document.getElementById("tab-overview").classList.add("hidden");
-          document
-            .getElementById("section-edit-unit")
-            .classList.remove("hidden");
-          document.getElementById("page-title").innerText =
-            "Kelola Spesifikasi & Galeri";
-          listenToSpecificGallery(id);
+          listenToSpecificGallery();
         }
-      };
+      }
 
-      window.updateUnitCompleteData = async () => {
-        try {
-          await updateDoc(doc(db, "units", currentActiveUnitId), {
-            nama: document.getElementById("edit-nama").value,
-            lb: document.getElementById("edit-lb").value,
-            lt: document.getElementById("edit-lt").value,
-            kt: document.getElementById("edit-kt").value,
-            km: document.getElementById("edit-km").value,
-            listrik: document.getElementById("edit-listrik").value,
-            lantai: document.getElementById("edit-lantai").value,
-            tipe: document.getElementById("edit-tipe").value,
-            sertifikat: document.getElementById("edit-sertifikat").value,
-            pondasi: document.getElementById("edit-pondasi").value,
-            struktur: document.getElementById("edit-struktur").value,
-            dinding: document.getElementById("edit-dinding").value,
-            pintu: document.getElementById("edit-pintu").value,
-            kusen: document.getElementById("edit-kusen").value,
-            plafon: document.getElementById("edit-plafon").value,
-            rangka_atap: document.getElementById("edit-rangka_atap").value,
-            penutup_atap: document.getElementById("edit-penutup_atap").value,
-            lantai_detail: document.getElementById("edit-lantai_detail").value,
-            air_bersih: document.getElementById("edit-air_bersih").value,
-            listrik_detail: document.getElementById("edit-listrik_detail")
-              .value,
-            sanitair: document.getElementById("edit-sanitair").value,
-            deskripsi: document.getElementById("edit-spec-deskripsi").value,
-            spec_deskripsi: document.getElementById("edit-spec-deskripsi")
-              .value,
-            images: [editedMainImageBase64],
-          });
-          window.showAlert("Berhasil", "Data unit diperbarui.");
-        } catch (e) {
-          window.showAlert("Gagal", e.message);
-        }
-      };
+      function listenToSpecificGallery() {
+        if (!idUnit) return;
 
-      // ---------------------------------------------------------
-      // GALERI BERKATEGORI SISI KANAN
-      // ---------------------------------------------------------
-      window.handleCategorizedUpload = async (event, category) => {
-        const files = Array.from(event.target.files);
-        if (!currentActiveUnitId) return;
-        for (const file of files) {
-          const b64 = await compressImage(file, 800, 0.65);
-          await addDoc(collection(db, "galleries"), {
-            unit_id: currentActiveUnitId,
-            image: b64,
-            kategori: category,
-            timestamp: Date.now(),
-          });
-        }
-        window.showAlert("Berhasil", "Foto galeri ditambahkan.");
-      };
-
-      function listenToSpecificGallery(id) {
         const q = query(
           collection(db, "galleries"),
-          where("unit_id", "==", id),
+          where("unit_id", "==", idUnit),
         );
+
         onSnapshot(q, (snap) => {
-          const categories = ["interior", "eksterior", "denah", "progress"];
-          categories.forEach(
-            (cat) => (document.getElementById(`preview-${cat}`).innerHTML = ""),
-          );
-          snap.forEach((d) => {
-            const item = d.data();
-            document.getElementById(`preview-${item.kategori}`).innerHTML += `
-                    <div class="group relative h-16 w-full rounded-lg overflow-hidden border">
-                        <img src="${item.image}" class="w-full h-full object-cover">
-                        <button onclick="deleteRecord('galleries', '${d.id}')" class="absolute top-1 right-1 bg-rose-600 text-white w-5 h-5 rounded-full text-[8px] opacity-0 group-hover:opacity-100 transition"><i class="fa-solid fa-x"></i></button>
-                    </div>`;
-          });
+          extraGalleries = [];
+          snap.forEach((d) => extraGalleries.push(d.data()));
+          renderGalleryAndMainImage();
         });
       }
 
-      // ---------------------------------------------------------
-      // REALTIME LISTENER FASILITAS, TESTIMONI & BANNER PROMO
-      // ---------------------------------------------------------
-      window.saveFacility = async () => {
-        const name = document.getElementById("fac-nama").value;
-        const desc = document.getElementById("fac-deskripsi").value;
-        const kategori = document.getElementById("fac-kategori").value;
-        if (!name) {
-          window.showAlert("Perhatian", "Isi nama fasilitas terlebih dahulu.");
-          return;
+      function renderGalleryAndMainImage() {
+        const grid = document.getElementById("display-gallery-grid");
+        grid.innerHTML = "";
+
+        if (mainUnitImage) {
+          grid.innerHTML += `
+            <div onclick="changeMainPreview('${mainUnitImage}', 'Foto Utama')" class="h-16 w-24 sm:h-20 sm:w-28 shrink-0 bg-slate-100 rounded-xl overflow-hidden border-2 border-emerald-500 cursor-pointer transition relative snap-center shadow-sm">
+              <img src="${mainUnitImage}" class="w-full h-full object-cover">
+              <span class="absolute bottom-1 left-1 bg-emerald-600 text-white font-bold px-1 py-0.5 rounded text-[7px] sm:text-[8px] uppercase tracking-tight scale-90 origin-bottom-left">
+                Utama
+              </span>
+            </div>`;
         }
-        await addDoc(collection(db, "amenities"), {
-          nama: name,
-          deskripsi: desc,
-          kategori,
-        });
-        document.getElementById("fac-nama").value = "";
-        document.getElementById("fac-deskripsi").value = "";
-        document.getElementById("fac-kategori").value = "internal";
-        closeModal("modal-facility");
-        window.showAlert("Sukses", "Fasilitas berhasil disimpan.");
-      };
 
-      onSnapshot(collection(db, "amenities"), (snap) => {
-        document.getElementById("count-facilities").innerText = snap.size;
-        const tbody = document.getElementById("table-facilities");
-        tbody.innerHTML = "";
-        snap.forEach((d) => {
-          const val = d.data();
-          tbody.innerHTML += `<tr><td class="p-4 pl-8 font-bold">${val.nama}</td><td class="p-4 text-slate-500">${val.kategori || "internal"}</td><td class="p-4 text-slate-500">${val.deskripsi || "-"}</td><td class="p-4 text-center pr-8"><button onclick="deleteRecord('amenities', '${d.id}')" class="text-rose-600"><i class="fa-solid fa-trash-can"></i></button></td></tr>`;
-        });
-      });
-
-      window.saveAboutProfile = async () => {
-        const data = {
-          title: document.getElementById("profile-title-editor").innerHTML,
-          description: document.getElementById("profile-description-editor")
-            .innerHTML,
-          visi: document.getElementById("profile-visi-editor").innerHTML,
-          misi: document.getElementById("profile-misi-editor").innerHTML,
-          legal: document.getElementById("profile-legal-editor").innerHTML,
-          nilai_w: document.getElementById("profile-nilai-w-editor").innerHTML,
-          nilai_i: document.getElementById("profile-nilai-i-editor").innerHTML,
-          nilai_b: document.getElementById("profile-nilai-b-editor").innerHTML,
-          nilai_a: document.getElementById("profile-nilai-a-editor").innerHTML,
-          nilai_w2: document.getElementById("profile-nilai-w2-editor")
-            .innerHTML,
-          nilai_a2: document.getElementById("profile-nilai-a2-editor")
-            .innerHTML,
-          location: document.getElementById("profile-location").value,
-          map_url: document.getElementById("profile-map-url").value,
-        };
-        await setDoc(doc(db, "settings", "about_us"), data, { merge: true });
-        window.showAlert("Sukses", "Konten profil berhasil disimpan.");
-      };
-
-      onSnapshot(doc(db, "settings", "about_us"), (snap) => {
-        if (!snap.exists()) return;
-        const data = snap.data();
-        document.getElementById("profile-title-editor").innerHTML =
-          data.title || "";
-        document.getElementById("profile-description-editor").innerHTML =
-          data.description || "";
-        document.getElementById("profile-visi-editor").innerHTML =
-          data.visi || "";
-        document.getElementById("profile-misi-editor").innerHTML =
-          data.misi || "";
-        document.getElementById("profile-legal-editor").innerHTML =
-          data.legal || "";
-        document.getElementById("profile-nilai-w-editor").innerHTML =
-          data.nilai_w || "";
-        document.getElementById("profile-nilai-i-editor").innerHTML =
-          data.nilai_i || "";
-        document.getElementById("profile-nilai-b-editor").innerHTML =
-          data.nilai_b || "";
-        document.getElementById("profile-nilai-a-editor").innerHTML =
-          data.nilai_a || "";
-        document.getElementById("profile-nilai-w2-editor").innerHTML =
-          data.nilai_w2 || "";
-        document.getElementById("profile-nilai-a2-editor").innerHTML =
-          data.nilai_a2 || "";
-        document.getElementById("profile-location").value = data.location || "";
-        document.getElementById("profile-map-url").value = data.map_url || "";
-      });
-
-      const setAdminNavbarName = (name) => {
-        const el = document.getElementById("admin-user-email");
-        if (!el) return;
-        const label = (name || "").trim();
-        el.innerText = label || "Admin";
-      };
-
-      window.saveSettings = async () => {
-        const adminName = document
-          .getElementById("setting-admin-name")
-          .value.trim();
-        const accentColor = document.getElementById(
-          "setting-accent-color",
-        ).value;
-        const tagline = document.getElementById("setting-tagline").value;
-        const oldPassword = document.getElementById(
-          "setting-old-password",
-        ).value;
-        const newPassword = document.getElementById(
-          "setting-new-password",
-        ).value;
-
-        await setDoc(
-          doc(db, "settings", "site_settings"),
-          {
-            admin_name: adminName,
-            accent_color: accentColor,
-            tagline,
-          },
-          { merge: true },
-        );
-
-        if (auth.currentUser) {
-          await updateProfile(auth.currentUser, {
-            displayName:
-              adminName ||
-              auth.currentUser.displayName ||
-              auth.currentUser.email ||
-              "Admin",
-          });
-          setAdminNavbarName(
-            adminName ||
-              auth.currentUser.displayName ||
-              auth.currentUser.email ||
-              "Admin",
-          );
-          if (newPassword) {
-            if (!oldPassword) {
-              window.showAlert(
-                "Perhatian",
-                "Password lama wajib diisi saat mengganti password.",
-              );
-              return;
-            }
-            const credential = EmailAuthProvider.credential(
-              auth.currentUser.email,
-              oldPassword,
-            );
-            await reauthenticateWithCredential(auth.currentUser, credential);
-            await updatePassword(auth.currentUser, newPassword);
-          }
-        }
-        document.getElementById("setting-old-password").value = "";
-        document.getElementById("setting-new-password").value = "";
-        window.showAlert("Sukses", "Pengaturan admin berhasil disimpan.");
-      };
-
-      onSnapshot(doc(db, "settings", "site_settings"), (snap) => {
-        if (!snap.exists()) return;
-        const data = snap.data();
-        document.getElementById("setting-admin-name").value =
-          data.admin_name || "";
-        document.getElementById("setting-accent-color").value =
-          data.accent_color || "#10b981";
-        document.getElementById("setting-tagline").value = data.tagline || "";
-        const adminShell = document.getElementById("admin-shell");
-        if (adminShell) {
-          adminShell.style.setProperty(
-            "--accent-color",
-            data.accent_color || "#10b981",
-          );
-        }
-        setAdminNavbarName(
-          data.admin_name ||
-            auth.currentUser?.displayName ||
-            auth.currentUser?.email ||
-            "Admin",
-        );
-      });
-
-      window.saveBanner = async () => {
-        const title = document.getElementById("banner-title").value;
-        const desc = document.getElementById("banner-desc").value;
-        if (!title) {
-          window.showAlert("Perhatian", "Isi judul promo terlebih dahulu.");
-          return;
-        }
-        await addDoc(collection(db, "promos"), {
-          judul: title,
-          deskripsi: desc,
-        });
-        document.getElementById("banner-title").value = "";
-        document.getElementById("banner-desc").value = "";
-        closeModal("modal-banner");
-        window.showAlert("Sukses", "Promo berhasil dipasang.");
-      };
-
-      onSnapshot(collection(db, "promos"), (snap) => {
-        const tbody = document.getElementById("table-banners");
-        tbody.innerHTML = "";
-        snap.forEach((d) => {
-          const val = d.data();
-          tbody.innerHTML += `<tr><td class="p-4 pl-8 font-bold">${val.judul || "-"}</td><td class="p-4 font-medium">${val.deskripsi || "-"}</td><td class="p-4 text-center pr-8"><button onclick="deleteRecord('promos', '${d.id}')" class="text-rose-600"><i class="fa-solid fa-trash-can"></i></button></td></tr>`;
-        });
-      });
-
-      window.saveTestimonial = async () => {
-        const nama = document.getElementById("testi-nama").value;
-        const tipe = document.getElementById("testi-tipe").value;
-        const pesan = document.getElementById("testi-pesan").value;
-        const file = document.getElementById("testi-img").files[0];
-        if (!nama || !pesan || !file) {
-          window.showAlert("Perhatian", "Nama, ulasan, dan foto wajib diisi.");
-          return;
-        }
-        const img64 = await compressImage(file, 300, 0.7);
-        await addDoc(collection(db, "testimonials"), {
-          nama,
-          tipe,
-          pesan,
-          image: img64,
-        });
-        document.getElementById("testi-nama").value = "";
-        document.getElementById("testi-tipe").value = "";
-        document.getElementById("testi-pesan").value = "";
-        document.getElementById("testi-img").value = "";
-        closeModal("modal-testimonial");
-        window.showAlert("Sukses", "Testimoni ulasan ditambahkan.");
-      };
-
-      onSnapshot(collection(db, "testimonials"), (snap) => {
-        document.getElementById("count-testimonials").innerText = snap.size;
-        const tbody = document.getElementById("table-testimonials");
-        tbody.innerHTML = "";
-        snap.forEach((d) => {
-          const val = d.data();
-          tbody.innerHTML += `<tr><td class="p-4 pl-8"><img src="${val.image}" class="w-10 h-10 rounded-full object-cover"></td><td class="p-4"><b>${val.nama}</b><p class="text-[10px] text-slate-400">${val.tipe || ""}</p></td><td class="p-4 text-slate-500 max-w-xs truncate">${val.pesan}</td><td class="p-4 text-center pr-8"><button onclick="deleteRecord('testimonials', '${d.id}')" class="text-rose-600"><i class="fa-solid fa-trash-can"></i></button></td></tr>`;
-        });
-      });
-
-      // ---------------------------------------------------------
-      // LEADS DISPATCHER, GLOBAL DELETE & COMPRESSOR
-      // ---------------------------------------------------------
-      onSnapshot(collection(db, "survey_bookings"), (snap) => {
-        document.getElementById("count-leads").innerText = snap.size;
-        const tbody = document.getElementById("table-leads");
-        tbody.innerHTML = "";
-        snap.forEach((d) => {
-          const val = d.data();
-          tbody.innerHTML += `<tr><td class="p-4 pl-8 font-bold">${val.nama}</td><td class="p-4 text-emerald-600 font-bold">${val.whatsapp}</td><td class="p-4 text-slate-500">${val.tanggal}</td><td class="p-4 text-center pr-8"><button onclick="deleteRecord('survey_bookings', '${d.id}')" class="text-rose-500"><i class="fa-solid fa-check"></i></button></td></tr>`;
-        });
-      });
-
-      window.deleteRecord = function (col, id) {
-        pendingDeleteData = { col, id };
-        document.getElementById("confirm-modal").classList.remove("hidden");
-      };
-      window.closeConfirmModal = () =>
-        document.getElementById("confirm-modal").classList.add("hidden");
-      document
-        .getElementById("btn-confirm-execute")
-        .addEventListener("click", async () => {
-          if (pendingDeleteData) {
-            await deleteDoc(
-              doc(db, pendingDeleteData.col, pendingDeleteData.id),
-            );
-            window.closeConfirmModal();
-            window.showAlert("Terhapus", "Data berhasil dibersihkan.");
-          }
-        });
-
-      async function compressImage(file, maxW, quality) {
-        return new Promise((resolve) => {
-          const reader = new FileReader();
-          reader.readAsDataURL(file);
-          reader.onload = (e) => {
-            const img = new Image();
-            img.src = e.target.result;
-            img.onload = () => {
-              const canvas = document.createElement("canvas");
-              const scale = maxW / img.width;
-              canvas.width = maxW;
-              canvas.height = img.height * scale;
-              canvas
-                .getContext("2d")
-                .drawImage(img, 0, 0, canvas.width, canvas.height);
-              resolve(canvas.toDataURL("image/jpeg", quality));
-            };
+        extraGalleries.forEach((item) => {
+          const categoryLabels = {
+            semua: "Foto",
+            eksterior: "Eksterior",
+            interior: "Interior",
+            contoh: "Contoh",
+            progress: "Progress",
           };
+          const badgeText = categoryLabels[item.kategori] || "Unit";
+
+          grid.innerHTML += `
+            <div onclick="changeMainPreview('${item.image}', '${badgeText}')" class="h-16 w-24 sm:h-20 sm:w-28 shrink-0 bg-slate-100 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 cursor-pointer transition relative snap-center shadow-sm">
+              <img src="${item.image}" class="w-full h-full object-cover">
+              <span class="absolute bottom-1 left-1 bg-slate-900/70 text-white font-semibold px-1 py-0.5 rounded text-[7px] sm:text-[8px] uppercase tracking-tight scale-90 origin-bottom-left">
+                ${badgeText}
+              </span>
+            </div>`;
         });
       }
 
-      window.switchTab = (tab) => {
-        const tabs = [
-          "overview",
-          "unit",
-          "facilities",
-          "profile",
-          "settings",
-          "banners",
-          "testimonials",
-          "leads",
-        ];
-        tabs.forEach((t) =>
-          document.getElementById(`tab-${t}`)?.classList.add("hidden"),
-        );
-        document.getElementById(`tab-${tab}`).classList.remove("hidden");
-        document.getElementById("section-edit-unit").classList.add("hidden");
+      document
+        .getElementById("form-booking")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const btn = document.getElementById("btn-submit-booking");
+          const spin = document.getElementById("spin-booking");
+          btn.disabled = true;
+          spin.classList.remove("hidden");
+          try {
+            await addDoc(collection(db, "survey_bookings"), {
+              nama: document.getElementById("fb-nama").value,
+              whatsapp: document.getElementById("fb-wa").value,
+              tanggal: document.getElementById("fb-tanggal").value,
+              catatan: document.getElementById("fb-catatan").value,
+              unit_id: idUnit || "Umum",
+            });
+            alert("Sukses! Tim Marketing Nusa Grande akan segera menghubungi Anda.");
+            document.getElementById("form-booking").reset();
+          } catch (err) {
+            alert(err.message);
+          } finally {
+            btn.disabled = false;
+            spin.classList.add("hidden");
+          }
+        });
 
-        const titles = {
-          overview: "Dashboard Overview",
-          unit: "Daftar Tipe Unit",
-          facilities: "Kelola Fasilitas Hunian",
-          profile: "Konten Profil Perusahaan",
-          settings: "Pengaturan Admin",
-          banners: "Manajemen Promo Aktif",
-          testimonials: "Ulasan & Testimoni Pelanggan",
-          leads: "Booking Survey Masuk",
-        };
-        document.getElementById("page-title").innerText = titles[tab];
-
-        document
-          .querySelectorAll("nav button")
-          .forEach(
-            (b) =>
-              (b.className =
-                "w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800/60 hover:text-slate-200 transition"),
-          );
-        document.getElementById(`nav-${tab}`).className =
-          "w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-emerald-600 text-white font-bold transition";
-      };
-    </script>
-    <script>
-      function toggleSidebar() {
-        document
-          .getElementById("sidebar")
-          .classList.toggle("-translate-x-full");
-      }
+      loadUnitDetail();
     </script>
   </body>
 </html>
