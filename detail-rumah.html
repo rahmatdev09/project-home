@@ -17,6 +17,19 @@
       body {
         font-family: "Plus Jakarta Sans", sans-serif;
       }
+      /* Menyembunyikan scrollbar di slider galeri mobile untuk estetika cleaner */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      /* CSS Toggle untuk Menu Hamburger Mobile tanpa JS tambahan */
+      #menu-toggle:checked ~ #mobile-menu {
+        max-height: 200px;
+        opacity: 1;
+      }
     </style>
   </head>
   <body class="bg-slate-50 text-slate-800 antialiased">
@@ -24,15 +37,43 @@
       class="bg-white border-b border-slate-100 shadow-sm sticky top-0 z-50"
     >
       <div
-        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+        class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between relative"
       >
-        <a href="index.html" class="flex items-center gap-2">
-          <img
-            src="image/IMG_3493.PNG"
-            alt="Logo Nusa Grande"
-            class="h-10 w-auto"
-          />
-        </a>
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+          <button
+            type="button"
+            onclick="
+              if (window.history.length > 1) {
+                window.history.back();
+              } else {
+                window.location.href = 'index.html';
+              }
+            "
+            aria-label="Kembali ke halaman sebelumnya"
+            class="h-9 w-9 sm:h-10 sm:w-10 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center shadow-sm hover:bg-slate-50 hover:text-emerald-600 transition shrink-0"
+          >
+            <i class="fa-solid fa-arrow-left text-sm"></i>
+          </button>
+
+          <a href="index.html" class="flex items-center gap-2 min-w-0">
+            <img
+              src="image/IMG_3493.PNG"
+              alt="Logo Nusa Grande"
+              class="h-8 sm:h-10 w-auto"
+            />
+          </a>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="hidden" />
+        <label
+          for="menu-toggle"
+          class="lg:hidden flex flex-col gap-1 cursor-pointer p-2 z-50"
+        >
+          <span class="w-6 h-0.5 bg-slate-600 rounded-full"></span>
+          <span class="w-6 h-0.5 bg-slate-600 rounded-full"></span>
+          <span class="w-6 h-0.5 bg-slate-600 rounded-full"></span>
+        </label>
+
         <nav
           class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-600"
         >
@@ -46,14 +87,37 @@
             >Simulasi & Cek KPR</a
           >
         </nav>
+
+        <div
+          id="mobile-menu"
+          class="absolute top-16 sm:top-20 left-0 w-full bg-white border-b border-slate-100 p-4 flex flex-col gap-4 text-sm font-bold text-slate-600 lg:hidden max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out shadow-md"
+        >
+          <a
+            href="index.html"
+            class="hover:text-emerald-600 transition px-2 py-1"
+            >Beranda</a
+          >
+          <a
+            href="profil.html"
+            class="hover:text-emerald-600 transition px-2 py-1"
+            >Tentang Kami</a
+          >
+          <a href="kpr.html" class="hover:text-emerald-600 transition px-2 py-1"
+            >Simulasi & Cek KPR</a
+          >
+        </div>
       </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12 space-y-12">
-      <section class="grid lg:grid-cols-12 gap-8 items-start">
+    <main
+      class="max-w-6xl mx-auto px-3 min-[380px]:px-4 sm:px-6 py-4 sm:py-12 space-y-6 sm:space-y-12"
+    >
+      <section
+        class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-start"
+      >
         <div class="lg:col-span-7 space-y-4">
           <div
-            class="h-80 md:h-[420px] bg-slate-100 rounded-3xl overflow-hidden shadow-sm border border-slate-200 relative group"
+            class="h-[62vw] min-h-56 max-h-80 md:h-[420px] md:max-h-none bg-slate-100 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-slate-200 relative group"
           >
             <img
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
@@ -61,7 +125,7 @@
               class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
             />
             <div
-              class="absolute bottom-4 left-4 bg-slate-900/80 backdrop-blur-md text-white font-bold px-3 py-1.5 rounded-xl text-[10px] tracking-wide uppercase"
+              class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md text-white font-bold px-2.5 py-1 rounded-lg text-[9px] tracking-wide uppercase"
               id="main-img-badge"
             >
               Foto Utama
@@ -70,13 +134,13 @@
 
           <div class="space-y-2">
             <h4
-              class="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-1"
+              class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 px-1"
             >
               Eksplorasi Sudut & Progres Unit
             </h4>
             <div
               id="display-gallery-grid"
-              class="flex gap-3 overflow-x-auto pb-3 pt-1 scrollbar-thin scrollbar-thumb-slate-200 snap-x"
+              class="flex gap-3 overflow-x-auto pb-2 pt-1 no-scrollbar snap-x snap-mandatory scroll-smooth"
             ></div>
           </div>
         </div>
@@ -84,31 +148,32 @@
         <div class="lg:col-span-5 space-y-6">
           <div class="space-y-2">
             <span
-              class="inline-block bg-emerald-50 text-emerald-700 border border-emerald-100 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider"
-              >Unit Premium Tersedia</span
+              class="inline-block bg-emerald-50 text-emerald-700 border border-emerald-100 text-[9px] sm:text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider"
             >
+              Unit Premium Tersedia
+            </span>
             <h1
               id="detail-nama"
-              class="text-3xl font-black text-slate-900 tracking-tight leading-tight"
+              class="text-[1.35rem] min-[380px]:text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-tight"
             >
               Memuat info properti...
             </h1>
           </div>
 
           <div
-            class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-5"
+            class="bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200 shadow-sm space-y-5"
           >
             <h4
-              class="font-extrabold text-slate-900 uppercase tracking-wider text-[10px] text-slate-400 border-b pb-2"
+              class="font-extrabold uppercase tracking-wider text-[10px] text-slate-400 border-b pb-2"
             >
               Spesifikasi Detail Bangunan
             </h4>
 
             <div
-              class="grid grid-cols-2 gap-4 text-xs font-medium text-slate-600"
+              class="grid grid-cols-1 min-[430px]:grid-cols-2 gap-3 sm:gap-4 text-xs font-medium text-slate-600"
             >
               <div
-                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+                class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100"
               >
                 <div
                   class="w-8 h-8 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center text-sm shrink-0"
@@ -116,16 +181,20 @@
                   <i class="fa-solid fa-layer-group"></i>
                 </div>
                 <div>
-                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">
                     Luas Bangunan
                   </p>
-                  <p id="spec-lb" class="font-extrabold text-slate-900 text-sm">
+                  <p
+                    id="spec-lb"
+                    class="font-extrabold text-slate-900 text-xs sm:text-sm"
+                  >
                     - m²
                   </p>
                 </div>
               </div>
+
               <div
-                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+                class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100"
               >
                 <div
                   class="w-8 h-8 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center text-sm shrink-0"
@@ -133,16 +202,20 @@
                   <i class="fa-solid fa-ruler-combined"></i>
                 </div>
                 <div>
-                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">
                     Luas Tanah
                   </p>
-                  <p id="spec-lt" class="font-extrabold text-slate-900 text-sm">
+                  <p
+                    id="spec-lt"
+                    class="font-extrabold text-slate-900 text-xs sm:text-sm"
+                  >
                     - m²
                   </p>
                 </div>
               </div>
+
               <div
-                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+                class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100"
               >
                 <div
                   class="w-8 h-8 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center text-sm shrink-0"
@@ -150,16 +223,20 @@
                   <i class="fa-solid fa-bed"></i>
                 </div>
                 <div>
-                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">
                     Kamar Tidur
                   </p>
-                  <p id="spec-kt" class="font-extrabold text-slate-900 text-sm">
+                  <p
+                    id="spec-kt"
+                    class="font-extrabold text-slate-900 text-xs sm:text-sm"
+                  >
                     - Kamar
                   </p>
                 </div>
               </div>
+
               <div
-                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+                class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100"
               >
                 <div
                   class="w-8 h-8 bg-cyan-50 text-cyan-600 rounded-lg flex items-center justify-center text-sm shrink-0"
@@ -167,16 +244,20 @@
                   <i class="fa-solid fa-bath"></i>
                 </div>
                 <div>
-                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">
                     Kamar Mandi
                   </p>
-                  <p id="spec-km" class="font-extrabold text-slate-900 text-sm">
+                  <p
+                    id="spec-km"
+                    class="font-extrabold text-slate-900 text-xs sm:text-sm"
+                  >
                     - Kamar
                   </p>
                 </div>
               </div>
+
               <div
-                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+                class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100"
               >
                 <div
                   class="w-8 h-8 bg-violet-50 text-violet-600 rounded-lg flex items-center justify-center text-sm shrink-0"
@@ -184,19 +265,20 @@
                   <i class="fa-solid fa-bolt"></i>
                 </div>
                 <div>
-                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">
                     Daya Listrik
                   </p>
                   <p
                     id="spec-daya-listrik"
-                    class="font-extrabold text-slate-900 text-sm"
+                    class="font-extrabold text-slate-900 text-xs sm:text-sm"
                   >
                     - VA
                   </p>
                 </div>
               </div>
+
               <div
-                class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100"
+                class="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 bg-slate-50 rounded-xl border border-slate-100"
               >
                 <div
                   class="w-8 h-8 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center text-sm shrink-0"
@@ -204,12 +286,12 @@
                   <i class="fa-solid fa-building"></i>
                 </div>
                 <div>
-                  <p class="text-[10px] text-slate-400 font-bold uppercase">
+                  <p class="text-[9px] text-slate-400 font-bold uppercase">
                     Jumlah Lantai
                   </p>
                   <p
                     id="spec-jumlah-lantai"
-                    class="font-extrabold text-slate-900 text-sm"
+                    class="font-extrabold text-slate-900 text-xs sm:text-sm"
                   >
                     - Lantai
                   </p>
@@ -220,207 +302,213 @@
         </div>
 
         <div
-          class="col-span-full w-full bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4 mt-2"
+          class="col-span-full w-full bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-200 shadow-sm space-y-4"
         >
-          <div class="flex items-center justify-between gap-3">
+          <div
+            class="flex flex-wrap items-center justify-between gap-2 border-b pb-2"
+          >
             <h4
-              class="font-extrabold text-slate-900 uppercase tracking-wider text-[10px] text-slate-400"
+              class="font-extrabold uppercase tracking-wider text-[10px] text-slate-400"
             >
               Detail Tambahan Unit
             </h4>
             <span
-              class="rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-emerald-700"
+              class="rounded-full bg-emerald-50 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-emerald-700"
             >
               Keunggulan Unit
             </span>
           </div>
-          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+
+          <div
+            class="grid gap-3 grid-cols-1 min-[430px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
+          >
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Tipe Unit
               </p>
               <p
                 id="extra-tipe"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 Premium
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Sertifikat
               </p>
               <p
                 id="extra-sertifikat"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 SHM
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Pondasi
               </p>
               <p
                 id="extra-pondasi"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Struktur
               </p>
               <p
                 id="extra-struktur"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Dinding
               </p>
               <p
                 id="extra-dinding"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Pintu
               </p>
               <p
                 id="extra-pintu"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Kusen
               </p>
               <p
                 id="extra-kusen"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Plafon
               </p>
               <p
                 id="extra-plafon"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Rangka Atap
               </p>
               <p
                 id="extra-rangka_atap"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Penutup Atap
               </p>
               <p
                 id="extra-penutup_atap"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Lantai
               </p>
               <p
                 id="extra-lantai_detail"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Air Bersih
               </p>
               <p
                 id="extra-air_bersih"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Listrik
               </p>
               <p
                 id="extra-listrik_detail"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
-            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
               <p
-                class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+                class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
               >
                 Sanitair
               </p>
               <p
                 id="extra-sanitair"
-                class="mt-1 text-sm font-extrabold text-slate-900"
+                class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
               >
                 -
               </p>
             </div>
           </div>
-          <div class="rounded-2xl border border-slate-100 bg-slate-50 p-3">
+
+          <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
             <p
-              class="text-[10px] font-bold uppercase tracking-wide text-slate-400"
+              class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
             >
               Catatan Unit
             </p>
@@ -435,53 +523,56 @@
       </section>
 
       <section
-        class="bg-slate-900 text-white p-8 rounded-3xl space-y-6 shadow-xl relative overflow-hidden"
+        class="bg-slate-900 text-white p-4 min-[380px]:p-5 sm:p-8 rounded-2xl sm:rounded-3xl space-y-6 shadow-xl relative overflow-hidden"
       >
         <div
           class="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30"
         ></div>
+
         <div class="relative z-10 max-w-xl mx-auto text-center space-y-2">
-          <h3 class="text-xl font-black tracking-tight">
+          <h3 class="text-lg sm:text-xl font-black tracking-tight">
             Form Booking Kunjungan & Survey Lapangan
           </h3>
-          <p class="text-xs text-slate-400">
+          <p class="text-[11px] sm:text-xs text-slate-400">
             Jadwalkan kunjungan Anda bersama tim arsitek dan marketing
             representatif kami secara instan.
           </p>
         </div>
+
         <form
           id="form-booking"
-          class="relative z-10 text-slate-800 grid sm:grid-cols-2 gap-4 text-xs font-medium max-w-3xl mx-auto"
+          class="relative z-10 text-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs font-medium max-w-3xl mx-auto"
         >
           <input
             type="text"
             id="fb-nama"
             required
             placeholder="Nama Lengkap Anda"
-            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition"
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition text-sm sm:text-xs"
           />
           <input
             type="text"
             id="fb-wa"
             required
             placeholder="No. WhatsApp Aktif"
-            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition"
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition text-sm sm:text-xs"
           />
           <input
             type="date"
             id="fb-tanggal"
             required
-            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition sm:col-span-2"
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition text-sm sm:text-xs sm:col-span-2"
           />
           <textarea
             id="fb-catatan"
             placeholder="Catatan tambahan kebutuhan Anda (Misal: preferensi jam berkunjung, opsi kustom tata ruang, dll.)..."
-            class="w-full px-4 py-3 rounded-xl h-20 bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition sm:col-span-2"
+            class="w-full px-4 py-3 rounded-xl h-20 bg-slate-50 border border-slate-700 outline-none focus:border-emerald-500 focus:bg-white transition text-sm sm:text-xs sm:col-span-2"
           ></textarea>
+
           <button
             type="submit"
             id="btn-submit-booking"
-            class="w-full bg-emerald-600 text-white font-bold py-3.5 rounded-xl hover:bg-emerald-700 transition sm:col-span-2 flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30"
+            class="w-full bg-emerald-600 text-white font-bold py-3.5 rounded-xl hover:bg-emerald-700 transition sm:col-span-2 flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30 text-sm sm:text-xs"
           >
             <span id="txt-booking">Konfirmasi Jadwal Survey</span>
             <div
@@ -494,7 +585,6 @@
     </main>
 
     <script type="module">
-      // Menambahkan 'query' dan 'where' pada import firestore
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
       import {
         getFirestore,
@@ -526,7 +616,6 @@
         document.getElementById("main-img-badge").innerText = categoryName;
       };
 
-      // 1. Memuat Informasi Utama Unit Rumah
       async function loadUnitDetail() {
         if (!idUnit) return;
         const snap = await getDoc(doc(db, "units", idUnit));
@@ -579,16 +668,13 @@
             val.deskripsi ||
             "Desain modern tropis dengan kualitas finishing premium.";
 
-          // Jalankan listener galeri spesifik setelah idUnit dipastikan ada
           listenToSpecificGallery();
         }
       }
 
-      // 2. Mendengarkan perubahan data galeri secara reaktif khusus unit_id milik rumah ini
       function listenToSpecificGallery() {
         if (!idUnit) return;
 
-        // Membuat query filter: hanya ambil dokumen galleries yang 'unit_id'-nya sama dengan idUnit rumah ini
         const q = query(
           collection(db, "galleries"),
           where("unit_id", "==", idUnit),
@@ -601,44 +687,40 @@
         });
       }
 
-      // 3. Fungsi Render Slider Gabungan (Foto Utama + Galeri Filtered)
       function renderGalleryAndMainImage() {
         const grid = document.getElementById("display-gallery-grid");
         grid.innerHTML = "";
 
-        // Masukkan Foto Utama unit ke urutan paling pertama
         if (mainUnitImage) {
           grid.innerHTML += `
-            <div onclick="changeMainPreview('${mainUnitImage}', 'Foto Utama')" class="h-20 w-28 shrink-0 bg-slate-100 rounded-xl overflow-hidden border-2 border-emerald-500 cursor-pointer transition relative snap-center shadow-sm">
+            <div onclick="changeMainPreview('${mainUnitImage}', 'Foto Utama')" class="h-16 w-24 sm:h-20 sm:w-28 shrink-0 bg-slate-100 rounded-xl overflow-hidden border-2 border-emerald-500 cursor-pointer transition relative snap-center shadow-sm">
               <img src="${mainUnitImage}" class="w-full h-full object-cover">
-              <span class="absolute bottom-1 left-1 bg-emerald-600 text-white font-bold px-1.5 py-0.5 rounded text-[8px] uppercase tracking-tight scale-90 origin-bottom-left">
-                Foto Utama
+              <span class="absolute bottom-1 left-1 bg-emerald-600 text-white font-bold px-1 py-0.5 rounded text-[7px] sm:text-[8px] uppercase tracking-tight scale-90 origin-bottom-left">
+                Utama
               </span>
             </div>`;
         }
 
-        // Masukkan semua foto tambahan hasil filter query
         extraGalleries.forEach((item) => {
           const categoryLabels = {
             semua: "Foto",
             eksterior: "Eksterior",
             interior: "Interior",
-            contoh: "Rumah Contoh",
+            contoh: "Contoh",
             progress: "Progress",
           };
           const badgeText = categoryLabels[item.kategori] || "Unit";
 
           grid.innerHTML += `
-            <div onclick="changeMainPreview('${item.image}', '${badgeText}')" class="h-20 w-28 shrink-0 bg-slate-100 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 cursor-pointer transition relative snap-center shadow-sm">
+            <div onclick="changeMainPreview('${item.image}', '${badgeText}')" class="h-16 w-24 sm:h-20 sm:w-28 shrink-0 bg-slate-100 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 cursor-pointer transition relative snap-center shadow-sm">
               <img src="${item.image}" class="w-full h-full object-cover">
-              <span class="absolute bottom-1 left-1 bg-slate-900/70 text-white font-semibold px-1.5 py-0.5 rounded text-[8px] uppercase tracking-tight scale-90 origin-bottom-left">
+              <span class="absolute bottom-1 left-1 bg-slate-900/70 text-white font-semibold px-1 py-0.5 rounded text-[7px] sm:text-[8px] uppercase tracking-tight scale-90 origin-bottom-left">
                 ${badgeText}
               </span>
             </div>`;
         });
       }
 
-      // Submit handling form booking survey
       document
         .getElementById("form-booking")
         .addEventListener("submit", async (e) => {
