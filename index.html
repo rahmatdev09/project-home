@@ -96,7 +96,7 @@
     >
       <!-- Background -->
       <div
-        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"
+        class="absolute inset-0 bg-[url('image/KAWASAN.jpeg')] bg-cover bg-center"
       ></div>
 
       <div class="absolute inset-0 bg-black/45"></div>
@@ -272,9 +272,116 @@
         <!-- Image -->
         <div>
           <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+            src="image/IMG_4884.jpeg"
             class="rounded-[32px] shadow-xl object-cover w-full h-[520px]"
           />
+        </div>
+      </div>
+    </section>
+
+    <section id="tipe" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-6 space-y-12">
+        <div class="text-center space-y-1">
+          <p
+            class="text-[#0d3b69] text-xs font-extrabold uppercase tracking-widest"
+          >
+            Listing Properti
+          </p>
+          <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+            Tipe Rumah
+          </h2>
+        </div>
+        <div id="display-unit-grid" class="grid sm:grid-cols-3 gap-6"></div>
+        <div class="text-center mt-8">
+          <a
+            href="/properti/"
+            class="inline-flex items-center bg-[#0d3b69] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#0b3258]"
+            >Lihat Semua Properti <i class="fa-solid fa-arrow-right ml-2"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-[#0d3b69]">
+      <div class="max-w-7xl mx-auto px-6">
+        <!-- Heading -->
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span
+            class="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.3em] text-white"
+          >
+            Mengapa Memilih Kami
+          </span>
+
+          <h2 class="mt-5 text-4xl font-black text-white">Nusa Grande</h2>
+
+          <p class="mt-5 text-blue-100 leading-8">
+            Kami menghadirkan hunian modern dengan lokasi strategis, legalitas
+            yang jelas, sistem keamanan 24 jam, serta infrastruktur berkualitas
+            untuk memberikan kenyamanan dan nilai investasi terbaik bagi
+            keluarga Anda.
+          </p>
+        </div>
+
+        <!-- Grid Card -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div
+            class="bg-white rounded-3xl p-6 space-y-4 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
+            >
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-sm">Keamanan 24/7</h3>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Sistem One-Gate, CCTV kawasan, dan penjagaan berlapis nonstop.
+            </p>
+          </div>
+          <div
+            class="bg-white rounded-3xl p-6 space-y-4 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
+            >
+              <i class="fa-solid fa-file-shield"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-sm">
+              Legalitas 100% Aman
+            </h3>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Sertifikat Hak Milik (SHM) pecah per kavling & PBG sudah lengkap.
+            </p>
+          </div>
+          <div
+            class="bg-white rounded-3xl p-6 space-y-4 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
+            >
+              <i class="fa-solid fa-road"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-sm">
+              Infrastruktur Premium
+            </h3>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Row jalan utama lebar cor beton, drainase tertutup bebas banjir.
+            </p>
+          </div>
+          <div
+            class="bg-white rounded-3xl p-6 space-y-4 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
+            >
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-sm">
+              Asri & Strategis
+            </h3>
+            <p class="text-slate-500 text-xs leading-relaxed">
+              Konsep penghijauan rindang, namun hanya menit dari pusat kota.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -370,94 +477,6 @@
               <div id="modal-promo-content" class="prose max-w-full"></div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-16 bg-[#0d3b69]">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div
-            class="bg-white rounded-3xl p-6 space-y-4 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
-          >
-            <div
-              class="w-16 h-16 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
-            >
-              <i class="fa-solid fa-shield-halved"></i>
-            </div>
-            <h3 class="font-extrabold text-slate-900 text-sm">Keamanan 24/7</h3>
-            <p class="text-slate-500 text-xs leading-relaxed">
-              Sistem One-Gate, CCTV kawasan, dan penjagaan berlapis nonstop.
-            </p>
-          </div>
-          <div
-            class="bg-white rounded-3xl p-6 space-y-4 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
-          >
-            <div
-              class="w-16 h-16 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
-            >
-              <i class="fa-solid fa-file-shield"></i>
-            </div>
-            <h3 class="font-extrabold text-slate-900 text-sm">
-              Legalitas 100% Aman
-            </h3>
-            <p class="text-slate-500 text-xs leading-relaxed">
-              Sertifikat Hak Milik (SHM) pecah per kavling & PBG sudah lengkap.
-            </p>
-          </div>
-          <div
-            class="bg-white rounded-3xl p-6 space-y-4 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
-          >
-            <div
-              class="w-16 h-16 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
-            >
-              <i class="fa-solid fa-road"></i>
-            </div>
-            <h3 class="font-extrabold text-slate-900 text-sm">
-              Infrastruktur Premium
-            </h3>
-            <p class="text-slate-500 text-xs leading-relaxed">
-              Row jalan utama lebar cor beton, drainase tertutup bebas banjir.
-            </p>
-          </div>
-          <div
-            class="bg-white rounded-3xl p-6 space-y-4 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
-          >
-            <div
-              class="w-16 h-16 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
-            >
-              <i class="fa-solid fa-seedling"></i>
-            </div>
-            <h3 class="font-extrabold text-slate-900 text-sm">
-              Asri & Strategis
-            </h3>
-            <p class="text-slate-500 text-xs leading-relaxed">
-              Konsep penghijauan rindang, namun hanya menit dari pusat kota.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="tipe" class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-6 space-y-12">
-        <div class="text-center space-y-1">
-          <p
-            class="text-[#0d3b69] text-xs font-extrabold uppercase tracking-widest"
-          >
-            Listing Properti
-          </p>
-          <h2 class="text-2xl font-black text-slate-900 tracking-tight">
-            Pilihan Tipe Rumah Terbaik
-          </h2>
-        </div>
-        <div id="display-unit-grid" class="grid sm:grid-cols-3 gap-6"></div>
-        <div class="text-center mt-8">
-          <a
-            href="/properti/"
-            class="inline-flex items-center bg-[#0d3b69] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#0b3258]"
-            >Lihat Semua Properti <i class="fa-solid fa-arrow-right ml-2"></i
-          ></a>
         </div>
       </div>
     </section>
@@ -774,15 +793,15 @@
       </div>
     </section>
 
-    <section id="faq" class="py-20 bg-slate-50 border-t border-slate-200">
+    <section id="faq" class="py-20 bg-slate-900 border-t border-slate-200">
       <div class="max-w-4xl mx-auto px-6 space-y-10">
         <div class="text-center space-y-1">
           <p
-            class="text-[#0d3b69] text-xs font-extrabold uppercase tracking-widest"
+            class="text-white text-xs font-extrabold uppercase tracking-widest"
           >
             FAQ
           </p>
-          <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+          <h2 class="text-2xl font-black text-white tracking-tight">
             Pertanyaan yang Sering Diajukan
           </h2>
         </div>
@@ -944,10 +963,10 @@
 
     <section
       id="kontak"
-      class="py-20 bg-slate-900 text-white text-center relative overflow-hidden"
+      class="py-20 text-white text-center relative overflow-hidden"
     >
       <div class="max-w-4xl mx-auto px-6 relative z-10 space-y-6">
-        <h2 class="text-3xl font-black tracking-tight">
+        <h2 class="text-3xl text-slate-900 font-black tracking-tight">
           Wujudkan Rumah Impian Anda di Nusa Grande
         </h2>
         <p class="text-xs text-slate-400 max-w-md mx-auto">
@@ -959,7 +978,7 @@
           <button
             type="button"
             data-open-survey
-            class="bg-amber-500 text-white px-6 py-3.5 rounded-xl hover:bg-amber-600 transition shadow-lg flex items-center gap-2"
+            class="bg-[#0d3b69] text-white px-6 py-3.5 rounded-xl hover:bg-[#0d3b69]transition shadow-lg flex items-center gap-2"
           >
             <i class="fa-solid fa-calendar-days"></i> Jadwalkan Kunjungan Survey
           </button>
@@ -975,19 +994,18 @@
     </section>
 
     <footer
-      class="bg-slate-950 text-slate-400 py-12 text-xs border-t border-slate-900"
+      class="bg-[#0d3b69] text-slate-400 py-12 text-xs border-t border-slate-900"
     >
-      <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-5 gap-8 mb-8">
+      <div class="mx-12 px-6 grid sm:grid-cols-5 gap-8 mb-8">
         <div class="space-y-2">
           <a href="#" class="flex items-center gap-2 text-white">
-            <div class="w-2.5 h-2.5 rounded-full bg-[#0d3b69]"></div>
             <h4
               class="font-bold text-white text-[11px] uppercase tracking-wider text-slate-500"
             >
               NUSA GRANDE
             </h4>
           </a>
-          <p class="text-[11px] text-slate-500 leading-relaxed text-justify">
+          <p class="text-[11px] leading-relaxed text-justify">
             Nusa Grande merupakan kawasan hunian modern di lokasi strategis Kota
             Palembang yang dirancang untuk memberikan kenyamanan sekaligus nilai
             investasi yang menjanjikan. Didukung akses yang mudah, fasilitas
@@ -1116,7 +1134,7 @@
         </div>
       </div>
       <div
-        class="max-w-7xl mx-auto px-6 border-t border-slate-900 pt-6 text-center text-[11px] text-slate-600"
+        class="max-w-7xl mx-auto px-6 border-t border-white pt-6 text-center text-[11px] text-white"
       >
         &copy; 2026 Nusa Grande. PT Wibawa Bangun Nusa. Hak Cipta Dilindungi.
       </div>
@@ -1782,28 +1800,48 @@
             .toUpperCase();
 
           grid.innerHTML += `
-            <div class="testimonial-card min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] bg-slate-50 border border-slate-200 rounded-3xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition space-y-4 snap-start">
-              <div class="space-y-3">
-                <div class="flex items-center gap-3">
-                  <img src="${val.image || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"}" alt="${val.nama || "Customer"}" class="h-14 w-14 rounded-full object-contain border-2 border-white bg-slate-200 shadow-sm" />
-                  <span class="bg-[#0d3b69] text-white font-bold px-2.5 py-1 rounded-lg text-[9px] uppercase tracking-wider shadow">
-                    ${val.tipe || "Testimoni"}
-                  </span>
-                </div>
-                <div class="flex gap-0.5 text-[10px]">${stars}</div>
-                <p class="text-slate-600 text-xs italic leading-relaxed">“${val.pesan || "Pengalaman pelanggan sangat memuaskan."}”</p>
-              </div>
-              <div class="border-t border-slate-200 pt-3 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-[#0d3b69] text-white font-bold flex items-center justify-center text-[10px]">
-                  ${initials}
-                </div>
+<div class="testimonial-card min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] bg-white border border-slate-200 rounded-3xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 snap-start">
+
+    <div class="flex items-start gap-4">
+
+        <!-- Foto -->
+        <img
+            src="${val.image || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80"}"
+            alt="${val.nama || "Customer"}"
+            class="w-24 h-24 rounded-full object-contain object-center flex-shrink-0 shadow-md"
+        />
+
+        <!-- Informasi -->
+        <div class="flex-1">
+
+            <div class="flex items-center justify-between">
+
                 <div>
-                  <h5 class="font-extrabold text-slate-900 text-xs">${val.nama || "Customer"}</h5>
-                  <p class="text-slate-400 text-[10px]">${val.tipe || "Pelanggan"}</p>
+
+                    <h5 class="font-black text-base text-slate-900">
+                        ${val.nama || "Customer"}
+                    </h5>
+
+                 
                 </div>
-              </div>
+
+            
+
             </div>
-          `;
+
+           
+
+        </div>
+
+    </div>
+
+    <!-- Isi Testimoni -->
+    <p class="mt-6 text-slate-600 text-sm leading-7 italic">
+        “${val.pesan || "Pengalaman pelanggan sangat memuaskan."}”
+    </p>
+
+</div>
+`;
         });
       });
     </script>
