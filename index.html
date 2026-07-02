@@ -1534,7 +1534,9 @@
         if (snap.empty) {
           grid.innerHTML = `
             <div class="min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-sm text-slate-500">
-              Belum ada testimoni dari pelanggan.
+              Belum ada testimoni dari
+              
+              pelanggan.
             </div>
           `;
           return;
@@ -1560,7 +1562,7 @@
             <div class="testimonial-card min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] bg-slate-50 border border-slate-200 rounded-3xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition space-y-4 snap-start">
               <div class="space-y-3">
                 <div class="flex items-center gap-3">
-                  <img src="${val.image || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"}" alt="${val.nama || "Customer"}" class="h-14 w-14 rounded-full object-cover border-2 border-white bg-slate-200 shadow-sm" />
+                  <img src="${val.image || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"}" alt="${val.nama || "Customer"}" class="h-14 w-14 rounded-full object-contain border-2 border-white bg-slate-200 shadow-sm" />
                   <span class="bg-[#0d3b69] text-white font-bold px-2.5 py-1 rounded-lg text-[9px] uppercase tracking-wider shadow">
                     ${val.tipe || "Testimoni"}
                   </span>
