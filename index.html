@@ -1,0 +1,1586 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nusa Grande - Hunian Modern Tropis</title>
+    <link rel="icon" type="image/png" href="/image/favicon-rounded.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      .bg-\[\#0d3b69\] {
+        background: #0d3b69 !important;
+      }
+      .bg-\[\#0b3258\] {
+        background: #0b3258 !important;
+      }
+      .bg-\[\#e8eef5\] {
+        background: #e8eef5 !important;
+      }
+      .text-\[\#0d3b69\] {
+        color: #0d3b69 !important;
+      }
+      .text-\[\#3b6a99\] {
+        color: #3b6a99 !important;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
+    <header
+      class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-100 shadow-sm"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+      >
+        <a href="/" class="flex items-center">
+          <img src="/image/IMG_3493.PNG" alt="Logo" class="h-10 w-auto" />
+        </a>
+        <nav
+          class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-600"
+        >
+          <a href="/" class="text-[#0d3b69]">Beranda</a>
+          <a href="/profil/" class="hover:text-[#0d3b69] transition"
+            >Tentang Kami</a
+          >
+          <a href="/kpr/" class="hover:text-[#0d3b69] transition"
+            >Simulasi & Cek KPR</a
+          >
+          <a href="#fasilitas" class="hover:text-[#0d3b69] transition"
+            >Fasilitas</a
+          >
+          <a href="#testimoni" class="hover:text-[#0d3b69] transition"
+            >Testimoni</a
+          >
+          <a href="#faq" class="hover:text-[#0d3b69] transition">FAQ</a>
+          <a href="#kontak" class="hover:text-[#0d3b69] transition">Kontak</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a
+            href="https://rebrand.ly/CekSkorKPR"
+            target="_blank"
+            class="hidden lg:block bg-slate-900 text-white text-xs font-bold px-5 py-3 rounded-xl hover:bg-[#0d3b69] transition shadow-md"
+            >Cek Kesiapan KPR</a
+          >
+          <button
+            id="mobile-menu-toggle"
+            type="button"
+            class="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm"
+            aria-label="Buka menu"
+          >
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section
+      class="relative bg-slate-900 text-white py-24 lg:py-32 overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20"
+      ></div>
+      <div
+        class="max-w-7xl mx-auto px-6 relative z-10 max-w-2xl text-center space-y-6"
+      >
+        <span
+          class="inline-block bg-[#0d3b69]/20 text-white border border-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider"
+          >Kavling Eksklusif Palembang</span
+        >
+        <h1
+          class="text-3xl lg:text-5xl font-black tracking-tight leading-tight"
+        >
+          Hunian Tropis Premium Keluarga Modern
+        </h1>
+        <p class="text-slate-400 text-xs leading-relaxed max-w-lg mx-auto">
+          Nusa Grande menggabungkan estetika desain arsitektur modern tropis,
+          kepastian legalitas hukum, dan infrastruktur kawasan eksklusif
+          terpadis.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 text-xs font-bold">
+          <a
+            href="#tipe"
+            class="bg-[#0d3b69] px-6 py-3.5 rounded-xl hover:bg-[#0b3258] transition shadow-lg shadow-[#0d3b69]/20"
+            >Lihat Tipe Rumah</a
+          >
+          <button
+            type="button"
+            data-open-survey
+            class="bg-amber-500 text-white px-6 py-3.5 rounded-xl hover:bg-amber-600 transition flex items-center gap-2"
+          >
+            <i class="fa-solid fa-calendar-days"></i> Jadwalkan Survey
+          </button>
+          <a
+            href="https://wa.me/6281311770008?text=Halo%20Kak!%20%F0%9F%91%8B%0A%0ASaya%20tertarik%20dengan%20Perumahan%20Nusa%20Grande.%20%F0%9F%8F%A1%0ABoleh%20minta%20informasi%20lebih%20lanjut%20mengenai%20proyek%20ini%3F%20Mohon%20bantu%20penjelasannya%20ya.%20%F0%9F%98%8A%0A%0ATerima%20kasih%20banyak.%20%F0%9F%99%8F"
+            target="_blank"
+            class="bg-white/10 px-6 py-3.5 rounded-xl hover:bg-white/20 transition flex items-center gap-2"
+            ><i class="fa-brands fa-whatsapp text-sm"></i> Hubungi Marketing</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 sm:px-6 py-5 bg-slate-50">
+      <div class="max-w-7xl mx-auto">
+        <div
+          id="top-promo-banner"
+          class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
+        >
+          <div
+            class="flex flex-col gap-3 px-4 py-4 sm:px-5 sm:py-5 lg:flex-row lg:items-center lg:justify-between"
+          >
+            <div>
+              <p
+                class="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#0d3b69]"
+              >
+                Promo Terbaru
+              </p>
+              <h3 class="text-base font-black text-slate-900">
+                Penawaran menarik untuk calon pembeli
+              </h3>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <a
+                href="/promo/"
+                class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-700 hover:border-[#0d3b69] hover:text-[#0d3b69]"
+              >
+                <i class="fa-solid fa-list"></i>
+                Lihat Semua Promo
+              </a>
+              <div
+                class="inline-flex rounded-full border border-slate-200 bg-white shadow-sm overflow-hidden"
+              >
+                <button
+                  id="promo-scroll-prev"
+                  type="button"
+                  class="px-4 py-2 text-slate-600 hover:bg-slate-100 transition"
+                  aria-label="Promo sebelumnya"
+                >
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button
+                  id="promo-scroll-next"
+                  type="button"
+                  class="px-4 py-2 text-slate-600 hover:bg-slate-100 transition"
+                  aria-label="Promo berikutnya"
+                >
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div id="promo-carousel" class="px-4 pb-4 sm:px-5 sm:pb-5">
+            <div
+              id="promo-list"
+              class="flex gap-5 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Promo detail modal -->
+        <div
+          id="modal-promo-detail"
+          class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center p-4 z-50"
+        >
+          <div
+            class="bg-white rounded-3xl w-full max-w-3xl p-6 shadow-2xl border overflow-auto max-h-[90vh]"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <h3
+                id="modal-promo-title"
+                class="text-lg font-bold text-slate-900"
+              >
+                Detail Promo
+              </h3>
+              <button
+                onclick="
+                  document
+                    .getElementById('modal-promo-detail')
+                    .classList.add('hidden')
+                "
+                class="text-slate-400 hover:text-slate-700"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div id="modal-promo-body" class="space-y-4 text-sm text-slate-700">
+              <div
+                id="modal-promo-image"
+                class="w-full h-48 bg-slate-100 rounded-lg overflow-hidden"
+              ></div>
+              <div id="modal-promo-content" class="prose max-w-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div class="p-4 space-y-2">
+            <div
+              class="w-12 h-12 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
+            >
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-xs">Keamanan 24/7</h3>
+            <p class="text-slate-500 text-[11px] leading-relaxed">
+              Sistem One-Gate, CCTV kawasan, dan penjagaan berlapis nonstop.
+            </p>
+          </div>
+          <div class="p-4 space-y-2">
+            <div
+              class="w-12 h-12 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
+            >
+              <i class="fa-solid fa-file-shield"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-xs">
+              Legalitas 100% Aman
+            </h3>
+            <p class="text-slate-500 text-[11px] leading-relaxed">
+              Sertifikat Hak Milik (SHM) pecah per kavling & PBG sudah lengkap.
+            </p>
+          </div>
+          <div class="p-4 space-y-2">
+            <div
+              class="w-12 h-12 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
+            >
+              <i class="fa-solid fa-road"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-xs">
+              Infrastruktur Premium
+            </h3>
+            <p class="text-slate-500 text-[11px] leading-relaxed">
+              Row jalan utama lebar cor beton, drainase tertutup bebas banjir.
+            </p>
+          </div>
+          <div class="p-4 space-y-2">
+            <div
+              class="w-12 h-12 bg-[#e8eef5] text-[#0d3b69] rounded-2xl flex items-center justify-center mx-auto text-lg"
+            >
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-xs">
+              Asri & Strategis
+            </h3>
+            <p class="text-slate-500 text-[11px] leading-relaxed">
+              Konsep penghijauan rindang, namun hanya menit dari pusat kota.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tipe" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-6 space-y-12">
+        <div class="text-center space-y-1">
+          <p
+            class="text-[#0d3b69] text-xs font-extrabold uppercase tracking-widest"
+          >
+            Listing Properti
+          </p>
+          <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+            Pilihan Tipe Rumah Terbaik
+          </h2>
+        </div>
+        <div id="display-unit-grid" class="grid sm:grid-cols-3 gap-6"></div>
+        <div class="text-center mt-8">
+          <a
+            href="/properti/"
+            class="inline-flex items-center bg-[#0d3b69] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#0b3258]"
+            >Lihat Semua Properti <i class="fa-solid fa-arrow-right ml-2"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="fasilitas"
+      class="py-20 bg-slate-50 border-t border-b border-slate-200"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start"
+      >
+        <div class="space-y-4 lg:sticky lg:top-24">
+          <div
+            class="w-full h-80 bg-slate-200 border rounded-3xl overflow-hidden relative shadow-inner"
+          >
+            <iframe
+              width="100%"
+              height="100%"
+              style="border: 0"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=-2.947489205441927,104.68775899762034&z=16&output=embed"
+            >
+            </iframe>
+          </div>
+          <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- Rute -->
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=-2.947489205441927,104.68775899762034"
+              target="_blank"
+              class="flex items-center justify-center gap-2 bg-[#0d3b69] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#0b3258] transition shadow-md"
+            >
+              <i class="fa-solid fa-route"></i>
+              Rute Menuju Lokasi
+            </a>
+
+            <!-- Navigasi -->
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=-2.947489205441927,104.68775899762034"
+              target="_blank"
+              class="flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-3 rounded-xl font-bold text-sm hover:bg-slate-50 transition shadow-sm"
+            >
+              <i class="fa-solid fa-location-arrow text-[#0d3b69]"></i>
+              Navigasi Langsung
+            </a>
+          </div>
+          <div
+            class="bg-white p-4 rounded-2xl border border-slate-200 text-xs space-y-1.5"
+          >
+            <h4
+              class="font-extrabold text-slate-900 text-xs flex items-center gap-2"
+            >
+              <i class="fa-solid fa-tree-city text-[#0d3b69]"></i> Fasilitas
+              Unggulan Internal Kawasan:
+            </h4>
+            <div id="list-f-internal" class="space-y-1 text-slate-600"></div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <p
+              class="text-[#0d3b69] text-xs font-extrabold uppercase tracking-widest"
+            >
+              Akses & Konektivitas
+            </p>
+            <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+              Fasilitas Penunjang Sekitar Kawasan
+            </h2>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2">
+            <article
+              class="group bg-white rounded-3xl border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition"
+            >
+              <div class="p-4 space-y-3">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="flex h-12 w-12 items-center justify-center rounded-3xl bg-red-50 text-red-600 shadow-sm"
+                  >
+                    <i class="fa-solid fa-house-medical text-xl"></i>
+                  </div>
+                  <div>
+                    <p
+                      class="text-[11px] font-semibold uppercase tracking-[0.30em] text-[#0d3b69]"
+                    >
+                      Fasilitas Kesehatan
+                    </p>
+                    <h4 class="text-base font-black text-slate-900">
+                      Akses medis cepat
+                    </h4>
+                  </div>
+                </div>
+                <div class="space-y-3 text-slate-600 text-sm">
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">Klinik Ummat</p>
+                    <p class="text-xs text-slate-500">500 m • 1 Menit</p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">
+                      Rumah Sakit Islam Ar-Rasyid
+                    </p>
+                    <p class="text-xs text-slate-500">3,9 km • 8 Menit</p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">
+                      Rumah RSUD Siti Fatimah
+                    </p>
+                    <p class="text-xs text-slate-500">5,1 km • 15 Menit</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="group bg-white rounded-3xl border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition"
+            >
+              <div class="p-5 space-y-4">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="flex h-12 w-12 items-center justify-center rounded-3xl bg-indigo-50 text-indigo-600 shadow-sm"
+                  >
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                  </div>
+                  <div>
+                    <p
+                      class="text-[11px] font-semibold uppercase tracking-[0.30em] text-[#0d3b69]"
+                    >
+                      Fasilitas Pendidikan
+                    </p>
+                    <h4 class="text-base font-black text-slate-900">
+                      Belajar dekat rumah
+                    </h4>
+                  </div>
+                </div>
+                <div class="space-y-3 text-slate-600 text-sm">
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">
+                      SD Negeri 241 Palembang
+                    </p>
+                    <p class="text-xs text-slate-500">1,0 km • 3 Menit</p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">
+                      SMP Negeri 52 Palembang
+                    </p>
+                    <p class="text-xs text-slate-500">1,7 km • 5 Menit</p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">
+                      SMA Negeri 22 Palembang
+                    </p>
+                    <p class="text-xs text-slate-500">1,9 km • 6 Menit</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="group bg-white rounded-3xl border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition"
+            >
+              <div class="p-5 space-y-4">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="flex h-12 w-12 items-center justify-center rounded-3xl bg-amber-50 text-amber-600 shadow-sm"
+                  >
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                  </div>
+                  <div>
+                    <p
+                      class="text-[11px] font-semibold uppercase tracking-[0.30em] text-[#0d3b69]"
+                    >
+                      Toko Grosir
+                    </p>
+                    <h4 class="text-base font-black text-slate-900">
+                      Kebutuhan harian mudah
+                    </h4>
+                  </div>
+                </div>
+                <div class="space-y-3 text-slate-600 text-sm">
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">
+                      Pasar Rakyat Talang Kelapa
+                    </p>
+                    <p class="text-xs text-slate-500">750 m • 1 Menit</p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">
+                      Toko Sembako Talang Kelapa
+                    </p>
+                    <p class="text-xs text-slate-500">1,0 km • 3 Menit</p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">
+                      Toko Bunda Grosir dan Ecer
+                    </p>
+                    <p class="text-xs text-slate-500">8,3 km • 19 Menit</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="group bg-white rounded-3xl border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition"
+            >
+              <div class="p-5 space-y-4">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="flex h-12 w-12 items-center justify-center rounded-3xl bg-sky-50 text-sky-600 shadow-sm"
+                  >
+                    <i class="fa-solid fa-mug-saucer text-xl"></i>
+                  </div>
+                  <div>
+                    <p
+                      class="text-[11px] font-semibold uppercase tracking-[0.30em] text-[#0d3b69]"
+                    >
+                      Tempat Nongkrong
+                    </p>
+                    <h4 class="text-base font-black text-slate-900">
+                      Hangout mudah dijangkau
+                    </h4>
+                  </div>
+                </div>
+                <div class="space-y-3 text-slate-600 text-sm">
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">Airi’s Coffee</p>
+                    <p class="text-xs text-slate-500">1,8 km • 5 Menit</p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">Tentang Kopi</p>
+                    <p class="text-xs text-slate-500">1,9 km • 5 Menit</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="group bg-white rounded-3xl border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-lg transition"
+            >
+              <div class="p-5 space-y-4">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="flex h-12 w-12 items-center justify-center rounded-3xl bg-cyan-50 text-cyan-600 shadow-sm"
+                  >
+                    <i class="fa-solid fa-train text-xl"></i>
+                  </div>
+                  <div>
+                    <p
+                      class="text-[11px] font-semibold uppercase tracking-[0.30em] text-[#0d3b69]"
+                    >
+                      Transportasi Publik
+                    </p>
+                    <h4 class="text-base font-black text-slate-900">
+                      Jalur perkotaan terhubung
+                    </h4>
+                  </div>
+                </div>
+                <div class="space-y-3 text-slate-600 text-sm">
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">13 Feeder LRT</p>
+                    <p class="text-xs text-slate-500">500 m • 1 Menit</p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">
+                      Stasiun LRT Asrama Haji
+                    </p>
+                    <p class="text-xs text-slate-500">4,5 km • 9 Menit</p>
+                  </div>
+                  <div class="rounded-2xl bg-slate-50 p-3">
+                    <p class="font-semibold text-slate-900">
+                      Terminal Alang-Alang Lebar
+                    </p>
+                    <p class="text-xs text-slate-500">4,8 km • 10 Menit</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimoni" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div
+          class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+        >
+          <div class="space-y-1 text-center md:text-left">
+            <p
+              class="text-[#0d3b69] text-xs font-extrabold uppercase tracking-widest"
+            >
+              Bukti Nyata
+            </p>
+            <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+              Testimoni & Pengalaman Konsumen
+            </h2>
+          </div>
+          <div class="flex items-center justify-center gap-2 md:justify-end">
+            <button
+              id="testimonial-prev"
+              type="button"
+              class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 transition"
+              aria-label="Sebelumnya"
+            >
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button
+              id="testimonial-next"
+              type="button"
+              class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm hover:bg-slate-50 transition"
+              aria-label="Berikutnya"
+            >
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="relative mt-8 overflow-hidden">
+          <div
+            id="testimonials-grid"
+            class="flex gap-6 overflow-x-auto pb-2 scroll-smooth hide-scrollbar snap-x snap-mandatory"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-slate-50 border-t border-slate-200">
+      <div class="max-w-4xl mx-auto px-6 space-y-10">
+        <div class="text-center space-y-1">
+          <p
+            class="text-[#0d3b69] text-xs font-extrabold uppercase tracking-widest"
+          >
+            FAQ
+          </p>
+          <h2 class="text-2xl font-black text-slate-900 tracking-tight">
+            Pertanyaan yang Sering Diajukan
+          </h2>
+        </div>
+
+        <div class="space-y-3">
+          <details
+            class="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+            open
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-extrabold text-slate-900"
+            >
+              Apa saja keunggulan Nusa Grande?
+              <i
+                class="fa-solid fa-chevron-down text-xs text-slate-400 transition group-open:rotate-180"
+              ></i>
+            </summary>
+            <p class="mt-3 text-xs leading-relaxed text-slate-600">
+              Nusa Grande merupakan kawasan hunian modern yang menawarkan lokasi
+              strategis, desain rumah minimalis, lingkungan yang nyaman, serta
+              fasilitas penunjang untuk kebutuhan keluarga. Dilengkapi akses
+              yang mudah menuju pusat kota, area pendidikan, fasilitas
+              kesehatan, dan pusat perbelanjaan, Nusa Grande menjadi pilihan
+              tepat untuk hunian maupun investasi.
+            </p>
+          </details>
+
+          <details
+            class="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-extrabold text-slate-900"
+            >
+              Berapa harga rumah di Nusa Grande?
+              <i
+                class="fa-solid fa-chevron-down text-xs text-slate-400 transition group-open:rotate-180"
+              ></i>
+            </summary>
+            <p class="mt-3 text-xs leading-relaxed text-slate-600">
+              Harga rumah di Nusa Grande bervariasi sesuai tipe unit yang
+              dipilih. Untuk mendapatkan informasi harga terbaru, promo yang
+              sedang berlangsung, serta simulasi cicilan, silakan hubungi
+              Marketing Nusa Grande melalui WhatsApp atau formulir pada website.
+            </p>
+          </details>
+
+          <details
+            class="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-extrabold text-slate-900"
+            >
+              Di mana lokasi Nusa Grande?
+              <i
+                class="fa-solid fa-chevron-down text-xs text-slate-400 transition group-open:rotate-180"
+              ></i>
+            </summary>
+            <p class="mt-3 text-xs leading-relaxed text-slate-600">
+              Nusa Grande berlokasi di Jalan Klp. Hijau, Talang Kelapa, Kec.
+              Alang-Alang Lebar, Kota Palembang, Sumatera Selatan 30155,
+              Indonesia. Untuk melihat alamat lengkap dan petunjuk lokasi, Anda
+              dapat membuka halaman Lokasi pada website atau menghubungi tim
+              Marketing Nusa Grande.
+            </p>
+          </details>
+
+          <details
+            class="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-extrabold text-slate-900"
+            >
+              Apakah ada promo yang sedang berlangsung di Nusa Grande?
+              <i
+                class="fa-solid fa-chevron-down text-xs text-slate-400 transition group-open:rotate-180"
+              ></i>
+            </summary>
+            <p class="mt-3 text-xs leading-relaxed text-slate-600">
+              Ya. Nusa Grande secara berkala menghadirkan berbagai promo
+              menarik, seperti DP 0% sampai gratis biaya-biaya. Promo yang
+              tersedia dapat berubah sewaktu-waktu sesuai periode yang berlaku.
+            </p>
+          </details>
+
+          <details
+            class="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-extrabold text-slate-900"
+            >
+              Bank apa saja yang bekerja sama dengan Nusa Grande?
+              <i
+                class="fa-solid fa-chevron-down text-xs text-slate-400 transition group-open:rotate-180"
+              ></i>
+            </summary>
+            <p class="mt-3 text-xs leading-relaxed text-slate-600">
+              Bank yang sudah bekerja sama dengan Nusa Grande adalah Mandiri,
+              BSI, Panin, BRI, dan CIMB Niaga.
+            </p>
+          </details>
+
+          <details
+            class="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-extrabold text-slate-900"
+            >
+              Apa saja metode pembayaran yang tersedia di Nusa Grande?
+              <i
+                class="fa-solid fa-chevron-down text-xs text-slate-400 transition group-open:rotate-180"
+              ></i>
+            </summary>
+            <p class="mt-3 text-xs leading-relaxed text-slate-600">
+              Nusa Grande menyediakan beberapa pilihan pembayaran, antara lain
+              Cash Keras, Cash Bertahap sesuai program, dan Kredit Pemilikan
+              Rumah (KPR). Tim Marketing akan membantu Anda memilih metode
+              pembayaran yang paling sesuai dengan kebutuhan.
+            </p>
+          </details>
+
+          <details
+            class="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-extrabold text-slate-900"
+            >
+              Apakah rumah di Nusa Grande sudah memiliki legalitas yang jelas?
+              <i
+                class="fa-solid fa-chevron-down text-xs text-slate-400 transition group-open:rotate-180"
+              ></i>
+            </summary>
+            <p class="mt-3 text-xs leading-relaxed text-slate-600">
+              Ya. Seluruh unit di Nusa Grande dipasarkan dengan legalitas yang
+              jelas sesuai ketentuan yang berlaku.
+            </p>
+          </details>
+
+          <details
+            class="group rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-extrabold text-slate-900"
+            >
+              Siapa developer Nusa Grande?
+              <i
+                class="fa-solid fa-chevron-down text-xs text-slate-400 transition group-open:rotate-180"
+              ></i>
+            </summary>
+            <p class="mt-3 text-xs leading-relaxed text-slate-600">
+              Nusa Grande dibangun oleh developer PT. Wibawa Bangun Nusa yang
+              berkomitmen menghadirkan hunian berkualitas dengan desain modern,
+              legalitas yang jelas, serta pembangunan yang mengutamakan
+              kenyamanan dan kepuasan pelanggan.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="kontak"
+      class="py-20 bg-slate-900 text-white text-center relative overflow-hidden"
+    >
+      <div class="max-w-4xl mx-auto px-6 relative z-10 space-y-6">
+        <h2 class="text-3xl font-black tracking-tight">
+          Miliki Unit Impian Anda di Nusa Grande
+        </h2>
+        <p class="text-xs text-slate-400 max-w-md mx-auto">
+          Konsultasikan kelayakan cicilan KPR, opsi kustom tata ruang, atau
+          jadwalkan kunjungan lokasi bersama agen representatif resmi kami.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 pt-2 text-xs font-bold">
+          <button
+            type="button"
+            data-open-survey
+            class="bg-amber-500 text-white px-6 py-3.5 rounded-xl hover:bg-amber-600 transition shadow-lg flex items-center gap-2"
+          >
+            <i class="fa-solid fa-calendar-days"></i> Jadwalkan Kunjungan Survey
+          </button>
+          <a
+            href="https://wa.me/6281311770008?text=Halo%20Kak!%20%F0%9F%91%8B%0A%0ASaya%20tertarik%20dengan%20Perumahan%20Nusa%20Grande.%20%F0%9F%8F%A1%0ABoleh%20minta%20informasi%20lebih%20lanjut%20mengenai%20proyek%20ini%3F%20Mohon%20bantu%20penjelasannya%20ya.%20%F0%9F%98%8A%0A%0ATerima%20kasih%20banyak.%20%F0%9F%99%8F"
+            target="_blank"
+            class="bg-[#0d3b69] text-white px-6 py-3.5 rounded-xl flex items-center gap-2 hover:bg-[#0b3258] transition shadow-lg"
+            ><i class="fa-brands fa-whatsapp text-sm"></i> Chat Hubungi
+            Marketing</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="bg-slate-950 text-slate-400 py-12 text-xs border-t border-slate-900"
+    >
+      <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-3 gap-8 mb-8">
+        <div class="space-y-3">
+          <a href="#" class="flex items-center gap-2 text-white">
+            <div class="w-2.5 h-2.5 rounded-full bg-[#0d3b69]"></div>
+            <span class="font-black tracking-wider text-sm">NUSA GRANDE</span>
+          </a>
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            Kawasan hunian terpadu berwawasan modern tropis dengan jaminan
+            kepastian hukum, kenyamanan infrastruktur, dan nilai investasi
+            jangka panjang terbaik.
+          </p>
+        </div>
+        <div class="space-y-2">
+          <h4
+            class="font-bold text-white text-[11px] uppercase tracking-wider text-slate-500"
+          >
+            Navigasi Link
+          </h4>
+          <div class="grid grid-cols-2 gap-2 text-[11px]">
+            <a href="/" class="hover:text-white transition">Beranda</a>
+            <a href="/profil/" class="hover:text-white transition"
+              >Tentang Kami</a
+            >
+            <a href="/kpr/" class="hover:text-white transition">Simulasi KPR</a>
+            <a href="#fasilitas" class="hover:text-white transition"
+              >Akses Kawasan</a
+            >
+            <a href="#faq" class="hover:text-white transition">FAQ</a>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <h4
+            class="font-bold text-white text-[11px] uppercase tracking-wider text-slate-500"
+          >
+            Kantor Pemasaran
+          </h4>
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            Jl. Utama Perumahan Nusa Grande, Blok A No. 01, Kota Palembang,
+            Sumatera Selatan.
+          </p>
+          <p class="text-[11px] font-bold text-slate-300">
+            Marketing Gallery buka setiap hari 08.00-17.00
+          </p>
+          <div class="overflow-hidden rounded-3xl border border-slate-800">
+            <iframe
+              src="https://maps.google.com/maps?q=Jl.+Utama+Perumahan+Nusa+Grande+Palembang&output=embed"
+              class="h-40 w-full"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto px-6 border-t border-slate-900 pt-6 text-center text-[11px] text-slate-600"
+      >
+        &copy; 2026 Nusa Grande. PT Wibawa Bangun Nusa. Hak Cipta Dilindungi.
+      </div>
+    </footer>
+
+    <div id="mobile-sidebar" class="fixed inset-0 z-[60] hidden">
+      <div
+        id="mobile-sidebar-backdrop"
+        class="absolute inset-0 bg-slate-950/60"
+      ></div>
+      <aside class="absolute right-0 top-0 h-full w-72 bg-white p-6 shadow-2xl">
+        <div class="mb-6 flex items-center justify-between">
+          <a href="/" class="flex items-center">
+            <img src="/image/IMG_3493.PNG" alt="Logo" class="h-10 w-auto" />
+          </a>
+          <button
+            id="mobile-menu-close"
+            type="button"
+            class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600"
+            aria-label="Tutup menu"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <nav class="space-y-3 text-sm font-semibold text-slate-700">
+          <a
+            href="/"
+            class="block rounded-xl bg-slate-100 px-4 py-3 text-[#0d3b69]"
+            >Beranda</a
+          >
+          <a
+            href="/profil/"
+            class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >Tentang Kami</a
+          >
+          <a href="/kpr/" class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >Simulasi & Cek KPR</a
+          >
+          <a
+            href="#fasilitas"
+            class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >Fasilitas</a
+          >
+          <a
+            href="#testimoni"
+            class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >Testimoni</a
+          >
+          <a href="#faq" class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >FAQ</a
+          >
+          <a href="#kontak" class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >Kontak</a
+          >
+        </nav>
+        <a
+          href="https://rebrand.ly/CekSkorKPR"
+          target="_blank"
+          class="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-4 py-3 text-sm font-bold text-white hover:bg-[#0d3b69]"
+        >
+          Cek Kesiapan KPR
+        </a>
+      </aside>
+    </div>
+
+    <button
+      id="scroll-to-top"
+      type="button"
+      class="fixed bottom-24 right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-[#0d3b69] text-2xl text-white shadow-2xl transition hover:scale-105"
+      aria-label="Kembali ke atas"
+    >
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <a
+      href="https://wa.me/6281311770008?text=Halo%20Kak!%20%F0%9F%91%8B%0A%0ASaya%20tertarik%20dengan%20Perumahan%20Nusa%20Grande.%20%F0%9F%8F%A1%0ABoleh%20minta%20informasi%20lebih%20lanjut%20mengenai%20proyek%20ini%3F%20Mohon%20bantu%20penjelasannya%20ya.%20%F0%9F%98%8A%0A%0ATerima%20kasih%20banyak.%20%F0%9F%99%8F"
+      target="_blank"
+      class="fixed bottom-6 right-6 z-50 bg-[#0d3b69] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-105 transition-all"
+      ><i class="fa-brands fa-whatsapp"></i
+    ></a>
+
+    <div
+      id="survey-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 p-4"
+    >
+      <div
+        class="relative w-full max-w-4xl max-h-[calc(100vh-3rem)] overflow-hidden rounded-[2rem] bg-white shadow-2xl"
+      >
+        <div
+          class="flex flex-wrap items-start justify-between gap-4 border-b border-slate-200 px-6 py-5"
+        >
+          <div class="min-w-0">
+            <p
+              class="text-xs font-semibold uppercase tracking-[0.3em] text-[#0d3b69]"
+            >
+              Jadwalkan Survey
+            </p>
+            <h2 class="mt-2 text-2xl font-black text-slate-900">
+              Booking Survey Lapangan
+            </h2>
+          </div>
+          <button
+            id="survey-modal-close"
+            type="button"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 text-slate-600 transition hover:bg-slate-100"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="grid gap-6 px-6 py-6 sm:px-8 sm:py-8 overflow-y-auto">
+          <div class="grid gap-3">
+            <label
+              for="survey-modal-name"
+              class="block text-xs font-semibold uppercase tracking-[0.24em] text-slate-700"
+              >Nama Lengkap</label
+            >
+            <input
+              id="survey-modal-name"
+              type="text"
+              placeholder="Masukkan nama Anda"
+              class="w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-[#0d3b69] focus:bg-white"
+            />
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <p
+                class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-700"
+              >
+                Pilih Unit
+              </p>
+              <span class="text-[11px] text-slate-500"
+                >Ketuk untuk memilih</span
+              >
+            </div>
+            <div id="survey-unit-grid" class="grid gap-3 sm:grid-cols-2"></div>
+          </div>
+          <div class="space-y-3">
+            <label
+              for="survey-date"
+              class="block text-xs font-semibold uppercase tracking-[0.24em] text-slate-700"
+              >Tanggal Survey</label
+            >
+            <input
+              id="survey-date"
+              type="date"
+              class="w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-[#0d3b69] focus:bg-white"
+            />
+          </div>
+          <div class="space-y-3">
+            <button
+              id="survey-submit"
+              type="button"
+              class="w-full rounded-3xl bg-amber-500 px-5 py-4 text-sm font-bold text-white shadow-lg shadow-amber-500/20 transition hover:bg-amber-600"
+            >
+              Kirim Pesan WhatsApp
+            </button>
+            <p class="text-sm text-slate-500">
+              Setelah memilih unit dan tanggal, Anda akan diarahkan ke WhatsApp
+              dengan pesan terisi otomatis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        onSnapshot,
+      } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAja6FfF_EW_N9y8pXmDX-10e0e51DJ4Cg",
+        authDomain: "project-home-54337.firebaseapp.com",
+        projectId: "project-home-54337",
+        storageBucket: "project-home-54337.firebasestorage.app",
+        messagingSenderId: "548607283431",
+        appId: "1:548607283431:web:1f58c56ce8b3c73a121242",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      let surveyUnits = [];
+      let selectedSurveyUnitId = null;
+
+      const surveyModal = document.getElementById("survey-modal");
+      const surveyNameInput = document.getElementById("survey-modal-name");
+      const surveyDateInput = document.getElementById("survey-date");
+      const surveyUnitGrid = document.getElementById("survey-unit-grid");
+      const surveySubmitBtn = document.getElementById("survey-submit");
+      const surveyCloseBtn = document.getElementById("survey-modal-close");
+
+      const openSurveyModal = () => {
+        if (!surveyModal) return;
+        surveyModal.classList.remove("hidden");
+        surveyModal.classList.add("flex");
+        document.body.classList.add("overflow-hidden");
+
+        if (surveyDateInput) {
+          const today = new Date().toISOString().split("T")[0];
+          surveyDateInput.min = today;
+          surveyDateInput.value = today;
+        }
+
+        renderSurveyUnitOptions();
+      };
+
+      const closeSurveyModal = () => {
+        if (!surveyModal) return;
+        surveyModal.classList.add("hidden");
+        surveyModal.classList.remove("flex");
+        document.body.classList.remove("overflow-hidden");
+      };
+
+      const setSelectedSurveyUnit = (unitId) => {
+        selectedSurveyUnitId = unitId;
+        renderSurveyUnitOptions();
+      };
+
+      const renderSurveyUnitOptions = () => {
+        if (!surveyUnitGrid) return;
+        if (!surveyUnits.length) {
+          surveyUnitGrid.innerHTML = `<div class="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-500">Unit sedang dimuat... Mohon tunggu.</div>`;
+          return;
+        }
+
+        surveyUnitGrid.innerHTML = surveyUnits
+          .map(
+            (unit) => `
+              <button
+                type="button"
+                class="survey-unit-card group relative w-full rounded-3xl border p-4 text-left transition ${selectedSurveyUnitId === unit.id ? "border-amber-500 bg-amber-50 shadow-sm" : "border-slate-200 bg-white hover:border-slate-300"}"
+                data-unit-id="${unit.id}"
+              >
+                <div class="flex items-center justify-between gap-3">
+                  <div>
+                    <div class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0d3b69]">Pilih Unit</div>
+                    <div class="mt-2 text-sm font-bold text-slate-900">${unit.nama || "Unit Tanpa Nama"}</div>
+                  </div>
+                  <div class="flex h-9 w-9 items-center justify-center rounded-2xl border ${selectedSurveyUnitId === unit.id ? "border-amber-500 bg-amber-500 text-white" : "border-slate-200 bg-slate-100 text-slate-700"}">
+                    <i class="fa-solid fa-house"></i>
+                  </div>
+                </div>
+                <p class="mt-3 text-xs text-slate-600">${unit.lantai ? `${unit.lantai} Lantai` : "Jumlah lantai belum diisi"}</p>
+              </button>
+            `,
+          )
+          .join("");
+
+        surveyUnitGrid
+          .querySelectorAll(".survey-unit-card")
+          .forEach((button) => {
+            button.addEventListener("click", () => {
+              const id = button.getAttribute("data-unit-id");
+              setSelectedSurveyUnit(id);
+            });
+          });
+      };
+
+      const showSurveyError = (message) => alert(message);
+
+      const submitSurveyBooking = () => {
+        const name = surveyNameInput?.value.trim();
+        const date = surveyDateInput?.value;
+        const unit = surveyUnits.find(
+          (item) => item.id === selectedSurveyUnitId,
+        );
+
+        if (!name || !selectedSurveyUnitId || !date) {
+          return showSurveyError(
+            "Tolong isi nama, pilih unit, dan pilih tanggal survey terlebih dahulu.",
+          );
+        }
+
+        const message = `Halo, saya ingin jadwalkan survey ke Nusa Grande.\n\nNama: ${name}\nUnit: ${unit?.nama || "Unit terpilih"}\nTanggal Survey: ${date}\n\nMohon bantu konfirmasi jadwalnya. Terima kasih.`;
+        const link = `https://wa.me/6281311770008?text=${encodeURIComponent(message)}`;
+        window.open(link, "_blank");
+        closeSurveyModal();
+      };
+
+      const initSurveyTriggers = () => {
+        document.querySelectorAll("[data-open-survey]").forEach((btn) => {
+          btn.addEventListener("click", openSurveyModal);
+        });
+        surveyCloseBtn?.addEventListener("click", closeSurveyModal);
+        surveyModal?.addEventListener("click", (event) => {
+          if (event.target === surveyModal) closeSurveyModal();
+        });
+        document.addEventListener("keydown", (event) => {
+          if (
+            event.key === "Escape" &&
+            !surveyModal?.classList.contains("hidden")
+          ) {
+            closeSurveyModal();
+          }
+        });
+        surveySubmitBtn?.addEventListener("click", submitSurveyBooking);
+      };
+
+      const renderPromoSkeletons = () => {
+        const listEl = document.getElementById("promo-list");
+        if (!listEl) return;
+        listEl.innerHTML = Array.from(
+          { length: 2 },
+          () => `
+          <div class="min-w-[80%] sm:min-w-[45%] snap-start overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+            <div class="h-52 animate-pulse bg-slate-200"></div>
+            <div class="p-5 space-y-4">
+              <div class="h-3 w-1/2 animate-pulse rounded bg-slate-200"></div>
+              <div class="h-4 w-3/4 animate-pulse rounded bg-slate-200"></div>
+              <div class="h-3 w-full animate-pulse rounded bg-slate-100"></div>
+              <div class="h-3 w-5/6 animate-pulse rounded bg-slate-100"></div>
+            </div>
+          </div>
+        `,
+        ).join("");
+      };
+
+      const renderUnitSkeletons = () => {
+        const grid = document.getElementById("display-unit-grid");
+        if (!grid) return;
+        grid.innerHTML = Array.from(
+          { length: 3 },
+          () => `
+          <div class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div class="h-44 animate-pulse rounded-2xl bg-slate-200"></div>
+            <div class="mt-4 space-y-3">
+              <div class="h-4 w-3/4 animate-pulse rounded bg-slate-200"></div>
+              <div class="h-3 w-full animate-pulse rounded bg-slate-100"></div>
+              <div class="h-3 w-5/6 animate-pulse rounded bg-slate-100"></div>
+              <div class="h-10 animate-pulse rounded-xl bg-slate-200"></div>
+            </div>
+          </div>
+        `,
+        ).join("");
+      };
+
+      const renderAmenitySkeletons = () => {
+        const iBox = document.getElementById("list-f-internal");
+        if (!iBox) return;
+        iBox.innerHTML = Array.from(
+          { length: 4 },
+          () => `
+          <div class="flex items-center gap-2">
+            <div class="h-2.5 w-2.5 animate-pulse rounded-full bg-slate-200"></div>
+            <div class="h-2.5 w-36 animate-pulse rounded bg-slate-200"></div>
+          </div>
+        `,
+        ).join("");
+      };
+
+      const renderTestimonialSkeletons = () => {
+        const grid = document.getElementById("testimonials-grid");
+        if (!grid) return;
+        grid.innerHTML = Array.from(
+          { length: 3 },
+          () => `
+          <div class="min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] bg-slate-50 border border-slate-200 rounded-3xl p-5 shadow-sm animate-pulse">
+            <div class="h-40 rounded-2xl bg-slate-200"></div>
+            <div class="mt-6 h-3 w-24 rounded bg-slate-200"></div>
+            <div class="mt-3 h-3 w-full rounded bg-slate-100"></div>
+            <div class="mt-3 h-3 w-5/6 rounded bg-slate-100"></div>
+            <div class="mt-6 h-10 rounded-xl bg-slate-200"></div>
+          </div>
+        `,
+        ).join("");
+      };
+
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenuClose = document.getElementById("mobile-menu-close");
+      const mobileSidebar = document.getElementById("mobile-sidebar");
+      const mobileSidebarBackdrop = document.getElementById(
+        "mobile-sidebar-backdrop",
+      );
+      const scrollToTopButton = document.getElementById("scroll-to-top");
+      const testimonialPrev = document.getElementById("testimonial-prev");
+      const testimonialNext = document.getElementById("testimonial-next");
+
+      const openMobileMenu = () => {
+        mobileSidebar.classList.remove("hidden");
+        document.body.classList.add("overflow-hidden");
+      };
+
+      const closeMobileMenu = () => {
+        mobileSidebar.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+      };
+
+      mobileMenuToggle?.addEventListener("click", openMobileMenu);
+      mobileMenuClose?.addEventListener("click", closeMobileMenu);
+      mobileSidebarBackdrop?.addEventListener("click", closeMobileMenu);
+
+      mobileSidebar?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeMobileMenu();
+        }
+      });
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) {
+          scrollToTopButton.classList.remove("hidden");
+          scrollToTopButton.classList.add("flex");
+        } else {
+          scrollToTopButton.classList.add("hidden");
+          scrollToTopButton.classList.remove("flex");
+        }
+      });
+
+      scrollToTopButton?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      renderPromoSkeletons();
+      renderUnitSkeletons();
+      renderAmenitySkeletons();
+      renderTestimonialSkeletons();
+      initSurveyTriggers();
+
+      const scrollTestimonialCards = (direction) => {
+        const wrapper = document.getElementById("testimonials-grid");
+        if (!wrapper) return;
+        const cards = wrapper.querySelectorAll(".testimonial-card");
+        if (!cards.length) return;
+
+        const firstCard = cards[0];
+        const cardStyle = window.getComputedStyle(firstCard);
+        const gap = parseFloat(cardStyle.marginRight) || 24;
+        const cardWidth = firstCard.getBoundingClientRect().width + gap;
+        const currentIndex = Math.round(wrapper.scrollLeft / cardWidth);
+        const targetIndex = Math.max(
+          0,
+          Math.min(cards.length - 1, currentIndex + direction),
+        );
+
+        wrapper.scrollTo({
+          left: targetIndex * cardWidth,
+          behavior: "smooth",
+        });
+      };
+
+      testimonialPrev?.addEventListener("click", () =>
+        scrollTestimonialCards(-1),
+      );
+      testimonialNext?.addEventListener("click", () =>
+        scrollTestimonialCards(1),
+      );
+
+      onSnapshot(collection(db, "promos"), (snap) => {
+        const banner = document.getElementById("top-promo-banner");
+        const listEl = document.getElementById("promo-list");
+        const prevBtn = document.getElementById("promo-scroll-prev");
+        const nextBtn = document.getElementById("promo-scroll-next");
+        if (!banner || !listEl) return;
+        const promos = snap.docs.map((d) => ({
+          id: d.id,
+          ...(d.data() || {}),
+        }));
+        if (!promos.length) {
+          banner.classList.add("hidden");
+          return;
+        }
+        banner.classList.remove("hidden");
+        listEl.innerHTML = "";
+
+        const getVisibleCount = () => (window.innerWidth < 640 ? 1 : 2);
+        const shouldAutoScroll = () =>
+          promos.length > (window.innerWidth < 640 ? 1 : 2);
+        let promoAutoScrollTimer = null;
+
+        const updateScrollButtons = () => {
+          if (!prevBtn || !nextBtn) return;
+          const maxScroll = listEl.scrollWidth - listEl.clientWidth;
+          prevBtn.disabled = listEl.scrollLeft <= 4;
+          nextBtn.disabled = listEl.scrollLeft >= Math.max(maxScroll - 4, 0);
+          prevBtn.classList.toggle("opacity-50", prevBtn.disabled);
+          prevBtn.classList.toggle("cursor-not-allowed", prevBtn.disabled);
+          nextBtn.classList.toggle("opacity-50", nextBtn.disabled);
+          nextBtn.classList.toggle("cursor-not-allowed", nextBtn.disabled);
+        };
+
+        const scrollPromo = (distance) => {
+          listEl.scrollBy({ left: distance, behavior: "smooth" });
+          setTimeout(updateScrollButtons, 260);
+        };
+
+        const nextPromo = () => {
+          if (!listEl) return;
+          const distance = Math.max(listEl.clientWidth * 0.9, 320);
+          if (
+            listEl.scrollLeft + listEl.clientWidth >=
+            listEl.scrollWidth - 10
+          ) {
+            listEl.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            listEl.scrollBy({ left: distance, behavior: "smooth" });
+          }
+          setTimeout(updateScrollButtons, 260);
+        };
+
+        const prevPromo = () => {
+          if (!listEl) return;
+          const distance = Math.max(listEl.clientWidth * 0.9, 320);
+          if (listEl.scrollLeft <= 10) {
+            listEl.scrollTo({ left: listEl.scrollWidth, behavior: "smooth" });
+          } else {
+            listEl.scrollBy({ left: -distance, behavior: "smooth" });
+          }
+          setTimeout(updateScrollButtons, 260);
+        };
+
+        const resetAutoScroll = () => {
+          if (promoAutoScrollTimer) {
+            clearInterval(promoAutoScrollTimer);
+          }
+          if (shouldAutoScroll()) {
+            promoAutoScrollTimer = setInterval(nextPromo, 4500);
+          }
+        };
+
+        prevBtn?.addEventListener("click", () => {
+          prevPromo();
+          resetAutoScroll();
+        });
+        nextBtn?.addEventListener("click", () => {
+          nextPromo();
+          resetAutoScroll();
+        });
+        listEl.addEventListener("scroll", updateScrollButtons);
+        listEl.addEventListener("mouseenter", () => {
+          if (promoAutoScrollTimer) clearInterval(promoAutoScrollTimer);
+        });
+        listEl.addEventListener("mouseleave", resetAutoScroll);
+
+        promos.forEach((p, idx) => {
+          const images =
+            Array.isArray(p.images) && p.images.length
+              ? p.images
+              : p.image
+                ? [p.image]
+                : [
+                    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=80",
+                  ];
+          const tmp = document.createElement("div");
+          tmp.innerHTML = p.deskripsi || "";
+          const text = tmp.innerText || tmp.textContent || "";
+          const previewText =
+            text.length > 140 ? text.slice(0, 140) + "..." : text;
+          listEl.innerHTML += `
+            <a
+              href="/promo/detail-promo/?id=${p.id}"
+              class="promo-item group min-w-[80%] sm:min-w-[45%] snap-start text-left rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-md transition"
+            >
+              <div class="relative h-52 overflow-hidden bg-slate-100">
+                <img src="${images[0]}" alt="${p.judul || "Promo"}" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                ${images.length > 1 ? `<div class="absolute top-3 right-3 rounded-full bg-black/55 px-2 py-1 text-[10px] font-semibold text-white"><i class="fa-solid fa-images mr-1"></i>${images.length}</div>` : ""}
+              </div>
+              <div class="p-5 space-y-3">
+                <div class="text-[10px] font-extrabold uppercase tracking-widest text-[#0d3b69] flex items-center gap-2"><i class="fa-solid fa-bullhorn"></i> Promo Nusa Grande</div>
+                <h3 class="text-lg font-black text-slate-900">${p.judul || ""}</h3>
+                <p class="text-sm text-slate-600 leading-relaxed" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${previewText}</p>
+              </div>
+            </a>`;
+        });
+
+        updateScrollButtons();
+        window.addEventListener("resize", updateScrollButtons);
+      });
+
+      onSnapshot(collection(db, "units"), (snap) => {
+        const grid = document.getElementById("display-unit-grid");
+        if (!grid) return;
+        grid.innerHTML = "";
+        surveyUnits = snap.docs.map((d) => ({ id: d.id, ...(d.data() || {}) }));
+        const limitedUnits = surveyUnits.slice(0, 3);
+        limitedUnits.forEach((val) => {
+          grid.innerHTML += `
+    <div class="bg-white rounded-3xl border overflow-hidden shadow-sm hover:shadow-md transition">
+      <div class="h-44 bg-slate-100 overflow-hidden">
+        <img src="${val.images?.[0] || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80"}" class="w-full h-full object-cover">
+      </div>
+      
+      <div class="p-5 space-y-4 text-xs">
+        <h4 class="font-extrabold text-slate-900 text-sm">${val.nama}</h4>
+        
+        <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-slate-500 font-semibold border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-maximize text-slate-400 w-4 text-center"></i>
+            <span>${val.lb}m² / ${val.lt}m²</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-layer-group text-slate-400 w-4 text-center"></i>
+            <span>${val.lantai || "1"} Lantai</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-bed text-slate-400 w-4 text-center"></i>
+            <span>${val.kt} Kamar Tidur</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-bath text-slate-400 w-4 text-center"></i>
+            <span>${val.km} Kamar Mandi</span>
+          </div>
+          <div class="flex items-center gap-2 col-span-2">
+            <i class="fa-solid fa-bolt text-amber-500 w-4 text-center"></i>
+            <span>Listrik: ${val.listrik || "1300"} VA</span>
+          </div>
+        </div>
+        
+        <a href="/detail-rumah/?id=${val.id}" class="block text-center bg-slate-900 text-white font-bold py-2.5 rounded-xl hover:bg-[#0d3b69] transition">Lihat Detail & Galeri</a>
+      </div>
+    </div>`;
+        });
+        renderSurveyUnitOptions();
+      });
+
+      onSnapshot(collection(db, "amenities"), (snap) => {
+        const iBox = document.getElementById("list-f-internal");
+        if (!iBox) return;
+        iBox.innerHTML = "";
+        snap.forEach((d) => {
+          const val = d.data();
+          if (val.kategori === "internal") {
+            iBox.innerHTML += `<div>· <span class="font-bold text-slate-900">${val.nama}</span> (${val.deskripsi})</div>`;
+          }
+        });
+      });
+
+      onSnapshot(collection(db, "testimonials"), (snap) => {
+        const grid = document.getElementById("testimonials-grid");
+        if (!grid) return;
+        grid.innerHTML = "";
+        grid.scrollTo({ left: 0, behavior: "smooth" });
+
+        if (snap.empty) {
+          grid.innerHTML = `
+            <div class="min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-sm text-slate-500">
+              Belum ada testimoni dari pelanggan.
+            </div>
+          `;
+          return;
+        }
+
+        snap.docs.forEach((d) => {
+          const val = d.data();
+          const rating = Number(val.rating || 5);
+          const stars = Array.from(
+            { length: 5 },
+            (_, i) => `
+            <i class="fa-solid fa-star ${i < rating ? "text-amber-400" : "text-slate-300"}"></i>
+          `,
+          ).join("");
+          const initials = (val.nama || "Customer")
+            .split(" ")
+            .map((word) => word[0] || "")
+            .slice(0, 2)
+            .join("")
+            .toUpperCase();
+
+          grid.innerHTML += `
+            <div class="testimonial-card min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] bg-slate-50 border border-slate-200 rounded-3xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition space-y-4 snap-start">
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <img src="${val.image || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"}" alt="${val.nama || "Customer"}" class="h-14 w-14 rounded-full object-cover border-2 border-white bg-slate-200 shadow-sm" />
+                  <span class="bg-[#0d3b69] text-white font-bold px-2.5 py-1 rounded-lg text-[9px] uppercase tracking-wider shadow">
+                    ${val.tipe || "Testimoni"}
+                  </span>
+                </div>
+                <div class="flex gap-0.5 text-[10px]">${stars}</div>
+                <p class="text-slate-600 text-xs italic leading-relaxed">“${val.pesan || "Pengalaman pelanggan sangat memuaskan."}”</p>
+              </div>
+              <div class="border-t border-slate-200 pt-3 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-[#0d3b69] text-white font-bold flex items-center justify-center text-[10px]">
+                  ${initials}
+                </div>
+                <div>
+                  <h5 class="font-extrabold text-slate-900 text-xs">${val.nama || "Customer"}</h5>
+                  <p class="text-slate-400 text-[10px]">${val.tipe || "Pelanggan"}</p>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      });
+    </script>
+  </body>
+</html>

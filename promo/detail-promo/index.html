@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Promo Nusa Grande</title>
+    <link rel="icon" type="image/png" href="/image/favicon-rounded.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .bg-\[\#0d3b69\] {
+        background: #0d3b69 !important;
+      }
+      .bg-\[\#0b3258\] {
+        background: #0b3258 !important;
+      }
+      .bg-\[\#e8eef5\] {
+        background: #e8eef5 !important;
+      }
+      .text-\[\#0d3b69\] {
+        color: #0d3b69 !important;
+      }
+      .text-\[\#3b6a99\] {
+        color: #3b6a99 !important;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
+    <header
+      class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-100 shadow-sm"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+      >
+        <a href="/" class="flex items-center">
+          <img src="/image/IMG_3493.PNG" alt="Logo" class="h-12 w-auto" />
+        </a>
+        <nav
+          class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-600"
+        >
+          <a href="/" class="hover:text-[#0d3b69] transition">Beranda</a>
+          <a href="/promo/" class="text-[#0d3b69]">Promo</a>
+          <a href="/profil/" class="hover:text-[#0d3b69] transition"
+            >Tentang Kami</a
+          >
+          <a href="/kpr/" class="hover:text-[#0d3b69] transition"
+            >Simulasi & Cek KPR</a
+          >
+          <a href="/#faq" class="hover:text-[#0d3b69] transition">FAQ</a>
+          <a href="/#kontak" class="hover:text-[#0d3b69] transition">Kontak</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a
+            href="https://rebrand.ly/CekSkorKPR"
+            target="_blank"
+            class="hidden lg:block bg-slate-900 text-white text-xs font-bold px-5 py-3 rounded-xl hover:bg-[#0d3b69] transition shadow-md"
+            >Cek Kesiapan KPR</a
+          >
+          <button
+            id="mobile-menu-toggle"
+            type="button"
+            class="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm"
+            aria-label="Buka menu"
+          >
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="bg-slate-900 text-white py-24">
+      <div class="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-6">
+        <p
+          class="text-[11px] uppercase tracking-[0.3em] text-[#8db0df] font-bold"
+        >
+          Detail Promo
+        </p>
+        <h1 class="text-4xl lg:text-5xl font-black tracking-tight">
+          Promo dan Artikel Terkait
+        </h1>
+        <p class="max-w-2xl mx-auto text-sm text-slate-300 leading-relaxed">
+          Lihat semua informasi lengkap tentang promo yang sedang berjalan dan
+          temukan artikel lain untuk inspirasi investasi hunian Anda.
+        </p>
+      </div>
+    </section>
+
+    <main class="py-12">
+      <div class="max-w-7xl mx-auto px-6 grid gap-10 xl:grid-cols-[2fr_1fr]">
+        <section class="space-y-8">
+          <div
+            id="promo-detail-card"
+            class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden"
+          >
+            <div
+              id="promo-detail-images"
+              class="relative h-72 bg-slate-100"
+            ></div>
+            <div class="p-6 space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <p
+                    class="text-[10px] font-extrabold uppercase tracking-[0.3em] text-[#0d3b69]"
+                  >
+                    Promo Nusa Grande
+                  </p>
+                  <h2
+                    id="promo-detail-title"
+                    class="text-3xl font-black text-slate-900"
+                  ></h2>
+                </div>
+                <a
+                  href="/promo/"
+                  class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-200 transition"
+                >
+                  <i class="fa-solid fa-arrow-left"></i>
+                  Kembali ke Promo
+                </a>
+              </div>
+              <div
+                id="promo-detail-description"
+                class="prose max-w-full text-slate-700"
+              ></div>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6"
+          >
+            <h3 class="text-xl font-black text-slate-900 mb-4">
+              Detail Tambahan
+            </h3>
+            <div
+              id="promo-detail-extra"
+              class="space-y-3 text-slate-600 text-sm"
+            ></div>
+          </div>
+        </section>
+
+        <aside class="space-y-6">
+          <div
+            class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6"
+          >
+            <h3 class="text-xl font-black text-slate-900 mb-4">
+              Artikel Lainnya
+            </h3>
+            <div id="related-promos" class="space-y-4"></div>
+          </div>
+          <div class="bg-[#0d3b69] rounded-3xl p-6 text-white">
+            <h3 class="text-xl font-black mb-3">Butuh Bantuan?</h3>
+            <p class="text-sm leading-relaxed mb-5">
+              Tim marketing siap membantu Anda menjelaskan setiap promo dan opsi
+              pembiayaan.
+            </p>
+            <a
+              href="https://wa.me/6281311770008?text=Halo%20Kak!%20Saya%20ingin%20bertanya%20tentang%20promo%20hunian%20di%20Nusa%20Grande."
+              target="_blank"
+              class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-bold text-[#0d3b69] hover:bg-slate-100 transition"
+            >
+              Hubungi Marketing
+            </a>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer
+      class="bg-slate-950 text-slate-400 py-12 text-xs border-t border-slate-900"
+    >
+      <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-3 gap-8 mb-8">
+        <div class="space-y-3">
+          <a href="/" class="flex items-center gap-2 text-white">
+            <div class="w-2.5 h-2.5 rounded-full bg-[#0d3b69]"></div>
+            <span class="font-black tracking-wider text-sm">NUSA GRANDE</span>
+          </a>
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            Kawasan hunian terpadu berwawasan modern tropis dengan jaminan
+            kepastian hukum, kenyamanan infrastruktur, dan nilai investasi
+            jangka panjang.
+          </p>
+        </div>
+        <div class="space-y-2">
+          <h4
+            class="font-bold text-white text-[11px] uppercase tracking-wider text-slate-500"
+          >
+            Navigasi Link
+          </h4>
+          <div class="grid grid-cols-2 gap-2 text-[11px]">
+            <a href="/" class="hover:text-white transition">Beranda</a>
+            <a href="/promo/" class="hover:text-white transition">Promo</a>
+            <a href="/profil/" class="hover:text-white transition"
+              >Tentang Kami</a
+            >
+            <a href="/kpr/" class="hover:text-white transition">Simulasi KPR</a>
+            <a href="/#faq" class="hover:text-white transition">FAQ</a>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <h4
+            class="font-bold text-white text-[11px] uppercase tracking-wider text-slate-500"
+          >
+            Kantor Pemasaran
+          </h4>
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            Jl. Utama Perumahan Nusa Grande, Blok A No. 01, Kota Palembang,
+            Sumatera Selatan.
+          </p>
+          <p class="text-[11px] font-bold text-slate-300">
+            Marketing Gallery buka setiap hari 08.00-17.00
+          </p>
+          <div class="overflow-hidden rounded-3xl border border-slate-800">
+            <iframe
+              src="https://maps.google.com/maps?q=Jl.+Utama+Perumahan+Nusa+Grande+Palembang&output=embed"
+              class="h-40 w-full"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto px-6 border-t border-slate-900 pt-6 text-center text-[11px] text-slate-600"
+      >
+        &copy; 2026 Nusa Grande. PT Wibawa Bangun Nusa. Hak Cipta Dilindungi.
+      </div>
+    </footer>
+
+    <div id="mobile-sidebar" class="fixed inset-0 z-[60] hidden">
+      <div
+        id="mobile-sidebar-backdrop"
+        class="absolute inset-0 bg-slate-950/60"
+      ></div>
+      <aside class="absolute right-0 top-0 h-full w-72 bg-white p-6 shadow-2xl">
+        <div class="mb-6 flex items-center justify-between">
+          <a href="/" class="flex items-center">
+            <img src="/image/IMG_3493.PNG" alt="Logo" class="h-10 w-auto" />
+          </a>
+          <button
+            id="mobile-menu-close"
+            type="button"
+            class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600"
+            aria-label="Tutup menu"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <nav class="space-y-3 text-sm font-semibold text-slate-700">
+          <a
+            href="/"
+            class="block rounded-xl bg-slate-100 px-4 py-3 text-[#0d3b69]"
+            >Beranda</a
+          >
+          <a href="/promo/" class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >Promo</a
+          >
+          <a
+            href="/profil/"
+            class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >Tentang Kami</a
+          >
+          <a href="/kpr/" class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >Simulasi & Cek KPR</a
+          >
+          <a href="/#faq" class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >FAQ</a
+          >
+          <a
+            href="/#kontak"
+            class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >Kontak</a
+          >
+        </nav>
+        <a
+          href="https://rebrand.ly/CekSkorKPR"
+          target="_blank"
+          class="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-4 py-3 text-sm font-bold text-white hover:bg-[#0d3b69]"
+        >
+          Cek Kesiapan KPR
+        </a>
+      </aside>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        doc,
+        onSnapshot,
+      } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAja6FfF_EW_N9y8pXmDX-10e0e51DJ4Cg",
+        authDomain: "project-home-54337.firebaseapp.com",
+        projectId: "project-home-54337",
+        storageBucket: "project-home-54337.firebasestorage.app",
+        messagingSenderId: "548607283431",
+        appId: "1:548607283431:web:1f58c56ce8b3c73a121242",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const queryParams = new URLSearchParams(window.location.search);
+      const promoId = queryParams.get("id");
+      const detailTitle = document.getElementById("promo-detail-title");
+      const detailImages = document.getElementById("promo-detail-images");
+      const detailDescription = document.getElementById(
+        "promo-detail-description",
+      );
+      const detailExtra = document.getElementById("promo-detail-extra");
+      const relatedPromos = document.getElementById("related-promos");
+
+      const promoFallback = () => {
+        if (detailTitle) detailTitle.textContent = "Promo tidak ditemukan";
+        if (detailImages)
+          detailImages.innerHTML = `<div class="flex h-full items-center justify-center text-slate-500">ID promo tidak tersedia atau belum dipilih.</div>`;
+        if (detailDescription)
+          detailDescription.innerHTML =
+            "<p class='text-slate-600'>Silakan kembali ke halaman semua promo untuk melihat daftar promo yang tersedia.</p>";
+      };
+
+      const renderPromoDetail = (promo) => {
+        if (!promo) {
+          promoFallback();
+          return;
+        }
+        const images =
+          Array.isArray(promo.images) && promo.images.length
+            ? promo.images
+            : promo.image
+              ? [promo.image]
+              : [
+                  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=80",
+                ];
+        detailTitle.textContent = promo.judul || "Promo Tanpa Judul";
+        detailImages.innerHTML = `
+          <div class="relative h-full overflow-hidden bg-slate-100">
+            <img id="promo-main-image" src="${images[0]}" alt="${promo.judul || "Promo"}" class="h-full w-full object-cover" />
+            ${
+              images.length > 1
+                ? `<div class="absolute inset-x-0 bottom-4 flex justify-center gap-2">${images
+                    .map(
+                      (src, imageIdx) => `
+                  <button type="button" data-image-index="${imageIdx}" class="h-3 w-3 rounded-full ${imageIdx === 0 ? "bg-white" : "bg-white/60"}"></button>
+                `,
+                    )
+                    .join("")}</div>`
+                : ""
+            }
+          </div>
+        `;
+        detailDescription.innerHTML =
+          promo.deskripsi ||
+          "<p class='text-slate-600'>Deskripsi promo belum tersedia.</p>";
+        detailExtra.innerHTML = `
+          <div class="space-y-3 text-slate-600 text-sm">
+            <p><strong>Judul Promo:</strong> ${promo.judul || "-"}</p>
+            <p><strong>Jumlah Foto:</strong> ${images.length}</p>
+            <p><strong>Terakhir diperbarui:</strong> ${promo.updatedAt || "-"}</p>
+          </div>
+        `;
+
+        detailImages
+          .querySelectorAll("button[data-image-index]")
+          .forEach((button) => {
+            button.addEventListener("click", () => {
+              const index = Number(button.getAttribute("data-image-index"));
+              const mainImage = document.getElementById("promo-main-image");
+              if (mainImage) mainImage.src = images[index];
+              detailImages
+                .querySelectorAll("button[data-image-index]")
+                .forEach((item, itemIdx) => {
+                  item.classList.toggle("bg-white", itemIdx === index);
+                  item.classList.toggle("bg-white/60", itemIdx !== index);
+                });
+            });
+          });
+      };
+
+      onSnapshot(collection(db, "promos"), (snap) => {
+        const promos = snap.docs.map((docItem) => ({
+          id: docItem.id,
+          ...(docItem.data() || {}),
+        }));
+        const selectedPromo = promos.find((item) => item.id === promoId);
+        renderPromoDetail(selectedPromo);
+
+        if (!relatedPromos) return;
+        const others = promos.filter((item) => item.id !== promoId).slice(0, 3);
+        relatedPromos.innerHTML = "";
+
+        if (!others.length) {
+          relatedPromos.innerHTML = `<p class="text-slate-600 text-sm">Tidak ada artikel lain saat ini.</p>`;
+          return;
+        }
+
+        relatedPromos.classList.add("grid", "gap-4");
+        others.forEach((promo) => {
+          const image =
+            Array.isArray(promo.images) && promo.images.length
+              ? promo.images[0]
+              : promo.image ||
+                "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=80";
+          const tmp = document.createElement("div");
+          tmp.innerHTML = promo.deskripsi || "";
+          const text = tmp.innerText || tmp.textContent || "";
+          const excerpt = text.length > 90 ? `${text.slice(0, 90)}...` : text;
+          relatedPromos.innerHTML += `
+            <a href="/promo/detail-promo/?id=${promo.id}" class="group block overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md">
+              <div class="aspect-square overflow-hidden bg-slate-100">
+                <img src="${image}" alt="${promo.judul || "Promo"}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              </div>
+              <div class="p-4 space-y-2">
+                <h4 class="font-black text-slate-900 text-sm">${promo.judul || "Promo Lain"}</h4>
+                <p class="text-slate-600 text-sm leading-relaxed line-clamp-3">${excerpt}</p>
+              </div>
+            </a>
+          `;
+        });
+      });
+
+      const mobileSidebar = document.getElementById("mobile-sidebar");
+      const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+      const mobileMenuClose = document.getElementById("mobile-menu-close");
+      const mobileSidebarBackdrop = document.getElementById(
+        "mobile-sidebar-backdrop",
+      );
+      const openMobileMenu = () => mobileSidebar?.classList.remove("hidden");
+      const closeMobileMenu = () => mobileSidebar?.classList.add("hidden");
+      mobileMenuToggle?.addEventListener("click", openMobileMenu);
+      mobileMenuClose?.addEventListener("click", closeMobileMenu);
+      mobileSidebarBackdrop?.addEventListener("click", closeMobileMenu);
+    </script>
+  </body>
+</html>

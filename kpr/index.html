@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finansial Portal - Simulasi & Cek KPR</title>
+    <link rel="icon" type="image/png" href="/image/favicon-rounded.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      #menu-toggle:checked ~ #mobile-menu {
+        max-height: 240px;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <header
+      class="bg-white border-b border-slate-100 shadow-sm sticky top-0 z-50"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between relative"
+      >
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+          <button
+            type="button"
+            onclick="if (window.history.length > 1) { window.history.back(); } else { window.location.href = '/'; }"
+            aria-label="Kembali ke halaman sebelumnya"
+            class="h-9 w-9 sm:h-10 sm:w-10 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center shadow-sm hover:bg-slate-50 hover:text-emerald-600 transition shrink-0"
+          >
+            <i class="fa-solid fa-arrow-left text-sm"></i>
+          </button>
+          <a href="/" class="flex items-center gap-2 min-w-0">
+            <img
+              src="/image/IMG_3493.PNG"
+              alt="Nusa Grande Logo"
+              class="h-8 sm:h-10 w-auto object-contain"
+            />
+          </a>
+        </div>
+        <nav
+          class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-600"
+        >
+          <a href="/" class="hover:text-emerald-600 transition"
+            >Beranda</a
+          >
+          <a href="/profil/" class="hover:text-emerald-600 transition"
+            >Tentang Kami</a
+          >
+          <a href="/kpr/" class="text-emerald-600">Simulasi & Cek KPR</a>
+        </nav>
+        <input type="checkbox" id="menu-toggle" class="hidden" />
+        <label
+          for="menu-toggle"
+          class="lg:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer"
+          aria-label="Buka menu"
+        >
+          <i class="fa-solid fa-bars text-lg"></i>
+        </label>
+        <div
+          id="mobile-menu"
+          class="absolute top-16 sm:top-20 left-0 w-full bg-white border-b border-slate-100 p-4 flex flex-col gap-2 text-sm font-bold text-slate-600 lg:hidden max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out shadow-md"
+        >
+          <a href="/" class="rounded-xl px-3 py-2 hover:bg-slate-50 hover:text-emerald-600 transition">Beranda</a>
+          <a href="/profil/" class="rounded-xl px-3 py-2 hover:bg-slate-50 hover:text-emerald-600 transition">Tentang Kami</a>
+          <a href="/kpr/" class="rounded-xl bg-slate-100 px-3 py-2 text-emerald-600">Simulasi & Cek KPR</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12 space-y-12">
+      <section
+        class="grid lg:grid-cols-2 gap-8 items-center bg-white p-6 rounded-3xl border"
+      >
+        <div class="space-y-4 text-xs font-medium">
+          <h2 class="text-lg font-black text-slate-900">
+            Kalkulator Angsuran KPR
+          </h2>
+          <div>
+            <label
+              class="block text-[10px] font-bold text-slate-400 mb-1 uppercase"
+              >Harga Rumah (Rp)</label
+            >
+            <input
+              type="number"
+              id="kpr-harga"
+              value="500000000"
+              class="w-full px-4 py-2.5 border rounded-xl bg-slate-50 outline-none"
+            />
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label
+                class="block text-[10px] font-bold text-slate-400 mb-1 uppercase"
+                >DP (%)</label
+              >
+              <input
+                type="number"
+                id="kpr-dp-pct"
+                value="10"
+                class="w-full px-4 py-2.5 border rounded-xl bg-slate-50 outline-none"
+              />
+            </div>
+            <div>
+              <label
+                class="block text-[10px] font-bold text-slate-400 mb-1 uppercase"
+                >Tenor</label
+              >
+              <select
+                id="kpr-tenor"
+                class="w-full px-4 py-2.5 border rounded-xl bg-slate-50 outline-none"
+              >
+                <option value="10">10 Tahun</option>
+                <option value="15" selected>15 Tahun</option>
+                <option value="20">20 Tahun</option>
+              </select>
+            </div>
+          </div>
+          <button
+            onclick="hitungKPR()"
+            class="w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-emerald-600 transition"
+          >
+            Hitung Angsuran
+          </button>
+        </div>
+        <div class="bg-slate-900 text-white p-6 rounded-2xl space-y-3">
+          <p class="text-[10px] uppercase text-slate-500 font-bold">
+            Angsuran Per Bulan (Estimasi Efektif 7.5%)
+          </p>
+          <p id="res-cicilan" class="text-2xl font-black text-emerald-400">
+            Rp 0
+          </p>
+        </div>
+      </section>
+
+      <section class="space-y-4">
+        <div class="text-center space-y-1">
+          <h2 class="text-lg font-black text-slate-900">
+            Cek Kesiapan Kelayakan KPR Mandiri
+          </h2>
+          <p class="text-xs text-slate-500">
+            Kirim data evaluasi rasio hutang finansial Anda untuk ditinjau oleh
+            analis perbankan internal kami.
+          </p>
+        </div>
+        <form
+          id="form-kpr-assessment"
+          class="bg-white p-6 rounded-3xl border space-y-4 text-xs font-medium shadow-sm"
+        >
+          <div class="grid sm:grid-cols-2 gap-4">
+            <input
+              type="text"
+              id="ka-nama"
+              required
+              placeholder="Nama Lengkap Pemohon"
+              class="w-full px-4 py-2.5 border rounded-xl bg-slate-50"
+            />
+            <input
+              type="text"
+              id="ka-wa"
+              required
+              placeholder="No. WhatsApp Aktif"
+              class="w-full px-4 py-2.5 border rounded-xl bg-slate-50"
+            />
+          </div>
+          <div class="grid sm:grid-cols-3 gap-2">
+            <input
+              type="number"
+              id="ka-gaji"
+              required
+              placeholder="Gaji Bersih /Bulan (Rp)"
+              class="w-full px-4 py-2.5 border rounded-xl bg-slate-50"
+            />
+            <input
+              type="number"
+              id="ka-cicilan"
+              required
+              placeholder="Cicilan Aktif Lain (Rp)"
+              class="w-full px-4 py-2.5 border rounded-xl bg-slate-50"
+            />
+            <input
+              type="number"
+              id="ka-harga"
+              required
+              placeholder="Harga Properti Target (Rp)"
+              class="w-full px-4 py-2.5 border rounded-xl bg-slate-50"
+            />
+          </div>
+          <button
+            type="submit"
+            id="btn-submit-assessment"
+            class="w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-emerald-600 transition flex items-center justify-center gap-2"
+          >
+            <span id="txt-assessment">Kirim Evaluasi Finansial</span>
+            <div
+              id="spin-assessment"
+              class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden"
+            ></div>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+      } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAja6FfF_EW_N9y8pXmDX-10e0e51DJ4Cg",
+        authDomain: "project-home-54337.firebaseapp.com",
+        projectId: "project-home-54337",
+      };
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      window.hitungKPR = function () {
+        const harga =
+          parseFloat(document.getElementById("kpr-harga").value) || 0;
+        const dpPct = document.getElementById("kpr-dp-pct").value || 0;
+        const tenor =
+          parseInt(document.getElementById("kpr-tenor").value) || 15;
+        const pinjaman = harga - harga * (dpPct / 100);
+        const bBulan = 0.075 / 12;
+        const tBulan = tenor * 12;
+        const cicilan =
+          (pinjaman * bBulan) / (1 - Math.pow(1 + bBulan, -tBulan));
+        document.getElementById("res-cicilan").innerText =
+          "Rp " + Math.round(cicilan).toLocaleString("id-ID");
+      };
+      window.hitungKPR();
+
+      document
+        .getElementById("form-kpr-assessment")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const btn = document.getElementById("btn-submit-assessment");
+          const spin = document.getElementById("spin-assessment");
+          btn.disabled = true;
+          spin.classList.remove("hidden");
+
+          const gaji =
+            parseFloat(document.getElementById("ka-gaji").value) || 0;
+          const cicilan =
+            parseFloat(document.getElementById("ka-cicilan").value) || 0;
+          const harga =
+            parseFloat(document.getElementById("ka-harga").value) || 0;
+
+          const limitAman = gaji * 0.3 - cicilan;
+          const bBulan = 0.075 / 12;
+          const tBulan = 15 * 12;
+          const estCicilan =
+            (harga * 0.9 * bBulan) / (1 - Math.pow(1 + bBulan, -tBulan));
+          const status =
+            limitAman >= estCicilan ? "Disetujui" : "Ditinjau Kembali";
+
+          try {
+            await addDoc(collection(db, "kpr_assessments"), {
+              nama: document.getElementById("ka-nama").value,
+              whatsapp: document.getElementById("ka-wa").value,
+              gaji,
+              cicilan_lain: cicilan,
+              harga_rumah: harga,
+              status,
+            });
+            alert(
+              status === "Disetujui"
+                ? "Hasil Awal: Finansial dinilai Sehat!"
+                : "Hasil Awal: Beban finansial tinggi, butuh alternatif solusi.",
+            );
+            document.getElementById("form-kpr-assessment").reset();
+          } catch (err) {
+            alert(err.message);
+          } finally {
+            btn.disabled = false;
+            spin.classList.add("hidden");
+          }
+        });
+    </script>
+  </body>
+</html>
