@@ -34,7 +34,13 @@
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
           <button
             type="button"
-            onclick="if (window.history.length > 1) { window.history.back(); } else { window.location.href = '/'; }"
+            onclick="
+              if (window.history.length > 1) {
+                window.history.back();
+              } else {
+                window.location.href = '/';
+              }
+            "
             aria-label="Kembali ke halaman sebelumnya"
             class="h-9 w-9 sm:h-10 sm:w-10 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center shadow-sm hover:bg-slate-50 hover:text-emerald-600 transition shrink-0"
           >
@@ -51,9 +57,7 @@
         <nav
           class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-600"
         >
-          <a href="/" class="hover:text-emerald-600 transition"
-            >Beranda</a
-          >
+          <a href="/" class="hover:text-emerald-600 transition">Beranda</a>
           <a href="/profil/" class="hover:text-emerald-600 transition"
             >Tentang Kami</a
           >
@@ -71,14 +75,26 @@
           id="mobile-menu"
           class="absolute top-16 sm:top-20 left-0 w-full bg-white border-b border-slate-100 p-4 flex flex-col gap-2 text-sm font-bold text-slate-600 lg:hidden max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out shadow-md"
         >
-          <a href="/" class="rounded-xl px-3 py-2 hover:bg-slate-50 hover:text-emerald-600 transition">Beranda</a>
-          <a href="/profil/" class="rounded-xl px-3 py-2 hover:bg-slate-50 hover:text-emerald-600 transition">Tentang Kami</a>
-          <a href="/kpr/" class="rounded-xl bg-slate-100 px-3 py-2 text-emerald-600">Simulasi & Cek KPR</a>
+          <a
+            href="/"
+            class="rounded-xl px-3 py-2 hover:bg-slate-50 hover:text-emerald-600 transition"
+            >Beranda</a
+          >
+          <a
+            href="/profil/"
+            class="rounded-xl px-3 py-2 hover:bg-slate-50 hover:text-emerald-600 transition"
+            >Tentang Kami</a
+          >
+          <a
+            href="/kpr/"
+            class="rounded-xl bg-slate-100 px-3 py-2 text-emerald-600"
+            >Simulasi & Cek KPR</a
+          >
         </div>
       </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-12 space-y-12">
+    <main class="max-w-7xl mx-auto px-6 py-12 space-y-12">
       <section
         class="grid lg:grid-cols-2 gap-8 items-center bg-white p-6 rounded-3xl border"
       >
@@ -128,88 +144,165 @@
           </div>
           <button
             onclick="hitungKPR()"
-            class="w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-emerald-600 transition"
+            class="w-full bg-[#0d3b69] text-white font-bold py-3 rounded-xl hover:bg-emerald-600 transition"
           >
             Hitung Angsuran
           </button>
         </div>
-        <div class="bg-slate-900 text-white p-6 rounded-2xl space-y-3">
-          <p class="text-[10px] uppercase text-slate-500 font-bold">
+        <div class="bg-[#0d3b69] text-white p-6 rounded-2xl space-y-3">
+          <p class="text-[10px] uppercase text-white font-bold">
             Angsuran Per Bulan (Estimasi Efektif 7.5%)
           </p>
-          <p id="res-cicilan" class="text-2xl font-black text-emerald-400">
-            Rp 0
-          </p>
+          <p id="res-cicilan" class="text-2xl font-black text-white">Rp 0</p>
         </div>
-      </section>
-
-      <section class="space-y-4">
-        <div class="text-center space-y-1">
-          <h2 class="text-lg font-black text-slate-900">
-            Cek Kesiapan Kelayakan KPR Mandiri
-          </h2>
-          <p class="text-xs text-slate-500">
-            Kirim data evaluasi rasio hutang finansial Anda untuk ditinjau oleh
-            analis perbankan internal kami.
-          </p>
-        </div>
-        <form
-          id="form-kpr-assessment"
-          class="bg-white p-6 rounded-3xl border space-y-4 text-xs font-medium shadow-sm"
-        >
-          <div class="grid sm:grid-cols-2 gap-4">
-            <input
-              type="text"
-              id="ka-nama"
-              required
-              placeholder="Nama Lengkap Pemohon"
-              class="w-full px-4 py-2.5 border rounded-xl bg-slate-50"
-            />
-            <input
-              type="text"
-              id="ka-wa"
-              required
-              placeholder="No. WhatsApp Aktif"
-              class="w-full px-4 py-2.5 border rounded-xl bg-slate-50"
-            />
-          </div>
-          <div class="grid sm:grid-cols-3 gap-2">
-            <input
-              type="number"
-              id="ka-gaji"
-              required
-              placeholder="Gaji Bersih /Bulan (Rp)"
-              class="w-full px-4 py-2.5 border rounded-xl bg-slate-50"
-            />
-            <input
-              type="number"
-              id="ka-cicilan"
-              required
-              placeholder="Cicilan Aktif Lain (Rp)"
-              class="w-full px-4 py-2.5 border rounded-xl bg-slate-50"
-            />
-            <input
-              type="number"
-              id="ka-harga"
-              required
-              placeholder="Harga Properti Target (Rp)"
-              class="w-full px-4 py-2.5 border rounded-xl bg-slate-50"
-            />
-          </div>
-          <button
-            type="submit"
-            id="btn-submit-assessment"
-            class="w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-emerald-600 transition flex items-center justify-center gap-2"
-          >
-            <span id="txt-assessment">Kirim Evaluasi Finansial</span>
-            <div
-              id="spin-assessment"
-              class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin hidden"
-            ></div>
-          </button>
-        </form>
       </section>
     </main>
+    <footer
+      class="bg-[#0d3b69] text-white py-12 text-xs border-t border-slate-900"
+    >
+      <div class="mx-12 px-6 grid sm:grid-cols-5 gap-8 mb-8">
+        <div class="space-y-2">
+          <a href="#" class="flex items-center gap-2 text-white">
+            <h4
+              class="font-bold text-white text-[11px] uppercase tracking-wider text-slate-500"
+            >
+              NUSA GRANDE
+            </h4>
+          </a>
+          <p class="text-[11px] leading-relaxed text-justify">
+            Nusa Grande merupakan kawasan hunian modern di lokasi strategis Kota
+            Palembang yang dirancang untuk memberikan kenyamanan sekaligus nilai
+            investasi yang menjanjikan. Didukung akses yang mudah, fasilitas
+            sekitar yang lengkap, serta lingkungan yang terus berkembang, Nusa
+            Grande menjadi pilihan tepat bagi Anda yang ingin memiliki rumah
+            maupun berinvestasi untuk masa depan.
+          </p>
+        </div>
+        <div class="space-y-2">
+          <h4
+            class="font-bold text-white text-[11px] uppercase tracking-wider text-slate-500"
+          >
+            Menu
+          </h4>
+          <div class="flex flex-col space-y-2 text-[11px]">
+            <a href="/" class="hover:text-white transition"> Beranda </a>
+
+            <a href="/profil/" class="hover:text-white transition">
+              Tentang Kami
+            </a>
+
+            <a href="#promo" class="hover:text-white transition"> Promo </a>
+            <a href="/kpr/" class="hover:text-white transition">
+              Cek Kesiapan KPR
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h4
+            class="font-bold text-white text-[11px] uppercase tracking-wider text-slate-500"
+          >
+            Produk
+          </h4>
+          <div class="flex flex-col space-y-2 text-[11px]">
+            <a href="/properti/" class="hover:text-white transition">
+              Lantai 1
+            </a>
+
+            <a href="/properti/" class="hover:text-white transition">
+              Lantai 2
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h4
+            class="font-bold text-white text-[11px] uppercase tracking-wider text-slate-500"
+          >
+            Informasi Lainnya
+          </h4>
+          <div class="flex flex-col space-y-2 text-[11px]">
+            <a href="/profil/" class="hover:text-white transition">
+              Hubungi Kami
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-5">
+          <h4 class="font-bold text-white text-sm uppercase tracking-wider">
+            Marketing Gallery
+          </h4>
+
+          <!-- Jam Operasional -->
+          <div class="flex items-center gap-3 text-slate-400">
+            <div
+              class="w-10 h-10 rounded-full bg-white border border-white flex items-center justify-center"
+            >
+              <i class="fa-regular fa-clock text-[#0d3b69]"></i>
+            </div>
+
+            <div>
+              <p class="text-white font-semibold text-sm">Buka Setiap Hari</p>
+              <p class="text-xs">08.00 - 17.00 WIB</p>
+            </div>
+          </div>
+
+          <!-- Nomor Marketing -->
+          <a
+            href="https://wa.me/6281311770008"
+            target="_blank"
+            class="flex items-center gap-3 text-slate-400 hover:text-white transition"
+          >
+            <div
+              class="w-10 h-10 rounded-full bg-white border border-white flex items-center justify-center"
+            >
+              <i class="fa-brands fa-whatsapp text-green-00"></i>
+            </div>
+
+            <div>
+              <p class="text-white font-semibold text-sm">Hubungi Marketing</p>
+              <p class="text-xs">+62 813-1177-0008</p>
+            </div>
+          </a>
+
+          <!-- Social Media -->
+          <div class="pt-2">
+            <h4 class="font-bold text-white text-sm mb-3">Sosial Media</h4>
+
+            <div class="flex items-center gap-3">
+              <a
+                href="https://www.instagram.com/nusagrande.official/"
+                target="_blank"
+                class="w-11 h-11 rounded-full border border-slate-700 flex items-center justify-center hover:bg-[#0d3b69] hover:border-[#0d3b69] transition text-white"
+              >
+                <i class="fa-brands fa-instagram text-lg"></i>
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@nusagrande.official"
+                target="_blank"
+                class="w-11 h-11 rounded-full border border-slate-700 flex items-center justify-center hover:bg-[#0d3b69] hover:border-[#0d3b69] transition text-white"
+              >
+                <i class="fa-brands fa-tiktok text-lg"></i>
+              </a>
+
+              <a
+                href="https://www.facebook.com/share/18f7rmFZZo/"
+                target="_blank"
+                class="w-11 h-11 rounded-full border border-slate-700 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition text-white"
+              >
+                <i class="fa-brands fa-facebook-f text-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto px-6 border-t border-white pt-6 text-center text-[11px] text-white"
+      >
+        &copy; 2026 Nusa Grande. PT Wibawa Bangun Nusa. Hak Cipta Dilindungi.
+      </div>
+    </footer>
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
