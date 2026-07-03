@@ -69,7 +69,7 @@
         </nav>
         <a
           href="/kpr/"
-          class="hidden lg:block bg-slate-900 text-white text-xs font-bold px-5 py-3 rounded-xl hover:bg-[#0d3b69] transition shadow-md"
+          class="hidden lg:block bg-[#0d3b69] text-white text-xs font-bold px-5 py-3 rounded-xl hover:bg-[#0d3b69] transition shadow-md"
         >
           Cek Kesiapan KPR
         </a>
@@ -114,7 +114,7 @@
       </div>
     </header>
 
-    <section class="bg-slate-900 text-white py-20 lg:py-24">
+    <section class="bg-[#0d3b69] text-white py-20 lg:py-24">
       <div class="max-w-7xl mx-auto px-6">
         <div class="max-w-3xl space-y-4">
           <span
@@ -430,7 +430,7 @@
           { value: "all", label: "Semua Unit" },
           ...bedrooms.map((bedroom) => ({
             value: bedroom,
-            label: `${bedroom} KT`,
+            label: `${bedroom} Kamar Tidur`,
           })),
         ];
 
@@ -532,7 +532,7 @@
                   <span>Listrik: ${val.listrik || "1300"} VA</span>
                 </div>
               </div>
-              <a href="/detail-rumah/?id=${doc.id}" class="block text-center bg-slate-900 text-white font-bold py-2.5 rounded-xl hover:bg-[#0d3b69] transition">Lihat Detail & Galeri</a>
+              <a href="/detail-rumah/?id=${doc.id}" class="block text-center bg-[#0d3b69] text-white font-bold py-2.5 rounded-xl hover:bg-[#0d3b69] transition">Lihat Detail & Galeri</a>
             </div>`;
           grid.appendChild(card);
         });
