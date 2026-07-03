@@ -282,11 +282,6 @@
     <section id="tipe" class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-6 space-y-12">
         <div class="text-center space-y-1">
-          <p
-            class="text-[#0d3b69] text-xs font-extrabold uppercase tracking-widest"
-          >
-            Listing Properti
-          </p>
           <h2 class="text-2xl font-black text-slate-900 tracking-tight">
             Tipe Rumah
           </h2>
@@ -793,17 +788,15 @@
       </div>
     </section>
 
-    <section id="faq" class="py-20 bg-slate-900 border-t border-slate-200">
+    <section id="faq" class="py-20 bg-[#0d3b69] border-t border-slate-200">
       <div class="max-w-4xl mx-auto px-6 space-y-10">
         <div class="text-center space-y-1">
-          <p
-            class="text-white text-xs font-extrabold uppercase tracking-widest"
-          >
-            FAQ
-          </p>
-          <h2 class="text-2xl font-black text-white tracking-tight">
-            Pertanyaan yang Sering Diajukan
+          <h2 class="text-lg font-black text-white rounded tracking-tight">
+            Nusa Grande
           </h2>
+          <p class="text-white text-2xl font-extrabold tracking-widest">
+            Frequently Asked Question
+          </p>
         </div>
 
         <div class="space-y-3">
@@ -980,21 +973,20 @@
             data-open-survey
             class="bg-[#0d3b69] text-white px-6 py-3.5 rounded-xl hover:bg-[#0d3b69]transition shadow-lg flex items-center gap-2"
           >
-            <i class="fa-solid fa-calendar-days"></i> Jadwalkan Kunjungan Survey
+            <i class="fa-solid fa-calendar-days"></i> Jadwalkan Survey
           </button>
           <a
             href="https://wa.me/6281311770008?text=Halo%20Kak!%20%F0%9F%91%8B%0A%0ASaya%20tertarik%20dengan%20Perumahan%20Nusa%20Grande.%20%F0%9F%8F%A1%0ABoleh%20minta%20informasi%20lebih%20lanjut%20mengenai%20proyek%20ini%3F%20Mohon%20bantu%20penjelasannya%20ya.%20%F0%9F%98%8A%0A%0ATerima%20kasih%20banyak.%20%F0%9F%99%8F"
             target="_blank"
             class="bg-[#0d3b69] text-white px-6 py-3.5 rounded-xl flex items-center gap-2 hover:bg-[#0b3258] transition shadow-lg"
-            ><i class="fa-brands fa-whatsapp text-sm"></i> Chat Hubungi
-            Marketing</a
+            ><i class="fa-brands fa-whatsapp text-sm"></i> Hubungi Marketing</a
           >
         </div>
       </div>
     </section>
 
     <footer
-      class="bg-[#0d3b69] text-slate-400 py-12 text-xs border-t border-slate-900"
+      class="bg-[#0d3b69] text-white py-12 text-xs border-t border-slate-900"
     >
       <div class="mx-12 px-6 grid sm:grid-cols-5 gap-8 mb-8">
         <div class="space-y-2">
@@ -1072,7 +1064,7 @@
           <!-- Jam Operasional -->
           <div class="flex items-center gap-3 text-slate-400">
             <div
-              class="w-10 h-10 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center"
+              class="w-10 h-10 rounded-full bg-white border border-white flex items-center justify-center"
             >
               <i class="fa-regular fa-clock text-[#0d3b69]"></i>
             </div>
@@ -1090,9 +1082,9 @@
             class="flex items-center gap-3 text-slate-400 hover:text-white transition"
           >
             <div
-              class="w-10 h-10 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center"
+              class="w-10 h-10 rounded-full bg-white border border-white flex items-center justify-center"
             >
-              <i class="fa-brands fa-whatsapp text-green-500"></i>
+              <i class="fa-brands fa-whatsapp text-green-00"></i>
             </div>
 
             <div>
@@ -1201,7 +1193,7 @@
     <button
       id="scroll-to-top"
       type="button"
-      class="fixed bottom-24 right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-[#0d3b69] text-2xl text-white shadow-2xl transition hover:scale-105"
+      class="fixed bottom-24 border right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-[#0d3b69] text-2xl text-white shadow-2xl transition hover:scale-105"
       aria-label="Kembali ke atas"
     >
       <i class="fa-solid fa-arrow-up"></i>
@@ -1210,7 +1202,7 @@
     <a
       href="https://wa.me/6281311770008?text=Halo%20Kak!%20%F0%9F%91%8B%0A%0ASaya%20tertarik%20dengan%20Perumahan%20Nusa%20Grande.%20%F0%9F%8F%A1%0ABoleh%20minta%20informasi%20lebih%20lanjut%20mengenai%20proyek%20ini%3F%20Mohon%20bantu%20penjelasannya%20ya.%20%F0%9F%98%8A%0A%0ATerima%20kasih%20banyak.%20%F0%9F%99%8F"
       target="_blank"
-      class="fixed bottom-6 right-6 z-50 bg-[#0d3b69] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-105 transition-all"
+      class="fixed bottom-6 border right-6 z-50 bg-[#0d3b69] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-105 transition-all"
       ><i class="fa-brands fa-whatsapp"></i
     ></a>
 
@@ -1304,6 +1296,8 @@
         getFirestore,
         collection,
         onSnapshot,
+        query,
+        orderBy,
       } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
       const firebaseConfig = {
@@ -1708,7 +1702,13 @@
         window.addEventListener("resize", updateScrollButtons);
       });
 
-      onSnapshot(collection(db, "units"), (snap) => {
+      const q = query(
+        collection(db, "units"),
+
+        orderBy("no", "asc"),
+      );
+
+      onSnapshot(q, (snap) => {
         const grid = document.getElementById("display-unit-grid");
         if (!grid) return;
         grid.innerHTML = "";
@@ -1808,7 +1808,7 @@
         <img
             src="${val.image || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80"}"
             alt="${val.nama || "Customer"}"
-            class="w-24 h-24 rounded-full object-contain object-center flex-shrink-0 shadow-md"
+            class="w-24 h-24 rounded-full object-cover object-top flex-shrink-0 shadow-md"
         />
 
         <!-- Informasi -->
