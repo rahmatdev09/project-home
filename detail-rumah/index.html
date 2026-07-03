@@ -336,26 +336,13 @@
           <h4
             class="font-extrabold uppercase tracking-wider text-[10px] text-slate-400"
           >
-            Detail Tambahan Unit
+            Spesifikasi Bangunan
           </h4>
         </div>
 
         <div
           class="grid gap-3 grid-cols-1 min-[430px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
         >
-          <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
-            <p
-              class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
-            >
-              Tipe Unit
-            </p>
-            <p
-              id="extra-tipe"
-              class="mt-0.5 text-xs sm:text-sm font-extrabold text-slate-900"
-            >
-              Premium
-            </p>
-          </div>
           <div class="rounded-xl border border-slate-100 bg-slate-50 p-3">
             <p
               class="text-[9px] font-bold uppercase tracking-wide text-slate-400"
@@ -738,8 +725,7 @@
             `${val.listrik || "1300"} VA`;
           document.getElementById("spec-jumlah-lantai").innerText =
             `${val.lantai || 1} Lantai`;
-          document.getElementById("extra-tipe").innerText =
-            val.tipe || val.type || "Premium";
+
           document.getElementById("extra-sertifikat").innerText =
             val.sertifikat || "SHM";
           document.getElementById("extra-pondasi").innerText =
