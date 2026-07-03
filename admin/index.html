@@ -33,6 +33,25 @@
         background: #cbd5e1;
         border-radius: 10px;
       }
+      .cursor-grab {
+        cursor: grab;
+      }
+
+      .cursor-grab:active {
+        cursor: grabbing;
+      }
+
+      .dragging {
+        opacity: 0.4;
+
+        background: #ecfeff;
+      }
+
+      .dragging-active {
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+
+        transform: scale(1.02);
+      }
     </style>
   </head>
   <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex">
@@ -510,6 +529,8 @@
             <table class="w-full text-left text-xs whitespace-nowrap">
               <thead class="bg-slate-50 border-b font-bold text-slate-500">
                 <tr>
+                  <th class="p-4"></th>
+                  <th class="p-4">No</th>
                   <th class="p-4 pl-8">Foto Utama</th>
                   <th class="p-4">Nama Unit</th>
                   <th class="p-4">Kamar (KT/KM)</th>
@@ -1829,6 +1850,7 @@
       </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
       import {
@@ -1852,6 +1874,7 @@
         query,
         where,
         getDoc,
+        orderBy,
       } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
       const firebaseConfig = {
         apiKey: "AIzaSyAja6FfF_EW_N9y8pXmDX-10e0e51DJ4Cg",
@@ -2060,7 +2083,7 @@
       window.changeMainImageInEdit = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
-        editedMainImageBase64 = await compressImage(file, 800, 0.7);
+        editedMainImageBase64 = await compressImage(file, 1600, 0.9);
         document.getElementById("edit-preview-main-img").src =
           editedMainImageBase64;
       };
@@ -2091,14 +2114,20 @@
         }
       };
 
-      onSnapshot(collection(db, "units"), (snap) => {
+      const q = query(collection(db, "units"), orderBy("no", "asc"));
+
+      onSnapshot(q, (snap) => {
         document.getElementById("count-unit").innerText = snap.size;
         const tbody = document.getElementById("table-unit");
         tbody.innerHTML = "";
         snap.forEach((d) => {
           const val = d.data();
           tbody.innerHTML += `
-            <tr class="hover:bg-slate-50 transition">
+            <tr data-id="${d.id}" class="hover:bg-slate-50 transition">
+              <td class=" p-4 text-center cursor-grab">
+                  <i class="fa-solid fa-grip-vertical text-slate-400"></i>
+              </td>
+               <td class=" p-4 font-bold text-slate-900">${val.no}</td>
               <td class="p-4 pl-8"><img src="${val.images?.[0] || ""}" class="w-12 h-10 object-cover rounded-lg border"></td>
               <td class="p-4 font-bold text-slate-900">${val.nama}</td>
               <td class="p-4 text-slate-600 font-semibold">${val.kt || 0} KT / ${val.km || 0} KM</td>
@@ -2109,6 +2138,8 @@
               </td>
             </tr>`;
         });
+
+        enableDrag();
       });
 
       window.manageUnitDetails = async (id) => {
@@ -2206,7 +2237,7 @@
         const files = Array.from(event.target.files);
         if (!currentActiveUnitId) return;
         for (const file of files) {
-          const b64 = await compressImage(file, 800, 0.65);
+          const b64 = await compressImage(file, 1920, 0.9);
           await addDoc(collection(db, "galleries"), {
             unit_id: currentActiveUnitId,
             image: b64,
@@ -2216,6 +2247,34 @@
         }
         window.showAlert("Berhasil", "Foto galeri ditambahkan.");
       };
+
+      function enableDrag() {
+        const tbody = document.getElementById("table-unit");
+
+        Sortable.create(tbody, {
+          animation: 200,
+
+          handle: ".fa-grip-vertical",
+
+          ghostClass: "dragging",
+
+          chosenClass: "dragging-active",
+
+          onEnd: async function () {
+            const rows = [...tbody.querySelectorAll("tr")];
+
+            for (let i = 0; i < rows.length; i++) {
+              const id = rows[i].dataset.id;
+
+              await updateDoc(doc(db, "units", id), {
+                no: i + 1,
+              });
+            }
+
+            showAlert("Sukses", "Urutan berhasil diperbarui");
+          },
+        });
+      }
 
       function listenToSpecificGallery(id) {
         const q = query(
