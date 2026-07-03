@@ -260,6 +260,8 @@
         getFirestore,
         collection,
         onSnapshot,
+        orderBy,
+        query,
       } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
       const firebaseConfig = {
@@ -422,20 +424,7 @@
             <div class="p-4 sm:p-5 space-y-3 sm:space-y-4 text-[11px] sm:text-xs">
               <div class="flex items-start justify-between gap-2">
                 <h4 class="font-extrabold text-slate-900 text-sm">${val.nama || "Unit Premium"}</h4>
-                <span class="shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold ${(() => {
-                  const bedroomCount = Number(val.kt || 0);
-                  if (bedroomCount >= 4) return "bg-amber-100 text-amber-700";
-                  if (bedroomCount === 3)
-                    return "bg-emerald-100 text-emerald-700";
-                  if (bedroomCount === 2) return "bg-sky-100 text-sky-700";
-                  return "bg-slate-100 text-slate-700";
-                })()}">${(() => {
-                  const bedroomCount = Number(val.kt || 0);
-                  if (bedroomCount >= 4) return "Keluarga Besar";
-                  if (bedroomCount === 3) return "Keluarga Menengah";
-                  if (bedroomCount === 2) return "Keluarga Kecil";
-                  return "Studio";
-                })()} · ${val.kt || 0} KT</span>
+               
               </div>
               <div class="grid grid-cols-1 gap-2 text-slate-500 font-semibold border-b border-slate-100 pb-3 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-2">
                 <div class="flex items-center gap-2 rounded-lg bg-slate-50 px-2.5 py-2">
@@ -513,7 +502,9 @@
         });
       }
 
-      onSnapshot(collection(db, "units"), (snap) => {
+      const q = query(collection(db, "units"), orderBy("no", "asc"));
+
+      onSnapshot(q, (snap) => {
         allItems = snap.docs.map((doc) => ({ doc }));
         currentPage = 1;
         isLoading = false;
