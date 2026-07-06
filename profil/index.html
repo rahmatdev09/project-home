@@ -1,0 +1,925 @@
+<!DOCTYPE doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang Kami - PT Wibawa Bangun Nusa</title>
+    <link rel="icon" type="image/png" href="/image/favicon-rounded.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      #menu-toggle:checked ~ #mobile-menu {
+        max-height: 240px;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <header
+      class="bg-white border-b border-slate-100 shadow-sm sticky top-0 z-50"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between relative"
+      >
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+          <button
+            type="button"
+            onclick="
+              if (window.history.length > 1) {
+                window.history.back();
+              } else {
+                window.location.href = '/';
+              }
+            "
+            aria-label="Kembali ke halaman sebelumnya"
+            class="h-9 w-9 sm:h-10 sm:w-10 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center shadow-sm hover:bg-slate-50 hover:text-emerald-600 transition shrink-0"
+          >
+            <i class="fa-solid fa-arrow-left text-sm"></i>
+          </button>
+          <a href="/" class="flex items-center gap-2 min-w-0">
+            <img
+              src="/image/IMG_3493.PNG"
+              alt="Nusa Grande Logo"
+              class="h-8 sm:h-10 w-auto object-contain"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'block';
+              "
+            />
+            <span
+              class="font-black text-slate-900 tracking-wider text-sm hidden"
+              >NUSA GRANDE</span
+            >
+          </a>
+        </div>
+        <nav
+          class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-600"
+        >
+          <a href="/" class="hover:text-emerald-600 transition">Beranda</a>
+          <a href="/profil/" class="text-emerald-600">Tentang Kami</a>
+          <a href="/kpr/" class="hover:text-emerald-600 transition"
+            >Simulasi & Cek KPR</a
+          >
+        </nav>
+        <input type="checkbox" id="menu-toggle" class="hidden" />
+        <label
+          for="menu-toggle"
+          class="lg:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm cursor-pointer"
+          aria-label="Buka menu"
+        >
+          <i class="fa-solid fa-bars text-lg"></i>
+        </label>
+        <div
+          id="mobile-menu"
+          class="absolute top-16 sm:top-20 left-0 w-full bg-white border-b border-slate-100 p-4 flex flex-col gap-2 text-sm font-bold text-slate-600 lg:hidden max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out shadow-md"
+        >
+          <a
+            href="/"
+            class="rounded-xl px-3 py-2 hover:bg-slate-50 hover:text-emerald-600 transition"
+            >Beranda</a
+          >
+          <a
+            href="/profil/"
+            class="rounded-xl bg-slate-100 px-3 py-2 text-emerald-600"
+            >Tentang Kami</a
+          >
+          <a
+            href="/kpr/"
+            class="rounded-xl px-3 py-2 hover:bg-slate-50 hover:text-emerald-600 transition"
+            >Simulasi & Cek KPR</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-16 space-y-12">
+      <div class="text-center space-y-2">
+        <span
+          class="text-emerald-600 text-xs font-extrabold uppercase tracking-widest"
+          >Nusa Grande</span
+        >
+        <h1 class="text-3xl font-black text-slate-900 tracking-tight">
+          PT Wibawa Bangun Nusa
+        </h1>
+      </div>
+
+      <div class="h-64 bg-slate-200 rounded-3xl overflow-hidden shadow-inner">
+        <img src="../image/KAWASAN.jpeg" class="w-full h-full object-cover" />
+      </div>
+
+      <div class="space-y-4 text-xs">
+        <h3 class="font-extrabold text-slate-900 text-sm">
+          Profil Developer PT Wibawa Bangun Nusa
+        </h3>
+        <p
+          id="txt-about-desc"
+          class="text-slate-600 leading-relaxed whitespace-pre-line text-justify"
+        >
+          Memuat deskripsi lengkap dan rekam jejak legalitas dari database...
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6 text-xs border-b pb-8">
+        <div class="space-y-1">
+          <h3
+            class="font-bold uppercase tracking-wide text-[10px] text-slate-400"
+          >
+            Visi Kami
+          </h3>
+          <p id="txt-visi" class="text-slate-600 leading-relaxed">
+            Memuat visi...
+          </p>
+        </div>
+        <div class="space-y-1">
+          <h3
+            class="font-bold uppercase tracking-wide text-[10px] text-slate-400"
+          >
+            Misi Kami
+          </h3>
+          <p id="txt-misi" class="text-slate-600 leading-relaxed">
+            Memuat misi...
+          </p>
+        </div>
+      </div>
+
+      <section class="py-20">
+        <!-- Heading -->
+        <div class="text-center mb-14">
+          <span
+            class="inline-flex items-center rounded-full bg-[#0d3b69]/10 px-4 py-2 text-xs font-bold uppercase tracking-[4px] text-[#0d3b69]"
+          >
+            OUR TEAM
+          </span>
+
+          <h2 class="mt-5 text-4xl font-black text-slate-900">Tim Terampil</h2>
+
+          <p class="mt-3 max-w-2xl mx-auto text-slate-500 leading-7">
+            Didukung oleh tenaga profesional yang berpengalaman dalam
+            pengembangan kawasan hunian modern dan berkualitas.
+          </p>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <!-- ===================== -->
+          <!-- CARD -->
+          <!-- ===================== -->
+          <div
+            class="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <div
+              class="h-28 bg-gradient-to-br from-[#0d3b69] via-[#145DA0] to-[#3B82F6] relative"
+            >
+              <div class="absolute -bottom-14 left-1/2 -translate-x-1/2">
+                <img
+                  src="../image/mugiwarto.jpeg"
+                  class="h-28 w-28 rounded-full border-[6px] border-white object-cover shadow-xl transition duration-300 group-hover:scale-105"
+                />
+              </div>
+            </div>
+
+            <div class="px-7 pt-20 pb-8 text-center">
+              <span
+                class="inline-flex rounded-full bg-[#0d3b69]/10 px-4 py-2 text-[11px] font-bold uppercase tracking-wide text-[#0d3b69]"
+              >
+                Presiden Komisaris
+              </span>
+
+              <h3 class="mt-4 text-2xl font-black text-slate-900">MUGIARTO</h3>
+
+              <div
+                class="mx-auto mt-4 h-1 w-14 rounded-full bg-[#0d3b69]"
+              ></div>
+
+              <p class="mt-5 text-sm leading-7 text-slate-600">
+                Melakukan pengawasan terhadap kebijakan perusahaan serta
+                memberikan arahan strategis kepada Direksi dalam menjalankan
+                perusahaan.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD -->
+          <div
+            class="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <div
+              class="h-28 bg-gradient-to-br from-[#0d3b69] via-[#145DA0] to-[#3B82F6] relative"
+            >
+              <div class="absolute -bottom-14 left-1/2 -translate-x-1/2">
+                <img
+                  src="../image/devi.jpeg"
+                  class="h-28 w-28 rounded-full border-[6px] border-white object-cover shadow-xl"
+                />
+              </div>
+            </div>
+
+            <div class="px-7 pt-20 pb-8 text-center">
+              <span
+                class="inline-flex rounded-full bg-[#0d3b69]/10 px-4 py-2 text-[11px] font-bold uppercase text-[#0d3b69]"
+              >
+                Direktur
+              </span>
+
+              <h3 class="mt-4 text-2xl font-black">DEVI MEIDIYANTI</h3>
+
+              <div
+                class="mx-auto mt-4 h-1 w-14 rounded-full bg-[#0d3b69]"
+              ></div>
+
+              <p class="mt-5 text-sm leading-7 text-slate-600">
+                Bertanggung jawab memimpin dan mengelola seluruh aktivitas
+                operasional perusahaan, mulai dari perencanaan bisnis,
+                pengelolaan sumber daya, hingga pencapaian target perusahaan.
+                Direktur juga berwenang mengambil keputusan strategis, mengawasi
+                kinerja seluruh divisi, serta memastikan setiap program dan
+                proyek berjalan sesuai tujuan perusahaan.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD -->
+          <div
+            class="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <div
+              class="h-28 bg-gradient-to-br from-[#0d3b69] via-[#145DA0] to-[#3B82F6] relative"
+            >
+              <div class="absolute -bottom-14 left-1/2 -translate-x-1/2">
+                <img
+                  src="../image/agil.jpeg"
+                  class="h-28 w-28 rounded-full border-[6px] border-white object-cover shadow-xl"
+                />
+              </div>
+            </div>
+
+            <div class="px-7 pt-20 pb-8 text-center">
+              <span
+                class="inline-flex rounded-full bg-[#0d3b69]/10 px-4 py-2 text-[11px] font-bold uppercase text-[#0d3b69]"
+              >
+                Manajer Properti
+              </span>
+
+              <h3 class="mt-4 text-2xl font-black">AGIL IDZA MANJARING</h3>
+
+              <div
+                class="mx-auto mt-4 h-1 w-14 rounded-full bg-[#0d3b69]"
+              ></div>
+
+              <p class="mt-5 text-sm leading-7 text-slate-600">
+                Bertanggung jawab mengelola dan mengawasi seluruh kegiatan
+                operasional proyek perumahan, mulai dari pembangunan hingga
+                pengelolaan kawasan. Posisi ini memastikan setiap pekerjaan
+                berjalan sesuai standar kualitas, jadwal, dan anggaran yang
+                telah ditetapkan serta melakukan koordinasi dengan seluruh
+                divisi terkait untuk mendukung keberhasilan projek.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD -->
+          <div
+            class="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <div
+              class="h-28 bg-gradient-to-br from-[#0d3b69] via-[#145DA0] to-[#3B82F6] relative"
+            >
+              <div class="absolute -bottom-14 left-1/2 -translate-x-1/2">
+                <img
+                  src="../image/yoga.jpeg"
+                  class="h-28 w-28 rounded-full border-[6px] border-white object-cover shadow-xl"
+                />
+              </div>
+            </div>
+
+            <div class="px-7 pt-20 pb-8 text-center">
+              <span
+                class="inline-flex rounded-full bg-[#0d3b69]/10 px-4 py-2 text-[11px] font-bold uppercase text-[#0d3b69]"
+              >
+                Asisten Manajer
+              </span>
+
+              <h3 class="mt-4 text-2xl font-black">YOGA GAMA PUTRA</h3>
+
+              <div
+                class="mx-auto mt-4 h-1 w-14 rounded-full bg-[#0d3b69]"
+              ></div>
+
+              <p class="mt-5 text-sm leading-7 text-slate-600">
+                Bertugas membantu Manajer Properti dalam mengoordinasikan
+                kegiatan operasional proyek dan administrasi. Selain melakukan
+                pengawasan lapangan, posisi ini juga berperan dalam penyusunan
+                laporan, pemantauan progres pekerjaan, serta memastikan setiap
+                kegiatan berjalan sesuai rencana dan target perusahaan.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD -->
+          <div
+            class="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <div
+              class="h-28 bg-gradient-to-br from-[#0d3b69] via-[#145DA0] to-[#3B82F6] relative"
+            >
+              <div class="absolute -bottom-14 left-1/2 -translate-x-1/2">
+                <img
+                  src="../image/rafif.jpeg"
+                  class="h-28 w-28 rounded-full border-[6px] border-white object-cover shadow-xl"
+                />
+              </div>
+            </div>
+
+            <div class="px-7 pt-20 pb-8 text-center">
+              <span
+                class="inline-flex rounded-full bg-[#0d3b69]/10 px-4 py-2 text-[11px] font-bold uppercase text-[#0d3b69]"
+              >
+                Perencanaan
+              </span>
+
+              <h3 class="mt-4 text-2xl font-black">M. RAFIF SOBRI</h3>
+
+              <div
+                class="mx-auto mt-4 h-1 w-14 rounded-full bg-[#0d3b69]"
+              ></div>
+
+              <p class="mt-5 text-sm leading-7 text-slate-600">
+                Bertanggung jawab menyusun konsep dan strategi pengembangan
+                kawasan, termasuk perencanaan site plan, infrastruktur,
+                utilitas, serta tahapan pembangunan proyek. Divisi ini melakukan
+                analisis kebutuhan, penyusunan anggaran, dan koordinasi dengan
+                pihak terkait guna memastikan proyek dapat dilaksanakan secara
+                efektif dan berkelanjutan.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD -->
+          <div
+            class="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <div
+              class="h-28 bg-gradient-to-br from-[#0d3b69] via-[#145DA0] to-[#3B82F6] relative"
+            >
+              <div class="absolute -bottom-14 left-1/2 -translate-x-1/2">
+                <img
+                  src="../image/rizky.jpeg"
+                  class="h-28 w-28 rounded-full border-[6px] border-white object-cover shadow-xl"
+                />
+              </div>
+            </div>
+
+            <div class="px-7 pt-20 pb-8 text-center">
+              <span
+                class="inline-flex rounded-full bg-[#0d3b69]/10 px-4 py-2 text-[11px] font-bold uppercase text-[#0d3b69]"
+              >
+                Teknisi
+              </span>
+
+              <h3 class="mt-4 text-2xl font-black">RISKY NANDA SATRIA</h3>
+
+              <div
+                class="mx-auto mt-4 h-1 w-14 rounded-full bg-[#0d3b69]"
+              ></div>
+
+              <p class="mt-5 text-sm leading-7 text-slate-600">
+                Melakukan pengawasan teknis terhadap seluruh pekerjaan
+                konstruksi dan infrastruktur proyek. Divisi ini memastikan
+                kualitas pekerjaan sesuai spesifikasi yang telah ditetapkan,
+                melakukan pemeriksaan lapangan secara berkala, memberikan solusi
+                atas permasalahan teknis, serta mendukung kelancaran proses
+                pembangunan hingga selesai.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD -->
+          <div
+            class="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <div
+              class="h-28 bg-gradient-to-br from-[#0d3b69] via-[#145DA0] to-[#3B82F6] relative"
+            >
+              <div class="absolute -bottom-14 left-1/2 -translate-x-1/2">
+                <img
+                  src="../image/aura.jpeg"
+                  class="h-28 w-28 rounded-full border-[6px] border-white object-cover shadow-xl"
+                />
+              </div>
+            </div>
+
+            <div class="px-7 pt-20 pb-8 text-center">
+              <span
+                class="inline-flex rounded-full bg-[#0d3b69]/10 px-4 py-2 text-[11px] font-bold uppercase text-[#0d3b69]"
+              >
+                Promosi
+              </span>
+
+              <h3 class="mt-4 text-2xl font-black">Aura Nabilla Viandarto</h3>
+
+              <div
+                class="mx-auto mt-4 h-1 w-14 rounded-full bg-[#0d3b69]"
+              ></div>
+
+              <p class="mt-5 text-sm leading-7 text-slate-600">
+                Bertanggung jawab merancang dan menjalankan strategi pemasaran
+                untuk meningkatkan citra perusahaan dan penjualan produk.
+                Tugasnya meliputi pengelolaan media promosi, penyelenggaraan
+                kegiatan pemasaran, pengembangan kerja sama dengan berbagai
+                pihak, serta melakukan evaluasi terhadap efektivitas program
+                promosi yang dijalankan.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD -->
+          <div
+            class="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <div
+              class="h-28 bg-gradient-to-br from-[#0d3b69] via-[#145DA0] to-[#3B82F6] relative"
+            >
+              <div class="absolute -bottom-14 left-1/2 -translate-x-1/2">
+                <img
+                  src="../image/eri.jpeg"
+                  class="h-28 w-28 rounded-full border-[6px] border-white object-cover shadow-xl"
+                />
+              </div>
+            </div>
+
+            <div class="px-7 pt-20 pb-8 text-center">
+              <span
+                class="inline-flex rounded-full bg-[#0d3b69]/10 px-4 py-2 text-[11px] font-bold uppercase text-[#0d3b69]"
+              >
+                Graphic Design
+              </span>
+
+              <h3 class="mt-4 text-2xl font-black">Eri Sepriyadi</h3>
+
+              <div
+                class="mx-auto mt-4 h-1 w-14 rounded-full bg-[#0d3b69]"
+              ></div>
+
+              <p class="mt-5 text-sm leading-7 text-slate-600">
+                Bertugas menciptakan dan mengembangkan materi visual yang
+                mendukung kegiatan pemasaran. Tanggung jawabnya mencakup
+                pembuatan desain untuk media sosial, brosur, banner, billboard,
+                presentasi perusahaan, dokumentasi visual proyek, serta
+                memastikan konsistensi identitas visual perusahaan pada setia
+                media komunikasi.
+              </p>
+            </div>
+          </div>
+
+          <!-- debi -->
+          <div
+            class="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <div
+              class="h-28 bg-gradient-to-br from-[#0d3b69] via-[#145DA0] to-[#3B82F6] relative"
+            >
+              <div class="absolute -bottom-14 left-1/2 -translate-x-1/2">
+                <img
+                  src="../image/debi.jpeg"
+                  class="h-28 w-28 rounded-full border-[6px] border-white object-cover shadow-xl"
+                />
+              </div>
+            </div>
+
+            <div class="px-7 pt-20 pb-8 text-center">
+              <span
+                class="inline-flex rounded-full bg-[#0d3b69]/10 px-4 py-2 text-[11px] font-bold uppercase text-[#0d3b69]"
+              >
+                Teknisi
+              </span>
+
+              <h3 class="mt-4 text-2xl font-black">Debi Rudianto</h3>
+
+              <div
+                class="mx-auto mt-4 h-1 w-14 rounded-full bg-[#0d3b69]"
+              ></div>
+
+              <p class="mt-5 text-sm leading-7 text-slate-600">
+                Bertanggung jawab mengarahkan, membina, dan mengawasi tim
+                penjualan dalam mencapai target yang telah ditetapkan
+                perusahaan. Posisi ini berperan dalam menyusun strategi
+                penjualan, melakukan evaluasi kinerja tim, membangun hubungan
+                baik dengan calon konsumen dan mitra bisnis, serta menyampaikan
+                laporan perkembangan penjualan kepada manajemen.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="group overflow-hidden rounded-[30px] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            <div
+              class="h-28 bg-gradient-to-br from-[#0d3b69] via-[#145DA0] to-[#3B82F6] relative"
+            >
+              <div class="absolute -bottom-14 left-1/2 -translate-x-1/2">
+                <img
+                  src="../image/liota.jpeg"
+                  class="h-28 w-28 rounded-full border-[6px] border-white object-cover shadow-xl"
+                />
+              </div>
+            </div>
+
+            <div class="px-7 pt-20 pb-8 text-center">
+              <span
+                class="inline-flex rounded-full bg-[#0d3b69]/10 px-4 py-2 text-[11px] font-bold uppercase text-[#0d3b69]"
+              >
+                Admin
+              </span>
+
+              <h3 class="mt-4 text-2xl font-black">Liota Ilma</h3>
+
+              <div
+                class="mx-auto mt-4 h-1 w-14 rounded-full bg-[#0d3b69]"
+              ></div>
+
+              <p class="mt-5 text-sm leading-7 text-slate-600">
+                Bertugas mendukung kelancaran operasional perusahaan melalui
+                pengelolaan administrasi, pengarsipan dokumen, dan penyusunan
+                laporan. Selain itu, Admin juga membantu proses administrasi
+                penjualan, pengelolaan data pelanggan, kelengkapan dokumen
+                pengajuan KPR, serta memastikan seluruh dokumen perusahaan
+                tersimpan dengan rapi dan mudah diakses soat diperlukan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16">
+        <div class="text-center mb-12">
+          <span
+            class="inline-flex rounded-full bg-[#0d3b69]/10 px-4 py-2 text-xs font-bold uppercase tracking-[4px] text-[#0d3b69]"
+          >
+            Core Values
+          </span>
+
+          <h2 class="mt-5 text-4xl font-black text-slate-900">
+            Filosofi <span class="text-[#0d3b69]">WIBAWA</span>
+          </h2>
+
+          <p class="mt-3 text-slate-500 max-w-xl mx-auto">
+            Budaya kerja PT Wibawa Bangun Nusa yang menjadi dasar dalam
+            memberikan pelayanan terbaik kepada pelanggan.
+          </p>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div
+            class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+          >
+            <div class="flex items-center justify-between">
+              <div
+                class="h-16 w-16 rounded-2xl bg-[#0d3b69] flex items-center justify-center text-white text-3xl font-black"
+              >
+                W
+              </div>
+
+              <span class="text-5xl font-black text-slate-100">01</span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-black text-slate-900">Wawasan Maju</h3>
+
+            <p
+              id="txt-nilai-w"
+              class="mt-4 text-sm leading-7 text-slate-600"
+            ></p>
+          </div>
+
+          <div
+            class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+          >
+            <div class="flex items-center justify-between">
+              <div
+                class="h-16 w-16 rounded-2xl bg-[#0d3b69] flex items-center justify-center text-white text-3xl font-black"
+              >
+                I
+              </div>
+
+              <span class="text-5xl font-black text-slate-100">02</span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-black">Integritas</h3>
+
+            <p
+              id="txt-nilai-i"
+              class="mt-4 text-sm leading-7 text-slate-600"
+            ></p>
+          </div>
+
+          <div
+            class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+          >
+            <div class="flex items-center justify-between">
+              <div
+                class="h-16 w-16 rounded-2xl bg-[#0d3b69] flex items-center justify-center text-white text-3xl font-black"
+              >
+                B
+              </div>
+
+              <span class="text-5xl font-black text-slate-100">03</span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-black">Berkualitas</h3>
+
+            <p
+              id="txt-nilai-b"
+              class="mt-4 text-sm leading-7 text-slate-600"
+            ></p>
+          </div>
+
+          <div
+            class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+          >
+            <div class="flex items-center justify-between">
+              <div
+                class="h-16 w-16 rounded-2xl bg-[#0d3b69] flex items-center justify-center text-white text-3xl font-black"
+              >
+                A
+              </div>
+
+              <span class="text-5xl font-black text-slate-100">04</span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-black">Adaptif</h3>
+
+            <p
+              id="txt-nilai-a"
+              class="mt-4 text-sm leading-7 text-slate-600"
+            ></p>
+          </div>
+
+          <div
+            class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+          >
+            <div class="flex items-center justify-between">
+              <div
+                class="h-16 w-16 rounded-2xl bg-[#0d3b69] flex items-center justify-center text-white text-3xl font-black"
+              >
+                W
+              </div>
+
+              <span class="text-5xl font-black text-slate-100">05</span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-black">Wujud Nyata</h3>
+
+            <p
+              id="txt-nilai-w2"
+              class="mt-4 text-sm leading-7 text-slate-600"
+            ></p>
+          </div>
+
+          <div
+            class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+          >
+            <div class="flex items-center justify-between">
+              <div
+                class="h-16 w-16 rounded-2xl bg-[#0d3b69] flex items-center justify-center text-white text-3xl font-black"
+              >
+                A
+              </div>
+
+              <span class="text-5xl font-black text-slate-100">06</span>
+            </div>
+
+            <h3 class="mt-6 text-xl font-black">Amanah</h3>
+
+            <p
+              id="txt-nilai-a2"
+              class="mt-4 text-sm leading-7 text-slate-600"
+            ></p>
+          </div>
+        </div>
+      </section>
+
+      <div class="space-y-4 text-xs">
+        <h3 class="font-extrabold text-slate-900 text-sm">
+          Legalitas proyek dan kawasan
+        </h3>
+        <p
+          id="txt-about-legal"
+          class="text-slate-600 leading-relaxed whitespace-pre-line text-justify"
+        >
+          Memuat deskripsi lengkap dan rekam jejak legalitas dari database...
+        </p>
+      </div>
+    </main>
+
+    <footer
+      class="bg-[#0d3b69] text-white py-12 text-xs border-t border-slate-900"
+    >
+      <div class="mx-12 px-6 grid sm:grid-cols-5 gap-8 mb-8">
+        <div class="space-y-2">
+          <a href="#" class="flex items-center gap-2 text-white">
+            <h4
+              class="font-bold text-white text-[11px] uppercase tracking-wider text-[#0d3b69]"
+            >
+              NUSA GRANDE
+            </h4>
+          </a>
+          <p class="text-[11px] leading-relaxed text-justify">
+            Nusa Grande merupakan kawasan hunian modern di lokasi strategis Kota
+            Palembang yang dirancang untuk memberikan kenyamanan sekaligus nilai
+            investasi yang menjanjikan. Didukung akses yang mudah, fasilitas
+            sekitar yang lengkap, serta lingkungan yang terus berkembang, Nusa
+            Grande menjadi pilihan tepat bagi Anda yang ingin memiliki rumah
+            maupun berinvestasi untuk masa depan.
+          </p>
+        </div>
+        <div class="space-y-2">
+          <h4
+            class="font-bold text-white text-[11px] uppercase tracking-wider text-[#0d3b69]"
+          >
+            Menu
+          </h4>
+          <div class="flex flex-col space-y-2 text-[11px]">
+            <a href="/" class="hover:text-white transition"> Beranda </a>
+
+            <a href="/profil/" class="hover:text-white transition">
+              Tentang Kami
+            </a>
+
+            <a href="#promo" class="hover:text-white transition"> Promo </a>
+            <a href="/kpr/" class="hover:text-white transition">
+              Cek Kesiapan KPR
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h4
+            class="font-bold text-white text-[11px] uppercase tracking-wider text-[#0d3b69]"
+          >
+            Produk
+          </h4>
+          <div class="flex flex-col space-y-2 text-[11px]">
+            <a href="/properti/" class="hover:text-white transition">
+              Lantai 1
+            </a>
+
+            <a href="/properti/" class="hover:text-white transition">
+              Lantai 2
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h4
+            class="font-bold text-white text-[11px] uppercase tracking-wider text-[#0d3b69]"
+          >
+            Informasi Lainnya
+          </h4>
+          <div class="flex flex-col space-y-2 text-[11px]">
+            <a href="/profil/" class="hover:text-white transition">
+              Hubungi Kami
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-5">
+          <h4 class="font-bold text-white text-sm uppercase tracking-wider">
+            Marketing Gallery
+          </h4>
+
+          <!-- Jam Operasional -->
+          <div class="flex items-center gap-3 text-slate-400">
+            <div
+              class="w-10 h-10 rounded-full bg-white border border-white flex items-center justify-center"
+            >
+              <i class="fa-regular fa-clock text-[#0d3b69]"></i>
+            </div>
+
+            <div>
+              <p class="text-white font-semibold text-sm">Buka Setiap Hari</p>
+              <p class="text-xs">08.00 - 17.00 WIB</p>
+            </div>
+          </div>
+
+          <!-- Nomor Marketing -->
+          <a
+            href="https://wa.me/6281311770008"
+            target="_blank"
+            class="flex items-center gap-3 text-slate-400 hover:text-white transition"
+          >
+            <div
+              class="w-10 h-10 rounded-full bg-white border border-white flex items-center justify-center"
+            >
+              <i class="fa-brands fa-whatsapp text-green-00"></i>
+            </div>
+
+            <div>
+              <p class="text-white font-semibold text-sm">Hubungi Marketing</p>
+              <p class="text-xs">+62 813-1177-0008</p>
+            </div>
+          </a>
+
+          <!-- Social Media -->
+          <div class="pt-2">
+            <h4 class="font-bold text-white text-sm mb-3">Sosial Media</h4>
+
+            <div class="flex items-center gap-3">
+              <a
+                href="https://www.instagram.com/nusagrande.official/"
+                target="_blank"
+                class="w-11 h-11 rounded-full border border-slate-700 flex items-center justify-center hover:bg-[#0d3b69] hover:border-[#0d3b69] transition text-white"
+              >
+                <i class="fa-brands fa-instagram text-lg"></i>
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@nusagrande.official"
+                target="_blank"
+                class="w-11 h-11 rounded-full border border-slate-700 flex items-center justify-center hover:bg-[#0d3b69] hover:border-[#0d3b69] transition text-white"
+              >
+                <i class="fa-brands fa-tiktok text-lg"></i>
+              </a>
+
+              <a
+                href="https://www.facebook.com/share/18f7rmFZZo/"
+                target="_blank"
+                class="w-11 h-11 rounded-full border border-slate-700 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 transition text-white"
+              >
+                <i class="fa-brands fa-facebook-f text-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto px-6 border-t border-white pt-6 text-center text-[11px] text-white"
+      >
+        &copy; 2026 Nusa Grande. PT Wibawa Bangun Nusa. Hak Cipta Dilindungi.
+      </div>
+    </footer>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+      import {
+        getFirestore,
+        doc,
+        onSnapshot,
+      } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAja6FfF_EW_N9y8pXmDX-10e0e51DJ4Cg",
+        authDomain: "project-home-54337.firebaseapp.com",
+        projectId: "project-home-54337",
+        storageBucket: "project-home-54337.firebasestorage.app",
+        messagingSenderId: "548607283431",
+        appId: "1:548607283431:web:1f58c56ce8b3c73a121242",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // Sinkronisasi Data "Tentang Kami" secara Realtime dari Admin Dashboard
+      onSnapshot(doc(db, "settings", "about_us"), (snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.data();
+
+          // Mengisi elemen HTML dari field rich text yang disimpan admin
+
+          if (data.description)
+            document.getElementById("txt-about-desc").innerHTML =
+              data.description;
+
+          if (data.visi)
+            document.getElementById("txt-visi").innerHTML = data.visi;
+          if (data.misi)
+            document.getElementById("txt-misi").innerHTML = data.misi;
+          if (data.legal)
+            document.getElementById("txt-about-legal").innerHTML = data.legal;
+          if (data.nilai_w)
+            document.getElementById("txt-nilai-w").innerHTML = data.nilai_w;
+          if (data.nilai_i)
+            document.getElementById("txt-nilai-i").innerHTML = data.nilai_i;
+          if (data.nilai_b)
+            document.getElementById("txt-nilai-b").innerHTML = data.nilai_b;
+          if (data.nilai_a)
+            document.getElementById("txt-nilai-a").innerHTML = data.nilai_a;
+          if (data.nilai_w2)
+            document.getElementById("txt-nilai-w2").innerHTML = data.nilai_w2;
+          if (data.nilai_a2)
+            document.getElementById("txt-nilai-a2").innerHTML = data.nilai_a2;
+        } else {
+          console.log("Dokumen profil 'about_us' belum terbuat di database.");
+        }
+      });
+    </script>
+  </body>
+</html>
