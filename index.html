@@ -374,7 +374,8 @@
               Asri & Strategis
             </h3>
             <p class="text-slate-500 text-xs leading-relaxed">
-              Konsep penghijauan rindang, namun hanya menit dari pusat kota.
+              Lingkungan hijau yang rindang dan nyaman, dengan akses mudah hanya
+              beberapa menit dari pusat kota
             </p>
           </div>
         </div>
@@ -1716,40 +1717,50 @@
         const limitedUnits = surveyUnits.slice(0, 3);
         limitedUnits.forEach((val) => {
           grid.innerHTML += `
-    <div class="bg-white rounded-3xl border overflow-hidden shadow-sm hover:shadow-md transition">
-      <div class="h-44 bg-slate-100 overflow-hidden">
-        <img src="${val.images?.[0] || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80"}" class="w-full h-full object-cover">
+  <div class="bg-white rounded-3xl border overflow-hidden shadow-sm hover:shadow-md transition">
+    <div class="h-44 bg-slate-100 overflow-hidden">
+      <img src="${val.images?.[0] || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80"}" class="w-full h-full object-cover">
+    </div>
+    
+    <div class="p-5 space-y-4 text-xs">
+      <h4 class="font-extrabold text-slate-900 text-sm">${val.nama}</h4>
+      
+      <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-slate-500 font-semibold border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-maximize text-slate-400 w-4 text-center"></i>
+          <span>${val.lb}m² / ${val.lt}m²</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-layer-group text-slate-400 w-4 text-center"></i>
+          <span>${val.lantai || "1"} Lantai</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-bed text-slate-400 w-4 text-center"></i>
+          <span>${val.kt} Kamar Tidur</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-bath text-slate-400 w-4 text-center"></i>
+          <span>${val.km} Kamar Mandi</span>
+        </div>
+        <div class="flex items-center gap-2 col-span-2">
+          <i class="fa-solid fa-bolt text-amber-500 w-4 text-center"></i>
+          <span>Listrik: ${val.listrik || "1300"} VA</span>
+        </div>
       </div>
       
-      <div class="p-5 space-y-4 text-xs">
-        <h4 class="font-extrabold text-slate-900 text-sm">${val.nama}</h4>
-        
-        <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-slate-500 font-semibold border-b border-slate-100 pb-3">
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-maximize text-slate-400 w-4 text-center"></i>
-            <span>${val.lb}m² / ${val.lt}m²</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-layer-group text-slate-400 w-4 text-center"></i>
-            <span>${val.lantai || "1"} Lantai</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-bed text-slate-400 w-4 text-center"></i>
-            <span>${val.kt} Kamar Tidur</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-bath text-slate-400 w-4 text-center"></i>
-            <span>${val.km} Kamar Mandi</span>
-          </div>
-          <div class="flex items-center gap-2 col-span-2">
-            <i class="fa-solid fa-bolt text-amber-500 w-4 text-center"></i>
-            <span>Listrik: ${val.listrik || "1300"} VA</span>
-          </div>
-        </div>
-        
+      <div class="space-y-2">
+        <!-- Tombol Detail -->
         <a href="/detail-rumah/?id=${val.id}" class="block text-center bg-slate-900 text-white font-bold py-2.5 rounded-xl hover:bg-[#0d3b69] transition">Lihat Detail & Galeri</a>
+        
+        <!-- Tombol WhatsApp Dinamis -->
+        <a href="https://wa.me/6281311770008?text=${encodeURIComponent(`Halo, saya tertarik dengan Tipe ${val.nama} di Nusa Grande. 😊\n\nMohon info lengkap mengenai harga, simulasi cicilan, dan ketersediaan unit. Saya siap dihubungi oleh tim marketing.\n\nTerima kasih.`)}" 
+           target="_blank" 
+           class="flex items-center justify-center gap-2 text-center bg-emerald-600 text-white font-bold py-2.5 rounded-xl hover:bg-emerald-700 transition">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Hubungi via WhatsApp
+        </a>
       </div>
-    </div>`;
+    </div>
+  </div>`;
         });
         renderSurveyUnitOptions();
       });
