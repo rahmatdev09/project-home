@@ -478,6 +478,7 @@
               <h3 class="text-lg font-black text-slate-900">Belum ada unit yang ditampilkan</h3>
               <p class="mt-2 text-sm text-slate-500">Silakan hubungi tim marketing untuk informasi unit terbaru.</p>
             </div>`;
+
           countText.textContent = "Belum ada unit tersedia";
           paginationControls.innerHTML = "";
           return;
@@ -532,8 +533,17 @@
                   <span>Listrik: ${val.listrik || "1300"} VA</span>
                 </div>
               </div>
+
+              <div class="space-y-2">
               <a href="/detail-rumah/?id=${doc.id}" class="block text-center bg-[#0d3b69] text-white font-bold py-2.5 rounded-xl hover:bg-[#0d3b69] transition">Lihat Detail & Galeri</a>
-            </div>`;
+            <!-- Tombol WhatsApp Dinamis -->
+        <a href="https://wa.me/6281311770008?text=${encodeURIComponent(`Halo, saya tertarik dengan Tipe ${val.nama} di Nusa Grande. 😊\n\nMohon info lengkap mengenai harga, simulasi cicilan, dan ketersediaan unit. Saya siap dihubungi oleh tim marketing.\n\nTerima kasih.`)}" 
+           target="_blank" 
+           class="flex items-center justify-center gap-2 text-center bg-emerald-600 text-white font-bold py-2.5 rounded-xl hover:bg-emerald-700 transition">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Hubungi via WhatsApp
+        </a>
+      </div>
+              </div>`;
           grid.appendChild(card);
         });
 
