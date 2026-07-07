@@ -63,7 +63,9 @@
           <a href="/kpr/" class="hover:text-[#0d3b69] transition"
             >Simulasi KPR</a
           >
-          <a href="#promo" class="hover:text-[#0d3b69] transition">Promo</a>
+          <a href="#facility" class="hover:text-[#0d3b69] transition"
+            >Fasilitas</a
+          >
           <a href="#testimoni" class="hover:text-[#0d3b69] transition"
             >Testimoni</a
           >
@@ -89,6 +91,121 @@
         </div>
       </div>
     </header>
+
+    <section id="promo" class="relative h-[85vh] overflow-hidden bg-slate-900">
+      <!-- Slider -->
+      <div
+        id="promo-slider"
+        class="flex h-full transition-transform duration-700 ease-in-out"
+      >
+        <!-- Diisi dari Firebase -->
+      </div>
+
+      <!-- Overlay -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"
+      ></div>
+
+      <!-- Content -->
+      <div class="absolute inset-0 z-20 flex items-center">
+        <div class="max-w-7xl mx-auto w-full px-6">
+          <span
+            class="inline-flex rounded-full bg-white/20 backdrop-blur px-4 py-2 text-xs font-bold uppercase tracking-widest text-white"
+          >
+            Promo Terbaru
+          </span>
+
+          <h2
+            id="promo-title"
+            class="mt-5 text-4xl md:text-6xl font-black text-white max-w-3xl"
+          >
+            Penawaran Terbaik Nusa Grande
+          </h2>
+
+          <p
+            id="promo-description"
+            class="mt-5 max-w-xl text-white/90 leading-relaxed"
+          >
+            Miliki hunian impian dengan promo terbaik bulan ini.
+          </p>
+
+          <div class="mt-8 flex gap-3">
+            <a
+              id="promo-button"
+              href="/promo/detail-promo/?id="
+              class="rounded-2xl bg-[#0d3b69] hover:bg-[#0b3158] px-8 py-4 font-bold text-white transition"
+            >
+              Lihat Promo
+            </a>
+
+            <a
+              href="/promo/"
+              class="rounded-2xl border border-white/40 bg-white/10 backdrop-blur px-8 py-4 font-bold text-white hover:bg-white/20 transition"
+            >
+              Semua Promo
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prev -->
+      <button
+        id="promo-scroll-prev"
+        class="absolute left-6 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-white/90 hover:bg-white shadow-xl transition"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <!-- Next -->
+      <button
+        id="promo-scroll-next"
+        class="absolute right-6 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-white/90 hover:bg-white shadow-xl transition"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <!-- Indicator -->
+      <div
+        id="promo-indicator"
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3"
+      ></div>
+
+      <!-- Modal -->
+      <div
+        id="modal-promo-detail"
+        class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center p-4 z-50"
+      >
+        <div
+          class="bg-white rounded-3xl w-full max-w-3xl p-6 shadow-2xl border overflow-auto max-h-[90vh]"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <h3 id="modal-promo-title" class="text-lg font-bold text-slate-900">
+              Detail Promo
+            </h3>
+
+            <button
+              onclick="
+                document
+                  .getElementById('modal-promo-detail')
+                  .classList.add('hidden')
+              "
+              class="text-slate-400 hover:text-slate-700"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div id="modal-promo-body" class="space-y-4 text-sm text-slate-700">
+            <div
+              id="modal-promo-image"
+              class="w-full h-64 rounded-2xl overflow-hidden"
+            ></div>
+
+            <div id="modal-promo-content" class="prose max-w-full"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- HERO -->
     <section
@@ -382,98 +499,31 @@
       </div>
     </section>
 
-    <section id="promo" class="px-4 sm:px-6 py-5 bg-slate-50">
-      <div class="max-w-7xl mx-auto">
-        <div
-          id="top-promo-banner"
-          class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
-        >
-          <div
-            class="flex flex-col gap-3 px-4 py-4 sm:px-5 sm:py-5 lg:flex-row lg:items-center lg:justify-between"
-          >
-            <div>
-              <p
-                class="text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#0d3b69]"
-              >
-                Promo Terbaru
-              </p>
-              <h3 class="text-base font-black text-slate-900">
-                Penawaran menarik untuk calon pembeli
-              </h3>
-            </div>
-            <div class="flex flex-wrap items-center gap-2">
-              <a
-                href="/promo/"
-                class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-700 hover:border-[#0d3b69] hover:text-[#0d3b69]"
-              >
-                <i class="fa-solid fa-list"></i>
-                Lihat Semua Promo
-              </a>
-              <div
-                class="inline-flex rounded-full border border-slate-200 bg-white shadow-sm overflow-hidden"
-              >
-                <button
-                  id="promo-scroll-prev"
-                  type="button"
-                  class="px-4 py-2 text-slate-600 hover:bg-slate-100 transition"
-                  aria-label="Promo sebelumnya"
-                >
-                  <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button
-                  id="promo-scroll-next"
-                  type="button"
-                  class="px-4 py-2 text-slate-600 hover:bg-slate-100 transition"
-                  aria-label="Promo berikutnya"
-                >
-                  <i class="fa-solid fa-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div id="promo-carousel" class="px-4 pb-4 sm:px-5 sm:pb-5">
-            <div
-              id="promo-list"
-              class="flex gap-5 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory"
-            ></div>
+    <section id="facility" class="py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-end justify-between mb-10">
+          <div>
+            <p
+              class="uppercase tracking-[4px] text-[#0d3b69] text-xs font-bold"
+            >
+              Fasilitas Sekitar
+            </p>
+
+            <h2 class="text-3xl font-black text-slate-900 mt-2">
+              Semua kebutuhan dekat dari rumah
+            </h2>
+
+            <p class="text-slate-500 mt-3 max-w-xl">
+              Nikmati kemudahan akses menuju berbagai fasilitas penunjang
+              kehidupan sehari-hari.
+            </p>
           </div>
         </div>
 
-        <!-- Promo detail modal -->
         <div
-          id="modal-promo-detail"
-          class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center p-4 z-50"
-        >
-          <div
-            class="bg-white rounded-3xl w-full max-w-3xl p-6 shadow-2xl border overflow-auto max-h-[90vh]"
-          >
-            <div class="flex items-center justify-between mb-4">
-              <h3
-                id="modal-promo-title"
-                class="text-lg font-bold text-slate-900"
-              >
-                Detail Promo
-              </h3>
-              <button
-                onclick="
-                  document
-                    .getElementById('modal-promo-detail')
-                    .classList.add('hidden')
-                "
-                class="text-slate-400 hover:text-slate-700"
-              >
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-            <div id="modal-promo-body" class="space-y-4 text-sm text-slate-700">
-              <div
-                id="modal-promo-image"
-                class="w-full h-48 bg-slate-100 rounded-lg overflow-hidden"
-              ></div>
-              <div id="modal-promo-content" class="prose max-w-full"></div>
-            </div>
-          </div>
-        </div>
+          id="amenities-slider"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        ></div>
       </div>
     </section>
 
@@ -575,7 +625,7 @@
                   </div>
                   <div class="rounded-2xl bg-slate-50 p-3">
                     <p class="font-semibold text-slate-900">
-                      Rumah Sakit Myria
+                      Rumah Sakit Myria - Charitas Hospital Km 7
                     </p>
                     <p class="text-xs text-slate-500">8.4 km • 18 Menit</p>
                   </div>
@@ -1026,7 +1076,9 @@
               Tentang Kami
             </a>
 
-            <a href="#promo" class="hover:text-white transition"> Promo </a>
+            <a href="#facility" class="hover:text-white transition">
+              Fasilitas
+            </a>
             <a href="/kpr/" class="hover:text-white transition">
               Cek Kesiapan KPR
             </a>
@@ -1039,20 +1091,12 @@
           >
             Produk
           </h4>
-          <div class="flex flex-col space-y-2 text-[11px]">
-            <a
-              href="https://adminsppg.online/detail-rumah/?id=2DdlCritFR2vKlFf5gRg"
-              class="hover:text-white transition"
-            >
-              Lantai 1
-            </a>
 
-            <a
-              href="https://adminsppg.online/detail-rumah/?id=DgvbT3etMBaQKJCw2Idt"
-              class="hover:text-white transition"
-            >
-              Lantai 2
-            </a>
+          <div
+            id="footer-produk"
+            class="grid grid-cols-2 gap-x-6 gap-y-2 text-[11px]"
+          >
+            <span class="text-slate-500 col-span-3">Memuat produk...</span>
           </div>
         </div>
 
@@ -1178,8 +1222,10 @@
           <a href="/kpr/" class="block rounded-xl px-4 py-3 hover:bg-slate-50"
             >Simulasi KPR</a
           >
-          <a href="#promo" class="block rounded-xl px-4 py-3 hover:bg-slate-50"
-            >Promo</a
+          <a
+            href="#facility"
+            class="block rounded-xl px-4 py-3 hover:bg-slate-50"
+            >Fasilitas</a
           >
           <a
             href="#testimoni"
@@ -1290,7 +1336,7 @@
             <button
               id="survey-submit"
               type="button"
-              class="w-full rounded-3xl bg-amber-500 px-5 py-4 text-sm font-bold text-white shadow-lg shadow-amber-500/20 transition hover:bg-amber-600"
+              class="w-full rounded-3xl bg-[#0d3b69] hover:bg-[#0b3158] px-5 py-4 text-sm font-bold text-white shadow-lg shadow-amber-500/20 transition hover:bg-amber-600"
             >
               Kirim Pesan WhatsApp
             </button>
@@ -1327,6 +1373,8 @@
 
       let surveyUnits = [];
       let selectedSurveyUnitId = null;
+      let promoIds = []; // Menyimpan semua ID promo yang aktif
+      let currentPromoIndex = 0; // Menyimpan index promo saat ini
 
       const surveyModal = document.getElementById("survey-modal");
       const surveyNameInput = document.getElementById("survey-modal-name");
@@ -1372,23 +1420,23 @@
         surveyUnitGrid.innerHTML = surveyUnits
           .map(
             (unit) => `
-              <button
-                type="button"
-                class="survey-unit-card group relative w-full rounded-3xl border p-4 text-left transition ${selectedSurveyUnitId === unit.id ? "border-amber-500 bg-amber-50 shadow-sm" : "border-slate-200 bg-white hover:border-slate-300"}"
-                data-unit-id="${unit.id}"
-              >
-                <div class="flex items-center justify-between gap-3">
-                  <div>
-                    <div class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0d3b69]">Pilih Unit</div>
-                    <div class="mt-2 text-sm font-bold text-slate-900">${unit.nama || "Unit Tanpa Nama"}</div>
-                  </div>
-                  <div class="flex h-9 w-9 items-center justify-center rounded-2xl border ${selectedSurveyUnitId === unit.id ? "border-amber-500 bg-amber-500 text-white" : "border-slate-200 bg-slate-100 text-slate-700"}">
-                    <i class="fa-solid fa-house"></i>
-                  </div>
-                </div>
-                <p class="mt-3 text-xs text-slate-600">${unit.lantai ? `${unit.lantai} Lantai` : "Jumlah lantai belum diisi"}</p>
-              </button>
-            `,
+                    <button
+                      type="button"
+                      class="survey-unit-card group relative w-full rounded-3xl border p-4 text-left transition ${selectedSurveyUnitId === unit.id ? "border-amber-500 bg-amber-50 shadow-sm" : "border-slate-200 bg-white hover:border-slate-300"}"
+                      data-unit-id="${unit.id}"
+                    >
+                      <div class="flex items-center justify-between gap-3">
+                        <div>
+                          <div class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0d3b69]">Pilih Unit</div>
+                          <div class="mt-2 text-sm font-bold text-slate-900">${unit.nama || "Unit Tanpa Nama"}</div>
+                        </div>
+                        <div class="flex h-9 w-9 items-center justify-center rounded-2xl border ${selectedSurveyUnitId === unit.id ? "border-amber-500 bg-amber-500 text-white" : "border-slate-200 bg-slate-100 text-slate-700"}">
+                          <i class="fa-solid fa-house"></i>
+                        </div>
+                      </div>
+                      <p class="mt-3 text-xs text-slate-600">${unit.lantai ? `${unit.lantai} Lantai` : "Jumlah lantai belum diisi"}</p>
+                    </button>
+                  `,
           )
           .join("");
 
@@ -1402,6 +1450,47 @@
           });
       };
 
+      onSnapshot(collection(db, "amenities"), (snap) => {
+        const slider = document.getElementById("amenities-slider");
+
+        slider.innerHTML = "";
+
+        const data = snap.docs.map((d) => ({
+          id: d.id,
+          ...d.data(),
+        }));
+
+        if (!data.length) {
+          slider.innerHTML = `
+      <div class="col-span-full text-center py-12 text-slate-500">
+        Belum ada fasilitas tersedia.
+      </div>
+    `;
+          return;
+        }
+
+        data.forEach((item) => {
+          slider.innerHTML += `
+      <div
+        class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition duration-300 group"
+      >
+        <div class="overflow-hidden">
+          <img
+            src="${item.gambar}"
+            alt="${item.nama}"
+            class="w-full h-56 object-cover group-hover:scale-105 transition duration-500"
+          >
+        </div>
+
+        <div class="p-5">
+          <h4 class="text-lg font-bold text-slate-800 text-center">
+            ${item.nama}
+          </h4>
+        </div>
+      </div>
+    `;
+        });
+      });
       const showSurveyError = (message) => alert(message);
 
       const submitSurveyBooking = () => {
@@ -1443,40 +1532,52 @@
       };
 
       const renderPromoSkeletons = () => {
-        const listEl = document.getElementById("promo-list");
+        const listEl = document.getElementById("promo-slider");
         if (!listEl) return;
-        listEl.innerHTML = Array.from(
-          { length: 2 },
-          () => `
-          <div class="min-w-[80%] sm:min-w-[45%] snap-start overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-            <div class="h-52 animate-pulse bg-slate-200"></div>
-            <div class="p-5 space-y-4">
-              <div class="h-3 w-1/2 animate-pulse rounded bg-slate-200"></div>
-              <div class="h-4 w-3/4 animate-pulse rounded bg-slate-200"></div>
-              <div class="h-3 w-full animate-pulse rounded bg-slate-100"></div>
-              <div class="h-3 w-5/6 animate-pulse rounded bg-slate-100"></div>
+        // Membuat skeleton dengan struktur full-screen h-[85vh] menyerupai UI aslinya
+        listEl.innerHTML = `
+          <div class="relative min-w-full h-[85vh] bg-slate-800 animate-pulse flex items-center">
+            <div class="max-w-7xl mx-auto w-full px-6 space-y-5">
+              <!-- Tag/Label Skeleton -->
+              <div class="h-6 w-32 bg-slate-700 rounded-full"></div>
+              
+              <!-- Title Skeleton -->
+              <div class="space-y-3 mt-5">
+                <div class="h-10 w-3/4 bg-slate-700 rounded-2xl md:h-14 max-w-2xl"></div>
+                <div class="hidden md:block h-14 w-1/2 bg-slate-700 rounded-2xl max-w-xl"></div>
+              </div>
+              
+              <!-- Description Skeleton -->
+              <div class="space-y-2 mt-5 max-w-xl">
+                <div class="h-4 w-full bg-slate-700 rounded-lg"></div>
+                <div class="h-4 w-5/6 bg-slate-700 rounded-lg"></div>
+              </div>
+              
+              <!-- Buttons Skeleton -->
+              <div class="mt-8 flex gap-3">
+                <div class="h-14 w-40 bg-slate-700 rounded-2xl"></div>
+                <div class="h-14 w-40 bg-slate-700 rounded-2xl"></div>
+              </div>
             </div>
           </div>
-        `,
-        ).join("");
+        `;
       };
-
       const renderUnitSkeletons = () => {
         const grid = document.getElementById("display-unit-grid");
         if (!grid) return;
         grid.innerHTML = Array.from(
           { length: 3 },
           () => `
-          <div class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div class="h-44 animate-pulse rounded-2xl bg-slate-200"></div>
-            <div class="mt-4 space-y-3">
-              <div class="h-4 w-3/4 animate-pulse rounded bg-slate-200"></div>
-              <div class="h-3 w-full animate-pulse rounded bg-slate-100"></div>
-              <div class="h-3 w-5/6 animate-pulse rounded bg-slate-100"></div>
-              <div class="h-10 animate-pulse rounded-xl bg-slate-200"></div>
-            </div>
-          </div>
-        `,
+                <div class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+                  <div class="h-44 animate-pulse rounded-2xl bg-slate-200"></div>
+                  <div class="mt-4 space-y-3">
+                    <div class="h-4 w-3/4 animate-pulse rounded bg-slate-200"></div>
+                    <div class="h-3 w-full animate-pulse rounded bg-slate-100"></div>
+                    <div class="h-3 w-5/6 animate-pulse rounded bg-slate-100"></div>
+                    <div class="h-10 animate-pulse rounded-xl bg-slate-200"></div>
+                  </div>
+                </div>
+              `,
         ).join("");
       };
 
@@ -1486,11 +1587,11 @@
         iBox.innerHTML = Array.from(
           { length: 4 },
           () => `
-          <div class="flex items-center gap-2">
-            <div class="h-2.5 w-2.5 animate-pulse rounded-full bg-slate-200"></div>
-            <div class="h-2.5 w-36 animate-pulse rounded bg-slate-200"></div>
-          </div>
-        `,
+                <div class="flex items-center gap-2">
+                  <div class="h-2.5 w-2.5 animate-pulse rounded-full bg-slate-200"></div>
+                  <div class="h-2.5 w-36 animate-pulse rounded bg-slate-200"></div>
+                </div>
+              `,
         ).join("");
       };
 
@@ -1500,14 +1601,14 @@
         grid.innerHTML = Array.from(
           { length: 3 },
           () => `
-          <div class="min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] bg-slate-50 border border-slate-200 rounded-3xl p-5 shadow-sm animate-pulse">
-            <div class="h-40 rounded-2xl bg-slate-200"></div>
-            <div class="mt-6 h-3 w-24 rounded bg-slate-200"></div>
-            <div class="mt-3 h-3 w-full rounded bg-slate-100"></div>
-            <div class="mt-3 h-3 w-5/6 rounded bg-slate-100"></div>
-            <div class="mt-6 h-10 rounded-xl bg-slate-200"></div>
-          </div>
-        `,
+                <div class="min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] bg-slate-50 border border-slate-200 rounded-3xl p-5 shadow-sm animate-pulse">
+                  <div class="h-40 rounded-2xl bg-slate-200"></div>
+                  <div class="mt-6 h-3 w-24 rounded bg-slate-200"></div>
+                  <div class="mt-3 h-3 w-full rounded bg-slate-100"></div>
+                  <div class="mt-3 h-3 w-5/6 rounded bg-slate-100"></div>
+                  <div class="mt-6 h-10 rounded-xl bg-slate-200"></div>
+                </div>
+              `,
         ).join("");
       };
 
@@ -1594,127 +1695,145 @@
         scrollTestimonialCards(1),
       );
 
+      const promoSlider = document.getElementById("promo-slider");
+      const promoTitle = document.getElementById("promo-title");
+      const promoDescription = document.getElementById("promo-description");
+      const promoButton = document.getElementById("promo-button");
+      const promoIndicator = document.getElementById("promo-indicator");
+
+      const prevBtn = document.getElementById("promo-scroll-prev");
+      const nextBtn = document.getElementById("promo-scroll-next");
+
+      let promoData = [];
+      let currentSlide = 0;
+      let autoSlide;
+
       onSnapshot(collection(db, "promos"), (snap) => {
-        const banner = document.getElementById("top-promo-banner");
-        const listEl = document.getElementById("promo-list");
-        const prevBtn = document.getElementById("promo-scroll-prev");
-        const nextBtn = document.getElementById("promo-scroll-next");
-        if (!banner || !listEl) return;
-        const promos = snap.docs.map((d) => ({
-          id: d.id,
-          ...(d.data() || {}),
+        promoIds = [];
+        promoData = snap.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
         }));
-        if (!promos.length) {
-          banner.classList.add("hidden");
+
+        if (!promoData.length) {
+          document.getElementById("promo").classList.add("hidden");
           return;
         }
-        banner.classList.remove("hidden");
-        listEl.innerHTML = "";
 
-        const getVisibleCount = () => (window.innerWidth < 640 ? 1 : 2);
-        const shouldAutoScroll = () =>
-          promos.length > (window.innerWidth < 640 ? 1 : 2);
-        let promoAutoScrollTimer = null;
+        document.getElementById("promo").classList.remove("hidden");
 
-        const updateScrollButtons = () => {
-          if (!prevBtn || !nextBtn) return;
-          const maxScroll = listEl.scrollWidth - listEl.clientWidth;
-          prevBtn.disabled = listEl.scrollLeft <= 4;
-          nextBtn.disabled = listEl.scrollLeft >= Math.max(maxScroll - 4, 0);
-          prevBtn.classList.toggle("opacity-50", prevBtn.disabled);
-          prevBtn.classList.toggle("cursor-not-allowed", prevBtn.disabled);
-          nextBtn.classList.toggle("opacity-50", nextBtn.disabled);
-          nextBtn.classList.toggle("cursor-not-allowed", nextBtn.disabled);
-        };
+        promoSlider.innerHTML = "";
+        promoIndicator.innerHTML = "";
 
-        const scrollPromo = (distance) => {
-          listEl.scrollBy({ left: distance, behavior: "smooth" });
-          setTimeout(updateScrollButtons, 260);
-        };
+        promoData.forEach((promo, index) => {
+          promoIds.push(promo.id);
+          const image =
+            promo.images?.[0] ||
+            promo.image ||
+            "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80";
 
-        const nextPromo = () => {
-          if (!listEl) return;
-          const distance = Math.max(listEl.clientWidth * 0.9, 320);
-          if (
-            listEl.scrollLeft + listEl.clientWidth >=
-            listEl.scrollWidth - 10
-          ) {
-            listEl.scrollTo({ left: 0, behavior: "smooth" });
-          } else {
-            listEl.scrollBy({ left: distance, behavior: "smooth" });
-          }
-          setTimeout(updateScrollButtons, 260);
-        };
+          promoSlider.innerHTML += `
+        <div class="relative min-w-full h-[85vh]">
 
-        const prevPromo = () => {
-          if (!listEl) return;
-          const distance = Math.max(listEl.clientWidth * 0.9, 320);
-          if (listEl.scrollLeft <= 10) {
-            listEl.scrollTo({ left: listEl.scrollWidth, behavior: "smooth" });
-          } else {
-            listEl.scrollBy({ left: -distance, behavior: "smooth" });
-          }
-          setTimeout(updateScrollButtons, 260);
-        };
+          <img
+            src="${image}"
+            class="absolute inset-0 w-full h-full object-cover">
 
-        const resetAutoScroll = () => {
-          if (promoAutoScrollTimer) {
-            clearInterval(promoAutoScrollTimer);
-          }
-          if (shouldAutoScroll()) {
-            promoAutoScrollTimer = setInterval(nextPromo, 4500);
-          }
-        };
+        </div>
+      `;
 
-        prevBtn?.addEventListener("click", () => {
-          prevPromo();
-          resetAutoScroll();
+          promoIndicator.innerHTML += `
+        <button
+          data-index="${index}"
+          class="promo-dot w-3 h-3 rounded-full bg-white/40 transition">
+        </button>
+      `;
         });
-        nextBtn?.addEventListener("click", () => {
+
+        updatePromoButtonLink();
+        currentSlide = 0;
+
+        updatePromo();
+
+        clearInterval(autoSlide);
+
+        autoSlide = setInterval(() => {
           nextPromo();
-          resetAutoScroll();
-        });
-        listEl.addEventListener("scroll", updateScrollButtons);
-        listEl.addEventListener("mouseenter", () => {
-          if (promoAutoScrollTimer) clearInterval(promoAutoScrollTimer);
-        });
-        listEl.addEventListener("mouseleave", resetAutoScroll);
-
-        promos.forEach((p, idx) => {
-          const images =
-            Array.isArray(p.images) && p.images.length
-              ? p.images
-              : p.image
-                ? [p.image]
-                : [
-                    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=80",
-                  ];
-          const tmp = document.createElement("div");
-          tmp.innerHTML = p.deskripsi || "";
-          const text = tmp.innerText || tmp.textContent || "";
-          const previewText =
-            text.length > 140 ? text.slice(0, 140) + "..." : text;
-          listEl.innerHTML += `
-            <a
-              href="/promo/detail-promo/?id=${p.id}"
-              class="promo-item group min-w-[80%] sm:min-w-[45%] snap-start text-left rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-md transition"
-            >
-              <div class="relative h-52 overflow-hidden bg-slate-100">
-                <img src="${images[0]}" alt="${p.judul || "Promo"}" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                ${images.length > 1 ? `<div class="absolute top-3 right-3 rounded-full bg-black/55 px-2 py-1 text-[10px] font-semibold text-white"><i class="fa-solid fa-images mr-1"></i>${images.length}</div>` : ""}
-              </div>
-              <div class="p-5 space-y-3">
-                <div class="text-[10px] font-extrabold uppercase tracking-widest text-[#0d3b69] flex items-center gap-2"><i class="fa-solid fa-bullhorn"></i> Promo Nusa Grande</div>
-                <h3 class="text-lg font-black text-slate-900">${p.judul || ""}</h3>
-                <p class="text-sm text-slate-600 leading-relaxed" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${previewText}</p>
-              </div>
-            </a>`;
-        });
-
-        updateScrollButtons();
-        window.addEventListener("resize", updateScrollButtons);
+        }, 5000);
       });
 
+      function updatePromoButtonLink() {
+        const promoButton = document.getElementById("promo-button");
+        if (promoButton && promoIds.length > 0) {
+          const currentPromoId = promoIds[currentPromoIndex];
+          promoButton.href = `/promo/detail-promo/?id=${currentPromoId}`;
+        }
+      }
+
+      function updatePromo() {
+        promoSlider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        const promo = promoData[currentSlide];
+
+        promoTitle.innerText = promo.judul || "Promo Terbaru";
+
+        const tmp = document.createElement("div");
+        tmp.innerHTML = promo.deskripsi || "";
+
+        promoDescription.innerText = tmp.textContent.substring(0, 180);
+
+        document.querySelectorAll(".promo-dot").forEach((dot, index) => {
+          dot.classList.toggle("bg-white", index === currentSlide);
+
+          dot.classList.toggle("bg-white/40", index !== currentSlide);
+        });
+      }
+
+      function nextPromo() {
+        currentSlide++;
+
+        if (currentSlide >= promoData.length) currentSlide = 0;
+
+        updatePromo();
+      }
+
+      function prevPromo() {
+        currentSlide--;
+
+        if (currentSlide < 0) currentSlide = promoData.length - 1;
+
+        updatePromo();
+      }
+
+      nextBtn.onclick = () => {
+        nextPromo();
+
+        resetAutoSlide();
+      };
+
+      prevBtn.onclick = () => {
+        prevPromo();
+
+        resetAutoSlide();
+      };
+
+      promoIndicator.onclick = (e) => {
+        if (!e.target.dataset.index) return;
+
+        currentSlide = Number(e.target.dataset.index);
+
+        updatePromo();
+
+        resetAutoSlide();
+      };
+
+      function resetAutoSlide() {
+        clearInterval(autoSlide);
+
+        autoSlide = setInterval(() => {
+          nextPromo();
+        }, 5000);
+      }
       const q = query(
         collection(db, "units"),
 
@@ -1729,50 +1848,50 @@
         const limitedUnits = surveyUnits.slice(0, 3);
         limitedUnits.forEach((val) => {
           grid.innerHTML += `
-  <div class="bg-white rounded-3xl border overflow-hidden shadow-sm hover:shadow-md transition">
-    <div class="h-44 bg-slate-100 overflow-hidden">
-      <img src="${val.images?.[0] || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80"}" class="w-full h-full object-cover">
-    </div>
-    
-    <div class="p-5 space-y-4 text-xs">
-      <h4 class="font-extrabold text-slate-900 text-sm">${val.nama}</h4>
-      
-      <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-slate-500 font-semibold border-b border-slate-100 pb-3">
-        <div class="flex items-center gap-2">
-          <i class="fa-solid fa-maximize text-slate-400 w-4 text-center"></i>
-          <span>${val.lb}m² / ${val.lt}m²</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <i class="fa-solid fa-layer-group text-slate-400 w-4 text-center"></i>
-          <span>${val.lantai || "1"} Lantai</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <i class="fa-solid fa-bed text-slate-400 w-4 text-center"></i>
-          <span>${val.kt} Kamar Tidur</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <i class="fa-solid fa-bath text-slate-400 w-4 text-center"></i>
-          <span>${val.km} Kamar Mandi</span>
-        </div>
-        <div class="flex items-center gap-2 col-span-2">
-          <i class="fa-solid fa-bolt text-amber-500 w-4 text-center"></i>
-          <span>Listrik: ${val.listrik || "1300"} VA</span>
-        </div>
-      </div>
-      
-      <div class="space-y-2">
-        <!-- Tombol Detail -->
-        <a href="/detail-rumah/?id=${val.id}" class="block text-center bg-slate-900 text-white font-bold py-2.5 rounded-xl hover:bg-[#0d3b69] transition">Lihat Detail & Galeri</a>
-        
-        <!-- Tombol WhatsApp Dinamis -->
-        <a href="https://wa.me/6281311770008?text=${encodeURIComponent(`Halo, saya tertarik dengan Tipe ${val.nama} di Nusa Grande. 😊\n\nMohon info lengkap mengenai harga, simulasi cicilan, dan ketersediaan unit. Saya siap dihubungi oleh tim marketing.\n\nTerima kasih.`)}" 
-           target="_blank" 
-           class="flex items-center justify-center gap-2 text-center bg-emerald-600 text-white font-bold py-2.5 rounded-xl hover:bg-emerald-700 transition">
-          <i class="fa-brands fa-whatsapp text-sm"></i> Hubungi via WhatsApp
-        </a>
-      </div>
-    </div>
-  </div>`;
+        <div class="bg-white rounded-3xl border overflow-hidden shadow-sm hover:shadow-md transition">
+          <div class="h-44 bg-slate-100 overflow-hidden">
+            <img src="${val.images?.[0] || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80"}" class="w-full h-full object-cover">
+          </div>
+
+          <div class="p-5 space-y-4 text-xs">
+            <h4 class="font-extrabold text-slate-900 text-sm">${val.nama}</h4>
+
+            <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-slate-500 font-semibold border-b border-slate-100 pb-3">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-maximize text-slate-400 w-4 text-center"></i>
+                <span>${val.lb}m² / ${val.lt}m²</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-slate-400 w-4 text-center"></i>
+                <span>${val.lantai || "1"} Lantai</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bed text-slate-400 w-4 text-center"></i>
+                <span>${val.kt} Kamar Tidur</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bath text-slate-400 w-4 text-center"></i>
+                <span>${val.km} Kamar Mandi</span>
+              </div>
+              <div class="flex items-center gap-2 col-span-2">
+                <i class="fa-solid fa-bolt text-amber-500 w-4 text-center"></i>
+                <span>Listrik: ${val.listrik || "1300"} VA</span>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <!-- Tombol Detail -->
+              <a href="/detail-rumah/?id=${val.id}" class="block text-center bg-slate-900 text-white font-bold py-2.5 rounded-xl hover:bg-[#0d3b69] transition">Lihat Detail & Galeri</a>
+
+              <!-- Tombol WhatsApp Dinamis -->
+              <a href="https://wa.me/6281311770008?text=${encodeURIComponent(`Halo, saya tertarik dengan Tipe ${val.nama} di Nusa Grande. 😊\n\nMohon info lengkap mengenai harga, simulasi cicilan, dan ketersediaan unit. Saya siap dihubungi oleh tim marketing.\n\nTerima kasih.`)}"
+                 target="_blank"
+                 class="flex items-center justify-center gap-2 text-center bg-emerald-600 text-white font-bold py-2.5 rounded-xl hover:bg-emerald-700 transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> Hubungi via WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>`;
         });
         renderSurveyUnitOptions();
       });
@@ -1797,12 +1916,12 @@
 
         if (snap.empty) {
           grid.innerHTML = `
-            <div class="min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-sm text-slate-500">
-              Belum ada testimoni dari
-              
-              pelanggan.
-            </div>
-          `;
+                  <div class="min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-sm text-slate-500">
+                    Belum ada testimoni dari
+
+                    pelanggan.
+                  </div>
+                `;
           return;
         }
 
@@ -1812,8 +1931,8 @@
           const stars = Array.from(
             { length: 5 },
             (_, i) => `
-            <i class="fa-solid fa-star ${i < rating ? "text-amber-400" : "text-slate-300"}"></i>
-          `,
+                  <i class="fa-solid fa-star ${i < rating ? "text-amber-400" : "text-slate-300"}"></i>
+                `,
           ).join("");
           const initials = (val.nama || "Customer")
             .split(" ")
@@ -1823,41 +1942,90 @@
             .toUpperCase();
 
           grid.innerHTML += `
-<div class="testimonial-card min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] bg-white border border-slate-200 rounded-3xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 snap-start">
+      <div class="testimonial-card min-w-[90%] sm:min-w-[45%] lg:min-w-[32%] bg-white border border-slate-200 rounded-3xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 snap-start">
 
-    <div class="flex items-start gap-4">
+          <div class="flex items-start gap-4">
 
-        <!-- Foto -->
-        <img
-            src="${val.image || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80"}"
-            alt="${val.nama || "Customer"}"
-            class="w-24 h-24 rounded-full object-cover object-top flex-shrink-0 shadow-md"
-        />
+              <!-- Foto -->
+              <img
+                  src="${val.image || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80"}"
+                  alt="${val.nama || "Customer"}"
+                  class="w-24 h-24 rounded-full object-cover object-top flex-shrink-0 shadow-md"
+              />
 
-        <!-- Informasi -->
-        <div class="flex-1">
+              <!-- Informasi -->
+              <div class="flex-1">
 
-            <div class="flex items-center justify-between">
+                  <div class="flex items-center justify-between">
 
-                <div>
+                      <div>
 
-                    <h5 class="font-black text-base text-slate-900">
-                        ${val.nama || "Customer"}
-                    </h5>
-                </div>
-            </div>
-        </div>
+                          <h5 class="font-black text-base text-slate-900">
+                              ${val.nama || "Customer"}
+                          </h5>
+                      </div>
+                  </div>
+              </div>
 
-    </div>
+          </div>
 
-    <!-- Isi Testimoni -->
-    <p class="mt-6 text-slate-600 text-sm leading-7 italic">
-        “${val.pesan || "Pengalaman pelanggan sangat memuaskan."}”
-    </p>
+          <!-- Isi Testimoni -->
+          <p class="mt-6 text-slate-600 text-sm leading-7 italic">
+              “${val.pesan || "Pengalaman pelanggan sangat memuaskan."}”
+          </p>
 
-</div>
-`;
+      </div>
+      `;
         });
+      });
+
+      const footerProduk = document.getElementById("footer-produk");
+
+      onSnapshot(
+        query(collection(db, "units"), orderBy("no", "asc")),
+        (snap) => {
+          footerProduk.innerHTML = "";
+
+          snap.forEach((doc) => {
+            const unit = doc.data();
+
+            footerProduk.innerHTML += `
+              <a
+                href="/detail-rumah/?id=${doc.id}"
+                class="hover:text-white transition"
+              >
+                ${unit.nama}
+              </a>
+            `;
+          });
+        },
+      );
+
+      // dapatkan penawaran fungsi
+      // Logika untuk Tombol Dapatkan Penawaran ke WhatsApp
+      const btnOffer = document.getElementById("btnOffer");
+      btnOffer?.addEventListener("click", () => {
+        const nama = document.getElementById("offerNama")?.value.trim();
+        const email = document.getElementById("offerEmail")?.value.trim();
+        const wa = document.getElementById("offerWA")?.value.trim();
+        const referral = document.getElementById("offerReferral")?.value.trim();
+
+        // Template teks sesuai request Anda
+        let message = `Halo Sobat Nusa 👋\n\n`;
+        message += `Terima kasih telah menghubungi Nusa Grande.\n\n`;
+        message += `Data Anda sudah kami terima. Tim marketing kami akan segera menghubungi Anda untuk memberikan informasi dan penawaran terbaik.\n\n`;
+
+        // Opsional: Jika Anda ingin menyertakan data input dari form ke dalam chat,
+        // Anda bisa mengaktifkan baris di bawah ini dengan menghapus tanda komentar (//)
+        if (nama) message += `Nama: ${nama}\n`;
+        if (email) message += `Email: ${email}\n`;
+        if (wa) message += `WhatsApp: ${wa}\n`;
+        if (referral) message += `Referral: ${referral}\n\n`;
+
+        message += `Sampai jumpa di Nusa Grande! 🏡`;
+
+        const waLink = `https://wa.me/6281311770008?text=${encodeURIComponent(message)}`;
+        window.open(waLink, "_blank");
       });
     </script>
   </body>
