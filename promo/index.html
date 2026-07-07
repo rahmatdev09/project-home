@@ -78,7 +78,7 @@
       </div>
     </header>
 
-    <section class="bg-slate-900 text-white py-24">
+    <section class="bg-[#0d3b69] text-white py-24">
       <div class="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-6">
         <p
           class="text-[11px] uppercase tracking-[0.3em] text-[#8db0df] font-bold"
@@ -347,6 +347,8 @@
         getFirestore,
         collection,
         onSnapshot,
+        query,
+        orderBy,
       } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
       const firebaseConfig = {
@@ -515,6 +517,28 @@
       mobileMenuToggle?.addEventListener("click", openMobileMenu);
       mobileMenuClose?.addEventListener("click", closeMobileMenu);
       mobileSidebarBackdrop?.addEventListener("click", closeMobileMenu);
+
+      const footerProduk = document.getElementById("footer-produk");
+
+      onSnapshot(
+        query(collection(db, "units"), orderBy("no", "asc")),
+        (snap) => {
+          footerProduk.innerHTML = "";
+
+          snap.forEach((doc) => {
+            const unit = doc.data();
+
+            footerProduk.innerHTML += `
+              <a
+                href="/detail-rumah/?id=${doc.id}"
+                class="hover:text-white transition"
+              >
+                ${unit.nama}
+              </a>
+            `;
+          });
+        },
+      );
     </script>
   </body>
 </html>
