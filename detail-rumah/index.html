@@ -684,6 +684,7 @@
         addDoc,
         query,
         where,
+        orderBy,
       } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
       const firebaseConfig = {
@@ -878,6 +879,28 @@
       }
 
       loadUnitDetail();
+
+      const footerProduk = document.getElementById("footer-produk");
+
+      onSnapshot(
+        query(collection(db, "units"), orderBy("no", "asc")),
+        (snap) => {
+          footerProduk.innerHTML = "";
+
+          snap.forEach((doc) => {
+            const unit = doc.data();
+
+            footerProduk.innerHTML += `
+              <a
+                href="/detail-rumah/?id=${doc.id}"
+                class="hover:text-white transition"
+              >
+                ${unit.nama}
+              </a>
+            `;
+          });
+        },
+      );
     </script>
   </body>
 </html>
