@@ -524,6 +524,36 @@
             </button>
           </div>
           <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5"
+          >
+            <div class="relative w-full md:w-80">
+              <i
+                class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+              ></i>
+
+              <input
+                id="search-unit"
+                type="text"
+                placeholder="Cari No Pas atau Nama Unit..."
+                class="w-full rounded-xl border border-slate-200 pl-11 pr-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              />
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span class="text-sm text-slate-500"> Tampilkan </span>
+
+              <select
+                id="limit-unit"
+                class="rounded-xl border border-slate-200 px-3 py-2"
+              >
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+              </select>
+
+              <span class="text-sm text-slate-500"> item </span>
+            </div>
+          </div>
+          <div
             class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden"
           >
             <table class="w-full text-left text-xs whitespace-nowrap">
@@ -538,8 +568,45 @@
                   <th class="p-4 text-center pr-8">Aksi Kelola</th>
                 </tr>
               </thead>
+
               <tbody id="table-unit" class="divide-y divide-slate-100"></tbody>
             </table>
+            <div id="loading-unit" class="py-16 text-center">
+              <div
+                class="inline-block h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-blue-600"
+              ></div>
+
+              <p class="mt-3 text-slate-500">Memuat data...</p>
+            </div>
+            <div id="empty-unit" class="hidden py-20 text-center">
+              <i
+                class="fa-solid fa-house-circle-xmark text-6xl text-slate-300"
+              ></i>
+
+              <h3 class="mt-5 text-lg font-bold">Belum ada Unit</h3>
+
+              <p class="text-slate-500 mt-2">Silakan tambahkan unit pertama.</p>
+            </div>
+            <div
+              id="pagination-unit"
+              class="m-6 flex items-center justify-between"
+            >
+              <button
+                id="prev-page"
+                class="rounded-xl border px-4 py-2 hover:bg-slate-50"
+              >
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+
+              <div id="page-info" class="text-sm font-semibold">1 / 1</div>
+
+              <button
+                id="next-page"
+                class="rounded-xl border px-4 py-2 hover:bg-slate-50"
+              >
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -2083,14 +2150,29 @@
       window.changeMainImageInEdit = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
-        editedMainImageBase64 = await compressImage(file, 1600, 0.9);
+        editedMainImageBase64 = await compressImage(file, 1600, 0);
         document.getElementById("edit-preview-main-img").src =
           editedMainImageBase64;
       };
 
       window.saveNewUnit = async () => {
+        // Ambil nomor urut terbesar
+        const lastQuery = query(
+          collection(db, "units"),
+          orderBy("no", "desc"),
+          limit(1),
+        );
+
+        const lastSnap = await getDocs(lastQuery);
+
+        let nextNo = 1;
+
+        if (!lastSnap.empty) {
+          nextNo = (lastSnap.docs[0].data().no || 0) + 1;
+        }
         try {
           const docRef = await addDoc(collection(db, "units"), {
+            no: nextNo, // <-- nomor urut untuk drag & drop
             nama: document.getElementById("new-nama").value,
             lb: document.getElementById("new-lb").value,
             lt: document.getElementById("new-lt").value,
@@ -2098,7 +2180,7 @@
             km: document.getElementById("new-km").value,
             listrik: document.getElementById("new-listrik").value || "1300",
             lantai: document.getElementById("new-lantai").value || "1",
-            tipe: document.getElementById("new-tipe").value || "Premium",
+
             sertifikat:
               document.getElementById("new-sertifikat").value || "SHM",
             deskripsi:
@@ -2115,33 +2197,139 @@
       };
 
       const q = query(collection(db, "units"), orderBy("no", "asc"));
+      let currentPage = 1;
+      let perPage = 5;
+      let allUnits = [];
 
-      onSnapshot(q, (snap) => {
-        document.getElementById("count-unit").innerText = snap.size;
+      function renderTable() {
         const tbody = document.getElementById("table-unit");
+        const emptyUnit = document.getElementById("empty-unit");
+
+        const keyword = document
+          .getElementById("search-unit")
+          .value.toLowerCase();
+
+        let data = allUnits.filter((item) =>
+          (item.nama || "").toLowerCase().includes(keyword),
+        );
+
+        perPage = Number(document.getElementById("limit-unit").value);
+
+        const totalPage = Math.max(1, Math.ceil(data.length / perPage));
+
+        if (currentPage > totalPage) currentPage = totalPage;
+
+        const start = (currentPage - 1) * perPage;
+
+        const pageData = data.slice(start, start + perPage);
+
         tbody.innerHTML = "";
-        snap.forEach((d) => {
-          const val = d.data();
+
+        pageData.forEach((val) => {
           tbody.innerHTML += `
-            <tr data-id="${d.id}" class="hover:bg-slate-50 transition">
-              <td class=" p-4 text-center cursor-grab">
-                  <i class="fa-solid fa-grip-vertical text-slate-400"></i>
-              </td>
-               <td class=" p-4 font-bold text-slate-900">${val.no}</td>
-              <td class="p-4 pl-8"><img src="${val.images?.[0] || ""}" class="w-12 h-10 object-cover rounded-lg border"></td>
-              <td class="p-4 font-bold text-slate-900">${val.nama}</td>
-              <td class="p-4 text-slate-600 font-semibold">${val.kt || 0} KT / ${val.km || 0} KM</td>
-              <td class="p-4 text-slate-500 font-medium">${val.lb}m² / ${val.lt}m²</td>
-              <td class="p-4 text-center pr-8 flex justify-center gap-2">
-                <button onclick="manageUnitDetails('${d.id}')" class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 flex items-center justify-center transition"><i class="fa-solid fa-sliders"></i></button>
-                <button onclick="deleteRecord('units', '${d.id}')" class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 flex items-center justify-center transition"><i class="fa-solid fa-trash-can"></i></button>
-              </td>
-            </tr>`;
+      <tr data-id="${val.id}">
+        <td class="p-4 text-center cursor-grab">
+          <i class="fa-solid fa-grip-vertical text-slate-400"></i>
+        </td>
+
+        <td class="p-4 font-bold">${val.no}</td>
+
+        <td class="p-4">
+          <img
+            src="${val.images?.[0] || ""}"
+            class="w-12 h-10 object-cover rounded-lg border">
+        </td>
+
+        <td class="p-4 font-bold">
+          ${val.nama}
+        </td>
+
+        <td class="p-4">
+          ${val.kt || 0} KT / ${val.km || 0} KM
+        </td>
+
+        <td class="p-4">
+          ${val.lb}m² / ${val.lt}m²
+        </td>
+
+        <td class="p-4 flex justify-center gap-2">
+
+          <button onclick="manageUnitDetails('${val.id}')">
+            Edit
+          </button>
+
+          <button onclick="deleteRecord('units','${val.id}')">
+            Hapus
+          </button>
+
+        </td>
+
+      </tr>
+    `;
         });
 
+        document.getElementById("page-info").innerText =
+          `${currentPage} / ${totalPage}`;
+
+        emptyUnit.classList.toggle("hidden", data.length > 0);
+
         enableDrag();
+      }
+
+      let loadingUnit = document.getElementById("loading-unit");
+      let emptyUnit = document.getElementById("empty-unit");
+      onSnapshot(q, (snap) => {
+        loadingUnit.classList.remove("hidden");
+
+        document.getElementById("count-unit").innerText = snap.size;
+
+        allUnits = snap.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        loadingUnit.classList.add("hidden");
+
+        renderTable();
       });
 
+      document.getElementById("search-unit").addEventListener("input", () => {
+        currentPage = 1;
+
+        renderTable();
+      });
+
+      document.getElementById("limit-unit").addEventListener("change", () => {
+        currentPage = 1;
+
+        renderTable();
+      });
+
+      document.getElementById("prev-page").onclick = () => {
+        if (currentPage > 1) {
+          currentPage--;
+
+          renderTable();
+        }
+      };
+
+      document.getElementById("next-page").onclick = () => {
+        const totalPage = Math.ceil(
+          allUnits.filter((item) =>
+            (item.nama || "")
+              .toLowerCase()
+              .includes(
+                document.getElementById("search-unit").value.toLowerCase(),
+              ),
+          ).length / perPage,
+        );
+
+        if (currentPage < totalPage) {
+          currentPage++;
+
+          renderTable();
+        }
+      };
       window.manageUnitDetails = async (id) => {
         currentActiveUnitId = id;
         const snap = await getDoc(doc(db, "units", id));
@@ -2289,10 +2477,10 @@
           snap.forEach((d) => {
             const item = d.data();
             document.getElementById(`preview-${item.kategori}`).innerHTML += `
-                    <div class="group relative h-16 w-full rounded-lg overflow-hidden border">
-                        <img src="${item.image}" class="w-full h-full object-cover">
-                        <button onclick="deleteRecord('galleries', '${d.id}')" class="absolute top-1 right-1 bg-rose-600 text-white w-5 h-5 rounded-full text-[8px] opacity-0 group-hover:opacity-100 transition"><i class="fa-solid fa-x"></i></button>
-                    </div>`;
+                      <div class="group relative h-16 w-full rounded-lg overflow-hidden border">
+                          <img src="${item.image}" class="w-full h-full object-cover">
+                          <button onclick="deleteRecord('galleries', '${d.id}')" class="absolute top-1 right-1 bg-rose-600 text-white w-5 h-5 rounded-full text-[8px] opacity-0 group-hover:opacity-100 transition"><i class="fa-solid fa-x"></i></button>
+                      </div>`;
           });
         });
       }
