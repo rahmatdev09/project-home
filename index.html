@@ -282,118 +282,32 @@
     </section>
 
     <!-- promo -->
-    <section id="promo" class="relative h-[85vh] overflow-hidden bg-slate-900">
-      <!-- Slider -->
-      <div
-        id="promo-slider"
-        class="flex h-full transition-transform duration-700 ease-in-out"
-      >
-        <!-- Diisi dari Firebase -->
-      </div>
-
-      <!-- Overlay -->
-      <!-- <div
-        class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"
-      ></div> -->
-
-      <!-- Content -->
-      <!-- <div class="hidden absolute inset-0 z-20 flex items-center">
-        <div class="max-w-7xl mx-auto w-full px-6">
-          <span
-            class="inline-flex rounded-full bg-white/20 backdrop-blur px-4 py-2 text-xs font-bold uppercase tracking-widest text-white"
-          >
-            Promo Terbaru
-          </span>
-
-          <h2
-            id="promo-title"
-            class="mt-5 text-4xl md:text-6xl font-black text-white max-w-3xl"
-          >
-            Penawaran Terbaik Nusa Grande
-          </h2>
-
-          <p
-            id="promo-description"
-            class="mt-5 max-w-xl text-white/90 leading-relaxed"
-          >
-            Miliki hunian impian dengan promo terbaik bulan ini.
-          </p>
-
-          <div class="mt-8 flex gap-3">
-            <a
-              id="promo-button"
-              href="/promo/detail-promo/?id="
-              class="rounded-2xl bg-[#0d3b69] hover:bg-[#0b3158] px-8 py-4 font-bold text-white transition"
+    <section id="promo" class="py-10 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <p
+              class="text-xs font-bold tracking-[4px] uppercase text-[#0d3b69]"
             >
-              Lihat Promo
-            </a>
-
-            <a
-              href="/promo/"
-              class="rounded-2xl border border-white/40 bg-white/10 backdrop-blur px-8 py-4 font-bold text-white hover:bg-white/20 transition"
-            >
-              Semua Promo
-            </a>
+              Promo Terbaru
+            </p>
+            <h2 class="text-3xl font-black text-slate-900 mt-2">
+              Promo Nusa Grande
+            </h2>
           </div>
+
+          <a
+            href="/promo/"
+            class="text-sm font-bold text-[#0d3b69] hover:underline"
+          >
+            Lihat Semua
+          </a>
         </div>
-      </div> -->
 
-      <!-- Prev -->
-      <button
-        id="promo-scroll-prev"
-        class="absolute left-6 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-white/90 hover:bg-white shadow-xl transition"
-      >
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-
-      <!-- Next -->
-      <button
-        id="promo-scroll-next"
-        class="absolute right-6 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-white/90 hover:bg-white shadow-xl transition"
-      >
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-
-      <!-- Indicator -->
-      <div
-        id="promo-indicator"
-        class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3"
-      ></div>
-
-      <!-- Modal -->
-      <div
-        id="modal-promo-detail"
-        class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center p-4 z-50"
-      >
         <div
-          class="bg-white rounded-3xl w-full max-w-3xl p-6 shadow-2xl border overflow-auto max-h-[90vh]"
-        >
-          <div class="flex items-center justify-between mb-4">
-            <h3 id="modal-promo-title" class="text-lg font-bold text-slate-900">
-              Detail Promo
-            </h3>
-
-            <button
-              onclick="
-                document
-                  .getElementById('modal-promo-detail')
-                  .classList.add('hidden')
-              "
-              class="text-slate-400 hover:text-slate-700"
-            >
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
-
-          <div id="modal-promo-body" class="space-y-4 text-sm text-slate-700">
-            <div
-              id="modal-promo-image"
-              class="w-full h-64 rounded-2xl overflow-hidden"
-            ></div>
-
-            <div id="modal-promo-content" class="prose max-w-full"></div>
-          </div>
-        </div>
+          id="promo-mobile"
+          class="grid grid-cols-1 sm:grid-cols-3 gap-6"
+        ></div>
       </div>
     </section>
 
@@ -1709,58 +1623,50 @@
       let currentSlide = 0;
       let autoSlide;
 
+      // const promoGrid = document.getElementById("promo-mobile");
+
       onSnapshot(collection(db, "promos"), (snap) => {
-        promoIds = [];
-        promoData = snap.docs.map((doc) => ({
+        const promoGrid = document.getElementById("promo-mobile");
+
+        if (!promoGrid) return;
+
+        promoGrid.innerHTML = "";
+
+        const promos = snap.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
 
-        if (!promoData.length) {
-          document.getElementById("promo").classList.add("hidden");
+        if (promos.length === 0) {
+          promoGrid.innerHTML = `
+      <div class="col-span-full py-12 text-center text-slate-500">
+        Belum ada promo tersedia.
+      </div>
+    `;
           return;
         }
 
-        document.getElementById("promo").classList.remove("hidden");
-
-        promoSlider.innerHTML = "";
-        promoIndicator.innerHTML = "";
-
-        promoData.forEach((promo, index) => {
-          promoIds.push(promo.id);
+        promos.forEach((promo) => {
           const image =
-            promo.images?.[0] ||
-            promo.image ||
-            "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80";
+            Array.isArray(promo.images) && promo.images.length
+              ? promo.images[0]
+              : promo.image || "";
 
-          promoSlider.innerHTML += `
-        <div class="relative min-w-full h-[85vh]">
-
+          promoGrid.innerHTML += `
+      <a
+        href="/promo/detail-promo/?id=${promo.id}"
+        class="group overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-xl transition"
+      >
+        <div class="overflow-hidden">
           <img
             src="${image}"
-            class="absolute inset-0 w-full h-full object-cover">
-
+            alt="${promo.judul || "Promo"}"
+            class="w-full h-48 object-cover group-hover:scale-105 transition duration-500"
+          >
         </div>
-      `;
-
-          promoIndicator.innerHTML += `
-        <button
-          data-index="${index}"
-          class="promo-dot w-3 h-3 rounded-full bg-white/40 transition">
-        </button>
-      `;
+      </a>
+    `;
         });
-
-        updatePromoButtonLink();
-        currentSlide = 0;
-
-        updatePromo();
-
-        clearInterval(autoSlide);
-
-        autoSlide = setInterval(() => {
-          nextPromo();
-        }, 5000);
       });
 
       function updatePromoButtonLink() {
@@ -1790,51 +1696,6 @@
         });
       }
 
-      function nextPromo() {
-        currentSlide++;
-
-        if (currentSlide >= promoData.length) currentSlide = 0;
-
-        updatePromo();
-      }
-
-      function prevPromo() {
-        currentSlide--;
-
-        if (currentSlide < 0) currentSlide = promoData.length - 1;
-
-        updatePromo();
-      }
-
-      nextBtn.onclick = () => {
-        nextPromo();
-
-        resetAutoSlide();
-      };
-
-      prevBtn.onclick = () => {
-        prevPromo();
-
-        resetAutoSlide();
-      };
-
-      promoIndicator.onclick = (e) => {
-        if (!e.target.dataset.index) return;
-
-        currentSlide = Number(e.target.dataset.index);
-
-        updatePromo();
-
-        resetAutoSlide();
-      };
-
-      function resetAutoSlide() {
-        clearInterval(autoSlide);
-
-        autoSlide = setInterval(() => {
-          nextPromo();
-        }, 5000);
-      }
       const q = query(
         collection(db, "units"),
 
@@ -2012,7 +1873,7 @@
         // const referral = document.getElementById("offerReferral")?.value.trim();
 
         // Template teks sesuai request Anda
-        let message = `HHalo, saya ingin mendapatkan informasi mengenai Nusa Grande.\n\n`;
+        let message = `Halo, saya ingin mendapatkan informasi mengenai Nusa Grande.\n\n`;
         // message += `Terima kasih telah menghubungi Nusa Grande.\n\n`;
         // message += `Data Anda sudah kami terima. Tim marketing kami akan segera menghubungi Anda untuk memberikan informasi dan penawaran terbaik.\n\n`;
 
