@@ -92,121 +92,6 @@
       </div>
     </header>
 
-    <section id="promo" class="relative h-[85vh] overflow-hidden bg-slate-900">
-      <!-- Slider -->
-      <div
-        id="promo-slider"
-        class="flex h-full transition-transform duration-700 ease-in-out"
-      >
-        <!-- Diisi dari Firebase -->
-      </div>
-
-      <!-- Overlay -->
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"
-      ></div>
-
-      <!-- Content -->
-      <div class="absolute inset-0 z-20 flex items-center">
-        <div class="max-w-7xl mx-auto w-full px-6">
-          <span
-            class="inline-flex rounded-full bg-white/20 backdrop-blur px-4 py-2 text-xs font-bold uppercase tracking-widest text-white"
-          >
-            Promo Terbaru
-          </span>
-
-          <h2
-            id="promo-title"
-            class="mt-5 text-4xl md:text-6xl font-black text-white max-w-3xl"
-          >
-            Penawaran Terbaik Nusa Grande
-          </h2>
-
-          <p
-            id="promo-description"
-            class="mt-5 max-w-xl text-white/90 leading-relaxed"
-          >
-            Miliki hunian impian dengan promo terbaik bulan ini.
-          </p>
-
-          <div class="mt-8 flex gap-3">
-            <a
-              id="promo-button"
-              href="/promo/detail-promo/?id="
-              class="rounded-2xl bg-[#0d3b69] hover:bg-[#0b3158] px-8 py-4 font-bold text-white transition"
-            >
-              Lihat Promo
-            </a>
-
-            <a
-              href="/promo/"
-              class="rounded-2xl border border-white/40 bg-white/10 backdrop-blur px-8 py-4 font-bold text-white hover:bg-white/20 transition"
-            >
-              Semua Promo
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Prev -->
-      <button
-        id="promo-scroll-prev"
-        class="absolute left-6 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-white/90 hover:bg-white shadow-xl transition"
-      >
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-
-      <!-- Next -->
-      <button
-        id="promo-scroll-next"
-        class="absolute right-6 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-white/90 hover:bg-white shadow-xl transition"
-      >
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-
-      <!-- Indicator -->
-      <div
-        id="promo-indicator"
-        class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3"
-      ></div>
-
-      <!-- Modal -->
-      <div
-        id="modal-promo-detail"
-        class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center p-4 z-50"
-      >
-        <div
-          class="bg-white rounded-3xl w-full max-w-3xl p-6 shadow-2xl border overflow-auto max-h-[90vh]"
-        >
-          <div class="flex items-center justify-between mb-4">
-            <h3 id="modal-promo-title" class="text-lg font-bold text-slate-900">
-              Detail Promo
-            </h3>
-
-            <button
-              onclick="
-                document
-                  .getElementById('modal-promo-detail')
-                  .classList.add('hidden')
-              "
-              class="text-slate-400 hover:text-slate-700"
-            >
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
-
-          <div id="modal-promo-body" class="space-y-4 text-sm text-slate-700">
-            <div
-              id="modal-promo-image"
-              class="w-full h-64 rounded-2xl overflow-hidden"
-            ></div>
-
-            <div id="modal-promo-content" class="prose max-w-full"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- HERO -->
     <section
       class="relative bg-slate-900 text-white pt-24 lg:pt-32 pb-44 overflow-hidden"
@@ -282,7 +167,7 @@
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
             <!-- Nama -->
             <div>
               <label class="text-xs font-bold text-slate-600">
@@ -324,7 +209,7 @@
             </div>
 
             <!-- Referral -->
-            <div>
+            <div class="hidden">
               <label class="text-xs font-bold text-slate-600">
                 Kode Referral
               </label>
@@ -392,6 +277,122 @@
             src="image/IMG_4884.jpeg"
             class="rounded-[32px] shadow-xl object-cover w-full h-[520px]"
           />
+        </div>
+      </div>
+    </section>
+
+    <!-- promo -->
+    <section id="promo" class="relative h-[85vh] overflow-hidden bg-slate-900">
+      <!-- Slider -->
+      <div
+        id="promo-slider"
+        class="flex h-full transition-transform duration-700 ease-in-out"
+      >
+        <!-- Diisi dari Firebase -->
+      </div>
+
+      <!-- Overlay -->
+      <!-- <div
+        class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"
+      ></div> -->
+
+      <!-- Content -->
+      <!-- <div class="hidden absolute inset-0 z-20 flex items-center">
+        <div class="max-w-7xl mx-auto w-full px-6">
+          <span
+            class="inline-flex rounded-full bg-white/20 backdrop-blur px-4 py-2 text-xs font-bold uppercase tracking-widest text-white"
+          >
+            Promo Terbaru
+          </span>
+
+          <h2
+            id="promo-title"
+            class="mt-5 text-4xl md:text-6xl font-black text-white max-w-3xl"
+          >
+            Penawaran Terbaik Nusa Grande
+          </h2>
+
+          <p
+            id="promo-description"
+            class="mt-5 max-w-xl text-white/90 leading-relaxed"
+          >
+            Miliki hunian impian dengan promo terbaik bulan ini.
+          </p>
+
+          <div class="mt-8 flex gap-3">
+            <a
+              id="promo-button"
+              href="/promo/detail-promo/?id="
+              class="rounded-2xl bg-[#0d3b69] hover:bg-[#0b3158] px-8 py-4 font-bold text-white transition"
+            >
+              Lihat Promo
+            </a>
+
+            <a
+              href="/promo/"
+              class="rounded-2xl border border-white/40 bg-white/10 backdrop-blur px-8 py-4 font-bold text-white hover:bg-white/20 transition"
+            >
+              Semua Promo
+            </a>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Prev -->
+      <button
+        id="promo-scroll-prev"
+        class="absolute left-6 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-white/90 hover:bg-white shadow-xl transition"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <!-- Next -->
+      <button
+        id="promo-scroll-next"
+        class="absolute right-6 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-white/90 hover:bg-white shadow-xl transition"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <!-- Indicator -->
+      <div
+        id="promo-indicator"
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3"
+      ></div>
+
+      <!-- Modal -->
+      <div
+        id="modal-promo-detail"
+        class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center p-4 z-50"
+      >
+        <div
+          class="bg-white rounded-3xl w-full max-w-3xl p-6 shadow-2xl border overflow-auto max-h-[90vh]"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <h3 id="modal-promo-title" class="text-lg font-bold text-slate-900">
+              Detail Promo
+            </h3>
+
+            <button
+              onclick="
+                document
+                  .getElementById('modal-promo-detail')
+                  .classList.add('hidden')
+              "
+              class="text-slate-400 hover:text-slate-700"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div id="modal-promo-body" class="space-y-4 text-sm text-slate-700">
+            <div
+              id="modal-promo-image"
+              class="w-full h-64 rounded-2xl overflow-hidden"
+            ></div>
+
+            <div id="modal-promo-content" class="prose max-w-full"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -506,7 +507,7 @@
             <p
               class="uppercase tracking-[4px] text-[#0d3b69] text-xs font-bold"
             >
-              Fasilitas dalam Komplek
+              Fasilitas Sekitar
             </p>
 
             <h2 class="text-3xl font-black text-slate-900 mt-2">
@@ -2008,21 +2009,21 @@
         const nama = document.getElementById("offerNama")?.value.trim();
         const email = document.getElementById("offerEmail")?.value.trim();
         const wa = document.getElementById("offerWA")?.value.trim();
-        const referral = document.getElementById("offerReferral")?.value.trim();
+        // const referral = document.getElementById("offerReferral")?.value.trim();
 
         // Template teks sesuai request Anda
-        let message = `Halo Sobat Nusa 👋\n\n`;
-        message += `Terima kasih telah menghubungi Nusa Grande.\n\n`;
-        message += `Data Anda sudah kami terima. Tim marketing kami akan segera menghubungi Anda untuk memberikan informasi dan penawaran terbaik.\n\n`;
+        let message = `HHalo, saya ingin mendapatkan informasi mengenai Nusa Grande.\n\n`;
+        // message += `Terima kasih telah menghubungi Nusa Grande.\n\n`;
+        // message += `Data Anda sudah kami terima. Tim marketing kami akan segera menghubungi Anda untuk memberikan informasi dan penawaran terbaik.\n\n`;
 
         // Opsional: Jika Anda ingin menyertakan data input dari form ke dalam chat,
         // Anda bisa mengaktifkan baris di bawah ini dengan menghapus tanda komentar (//)
         if (nama) message += `Nama: ${nama}\n`;
         if (email) message += `Email: ${email}\n`;
         if (wa) message += `WhatsApp: ${wa}\n`;
-        if (referral) message += `Referral: ${referral}\n\n`;
+        // if (referral) message += `Referral: ${referral}\n\n`;
 
-        message += `Sampai jumpa di Nusa Grande! 🏡`;
+        message += `Terima kasih`;
 
         const waLink = `https://wa.me/6281311770008?text=${encodeURIComponent(message)}`;
         window.open(waLink, "_blank");
