@@ -14,6 +14,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <!-- Pilihan 1: Font Awesome (Sangat Populer) -->
+
+    <!-- Pilihan 2: Lucide Icons (Modern & Minimalis) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
       body {
         font-family: "Plus Jakarta Sans", sans-serif;
@@ -114,6 +118,7 @@
       </div>
     </div>
 
+    <!-- Modal Tambah Fasilitas -->
     <div
       id="modal-add-amenity"
       class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4"
@@ -198,6 +203,83 @@
             class="px-5 py-2 rounded-xl bg-[#0d3b69] text-white"
           >
             Simpan
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Edit Fasilitas -->
+    <div
+      id="modal-edit-amenity"
+      class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4"
+    >
+      <div
+        class="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden"
+      >
+        <div
+          class="px-6 py-5 border-b flex items-center justify-between bg-slate-50"
+        >
+          <h3 class="font-bold text-lg text-slate-900">Edit Fasilitas</h3>
+          <button
+            onclick="
+              document
+                .getElementById('modal-edit-amenity')
+                .classList.add('hidden')
+            "
+            class="w-9 h-9 rounded-xl hover:bg-slate-200 transition"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="p-6 space-y-5">
+          <div>
+            <label class="block text-sm font-semibold mb-2"
+              >Nama Fasilitas</label
+            >
+            <input
+              id="edit-amenity-name"
+              type="text"
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:ring-2 focus:ring-[#0d3b69]"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold mb-2">Gambar</label>
+            <input
+              type="file"
+              id="edit-amenity-image-file"
+              accept="image/*"
+              class="hidden"
+            />
+            <label
+              for="edit-amenity-image-file"
+              class="cursor-pointer border-2 border-dashed border-slate-300 rounded-2xl flex flex-col items-center justify-center h-48 hover:border-[#0d3b69] transition"
+            >
+              <img
+                id="edit-preview-amenity"
+                class="w-full h-full object-cover rounded-2xl"
+              />
+            </label>
+          </div>
+        </div>
+
+        <div class="px-6 py-5 border-t flex justify-end gap-3">
+          <button
+            onclick="
+              document
+                .getElementById('modal-edit-amenity')
+                .classList.add('hidden')
+            "
+            class="px-5 py-2 rounded-xl border"
+          >
+            Batal
+          </button>
+          <button
+            onclick="updateAmenity()"
+            class="px-5 py-2 rounded-xl bg-[#0d3b69] text-white"
+          >
+            Perbarui
           </button>
         </div>
       </div>
@@ -346,7 +428,7 @@
         <img
           src="/image/IMG_3493.PNG"
           alt="Logo Nusa Grande"
-          class="h-11 w-auto object-contain"
+          class="h-11 bg-white rounded-full w-auto object-contain"
         />
       </div>
       <nav class="flex-grow p-4 space-y-1 font-medium text-xs overflow-y-auto">
@@ -414,7 +496,7 @@
         <button
           onclick="switchTab('leads')"
           id="nav-leads"
-          class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800/60 hover:text-slate-200 transition"
+          class="hidden w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800/60 hover:text-slate-200 transition"
         >
           <i class="fa-solid fa-calendar-check text-sm"></i> Booking Survey
         </button>
@@ -779,17 +861,6 @@
                       <div class="space-y-1">
                         <span
                           class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Daya Listrik</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-listrik"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
                           >Jumlah Lantai</span
                         >
                         <input
@@ -800,7 +871,7 @@
                       </div>
                     </div>
                     <div class="grid grid-cols-2 gap-3">
-                      <div class="space-y-1">
+                      <div class="flex-1 space-y-1">
                         <span
                           class="text-[10px] font-bold text-slate-400 uppercase"
                           >Tipe Unit</span
@@ -811,7 +882,7 @@
                           class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
                         />
                       </div>
-                      <div class="space-y-1">
+                      <div class="flex-1 space-y-1">
                         <span
                           class="text-[10px] font-bold text-slate-400 uppercase"
                           >Sertifikat</span
@@ -944,17 +1015,6 @@
                       </div>
                     </div>
                     <div class="grid grid-cols-2 gap-3">
-                      <div class="space-y-1">
-                        <span
-                          class="text-[10px] font-bold text-slate-400 uppercase"
-                          >Listrik Detail</span
-                        >
-                        <input
-                          type="text"
-                          id="edit-listrik_detail"
-                          class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-xs"
-                        />
-                      </div>
                       <div class="space-y-1">
                         <span
                           class="text-[10px] font-bold text-slate-400 uppercase"
@@ -1127,6 +1187,21 @@
                 class="divide-y divide-slate-100"
               ></tbody>
             </table>
+            <!-- Loading Fasilitas -->
+            <div id="loading-facilities" class="py-16 text-center">
+              <div
+                class="inline-block h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-blue-600"
+              ></div>
+              <p class="mt-3 text-slate-500">Memuat data fasilitas...</p>
+            </div>
+            <!-- Empty State Fasilitas -->
+            <div
+              id="empty-facilities"
+              class="hidden py-16 text-center text-slate-500"
+            >
+              <i class="fa-solid fa-tree-slash text-4xl mb-2"></i>
+              <p>Belum ada data fasilitas.</p>
+            </div>
           </div>
         </div>
 
@@ -1889,15 +1964,6 @@
           </div>
           <div class="grid grid-cols-2 gap-2 text-xs font-bold text-slate-400">
             <div class="space-y-1">
-              <span>Daya Listrik</span>
-              <input
-                type="text"
-                id="new-listrik"
-                value="1300"
-                class="w-full px-4 py-2.5 bg-slate-50 border rounded-xl text-slate-800"
-              />
-            </div>
-            <div class="space-y-1">
               <span>Jumlah Lantai</span>
               <input
                 type="text"
@@ -1978,7 +2044,9 @@
         query,
         where,
         getDoc,
+        getDocs,
         orderBy,
+        limit,
       } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
       const firebaseConfig = {
         apiKey: "AIzaSyAja6FfF_EW_N9y8pXmDX-10e0e51DJ4Cg",
@@ -2000,6 +2068,8 @@
       let editingPromoId = null;
       let editingTestimonialId = null;
       let bannerImagesBase64 = [];
+      let currentEditingAmenityId = null;
+      let editAmenityImageBase64 = "";
 
       window.showAlert = function (title, desc) {
         const alertEl = document.getElementById("custom-alert");
@@ -2193,7 +2263,6 @@
       };
 
       window.saveNewUnit = async () => {
-        // Ambil nomor urut terbesar
         const lastQuery = query(
           collection(db, "units"),
           orderBy("no", "desc"),
@@ -2209,7 +2278,7 @@
         }
         try {
           const docRef = await addDoc(collection(db, "units"), {
-            no: nextNo, // <-- nomor urut untuk drag & drop
+            no: nextNo,
             nama: document.getElementById("new-nama").value,
             lb: document.getElementById("new-lb").value,
             lt: document.getElementById("new-lt").value,
@@ -2289,17 +2358,28 @@
           ${val.lb}m² / ${val.lt}m²
         </td>
 
-        <td class="p-4 flex justify-center gap-2">
+        
 
-          <button onclick="manageUnitDetails('${val.id}')">
-            Edit
-          </button>
+        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+    <div class="flex items-center justify-end gap-2">
+        <!-- Tombol Edit -->
+        <button 
+            onclick="manageUnitDetails('${val.id}')"
+            class="flex items-center justify-center w-8 h-8 rounded-lg text-amber-600 bg-amber-50 hover:bg-amber-100 hover:text-amber-700 transition-colors duration-200"
+            title="Edit Tipe Rumah">
+            <i class="fa-solid fa-pen-to-square text-xs"></i>
+        </button>
 
-          <button onclick="deleteRecord('units','${val.id}')">
-            Hapus
-          </button>
+        <!-- Tombol Hapus -->
+        <button 
+           onclick="deleteRecord('units','${val.id}')"
+            class="flex items-center justify-center w-8 h-8 rounded-lg text-rose-600 bg-rose-50 hover:bg-rose-100 hover:text-rose-700 transition-colors duration-200"
+            title="Hapus Tipe Rumah">
+            <i class="fa-solid fa-trash-can text-xs"></i>
+        </button>
+    </div>
+</td>
 
-        </td>
 
       </tr>
     `;
@@ -2381,7 +2461,7 @@
           document.getElementById("edit-km").value = val.km || 1;
           document.getElementById("edit-spec-deskripsi").value =
             val.deskripsi || val.spec_deskripsi || "";
-          document.getElementById("edit-listrik").value = val.listrik || "1300";
+
           document.getElementById("edit-lantai").value = val.lantai || "1";
           document.getElementById("edit-tipe").value =
             val.tipe || val.type || "Premium";
@@ -2401,8 +2481,7 @@
             val.lantai_detail || "";
           document.getElementById("edit-air_bersih").value =
             val.air_bersih || "";
-          document.getElementById("edit-listrik_detail").value =
-            val.listrik_detail || "";
+
           document.getElementById("edit-sanitair").value = val.sanitair || "";
           editedMainImageBase64 = val.images?.[0] || "";
           document.getElementById("edit-preview-main-img").src =
@@ -2427,7 +2506,7 @@
             lt: document.getElementById("edit-lt").value,
             kt: document.getElementById("edit-kt").value,
             km: document.getElementById("edit-km").value,
-            listrik: document.getElementById("edit-listrik").value,
+
             lantai: document.getElementById("edit-lantai").value,
             tipe: document.getElementById("edit-tipe").value,
             sertifikat: document.getElementById("edit-sertifikat").value,
@@ -2441,8 +2520,7 @@
             penutup_atap: document.getElementById("edit-penutup_atap").value,
             lantai_detail: document.getElementById("edit-lantai_detail").value,
             air_bersih: document.getElementById("edit-air_bersih").value,
-            listrik_detail: document.getElementById("edit-listrik_detail")
-              .value,
+
             sanitair: document.getElementById("edit-sanitair").value,
             deskripsi: document.getElementById("edit-spec-deskripsi").value,
             spec_deskripsi: document.getElementById("edit-spec-deskripsi")
@@ -2523,37 +2601,80 @@
       }
 
       // ---------------------------------------------------------
-      // REALTIME LISTENER FASILITAS, TESTIMONI & BANNER PROMO
+      // REALTIME LISTENER FASILITAS
       // ---------------------------------------------------------
-      window.saveFacility = async () => {
-        const name = document.getElementById("fac-nama").value;
-        const desc = document.getElementById("fac-deskripsi").value;
-        const kategori = document.getElementById("fac-kategori").value;
-        if (!name) {
-          window.showAlert("Perhatian", "Isi nama fasilitas terlebih dahulu.");
-          return;
-        }
-        await addDoc(collection(db, "amenities"), {
-          nama: name,
-          deskripsi: desc,
-          kategori,
-        });
-        document.getElementById("fac-nama").value = "";
-        document.getElementById("fac-deskripsi").value = "";
-        document.getElementById("fac-kategori").value = "internal";
-        closeModal("modal-facility");
-        window.showAlert("Sukses", "Fasilitas berhasil disimpan.");
-      };
+      let loadingFacilities = document.getElementById("loading-facilities");
+      let emptyFacilities = document.getElementById("empty-facilities");
 
       onSnapshot(collection(db, "amenities"), (snap) => {
+        loadingFacilities.classList.remove("hidden");
         document.getElementById("count-facilities").innerText = snap.size;
         const tbody = document.getElementById("table-facilities");
         tbody.innerHTML = "";
-        snap.forEach((d) => {
-          const val = d.data();
-          tbody.innerHTML += `<tr><td class="p-4 pl-8 font-bold">${val.nama}</td><td class="p-4 text-center pr-8"><button onclick="deleteRecord('amenities', '${d.id}')" class="text-rose-600"><i class="fa-solid fa-trash-can"></i></button></td></tr>`;
-        });
+
+        if (snap.empty) {
+          emptyFacilities.classList.remove("hidden");
+        } else {
+          emptyFacilities.classList.add("hidden");
+          snap.forEach((d) => {
+            const val = d.data();
+            tbody.innerHTML += `
+              <tr>
+                <td class="p-4 pl-8 font-bold">${val.nama}</td>
+                <td class="p-4">
+                  <img src="${val.gambar || ""}" class="w-16 h-12 object-cover rounded-xl border bg-slate-50"/>
+                </td>
+                <td class="p-4 text-center pr-8">
+                  <div class="flex justify-center gap-2">
+                    <button onclick="openEditAmenityModal('${d.id}', '${val.nama}', '${val.gambar || ""}')" class="text-amber-600 hover:text-amber-700">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button onclick="deleteRecord('amenities', '${d.id}')" class="text-rose-600 hover:text-rose-700">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>`;
+          });
+        }
+        loadingFacilities.classList.add("hidden");
       });
+
+      window.openEditAmenityModal = (id, nama, gambar) => {
+        currentEditingAmenityId = id;
+        editAmenityImageBase64 = gambar;
+        document.getElementById("edit-amenity-name").value = nama;
+        document.getElementById("edit-preview-amenity").src = gambar;
+        window.openModal("modal-edit-amenity");
+      };
+
+      document
+        .getElementById("edit-amenity-image-file")
+        .addEventListener("change", async function (e) {
+          const file = e.target.files[0];
+          if (!file) return;
+          editAmenityImageBase64 = await compressImage(file, 700, 0.6);
+          document.getElementById("edit-preview-amenity").src =
+            editAmenityImageBase64;
+        });
+
+      window.updateAmenity = async () => {
+        const nama = document.getElementById("edit-amenity-name").value.trim();
+        if (!nama) return showAlert("Gagal", "Nama fasilitas wajib diisi.");
+        if (!editAmenityImageBase64)
+          return showAlert("Gagal", "Gambar wajib ada.");
+
+        try {
+          await updateDoc(doc(db, "amenities", currentEditingAmenityId), {
+            nama: nama,
+            gambar: editAmenityImageBase64,
+          });
+          showAlert("Berhasil", "Fasilitas berhasil diperbarui.");
+          document.getElementById("modal-edit-amenity").classList.add("hidden");
+        } catch (err) {
+          showAlert("Gagal", err.message);
+        }
+      };
 
       window.saveAboutProfile = async () => {
         const data = {
@@ -2702,7 +2823,6 @@
         const descHtml = document
           .getElementById("banner-desc-editor")
           .innerHTML.trim();
-        const file = document.getElementById("banner-img").files[0];
         if (!title) {
           window.showAlert("Perhatian", "Isi judul promo terlebih dahulu.");
           return;
@@ -2891,12 +3011,9 @@
         .getElementById("new-amenity-image")
         .addEventListener("change", async function (e) {
           const file = e.target.files[0];
-
           if (!file) return;
 
-          // Compress gambar
           amenityImageBase64 = await compressImage(file, 700, 0.6);
-
           document.getElementById("preview-amenity").src = amenityImageBase64;
           document.getElementById("preview-amenity").classList.remove("hidden");
           document
@@ -2906,14 +3023,9 @@
 
       window.saveAmenity = async () => {
         const nama = document.getElementById("new-amenity-name").value.trim();
-
-        if (!nama) {
-          return showAlert("Gagal", "Nama fasilitas wajib diisi.");
-        }
-
-        if (!amenityImageBase64) {
+        if (!nama) return showAlert("Gagal", "Nama fasilitas wajib diisi.");
+        if (!amenityImageBase64)
           return showAlert("Gagal", "Silakan pilih gambar.");
-        }
 
         try {
           await addDoc(collection(db, "amenities"), {
@@ -2922,15 +3034,10 @@
           });
 
           showAlert("Berhasil", "Fasilitas berhasil ditambahkan.");
-
           document.getElementById("modal-add-amenity").classList.add("hidden");
-
           document.getElementById("new-amenity-name").value = "";
-
           amenityImageBase64 = "";
-
           document.getElementById("preview-amenity").classList.add("hidden");
-
           document
             .getElementById("placeholder-amenity")
             .classList.remove("hidden");
